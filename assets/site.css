@@ -160,3 +160,6 @@ dialog.dlg.side { width: min(860px, calc(100vw - 24px)); }
 .who span { font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--muted-2); }
 .head-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
 .head-txt h2 { margin: 0; }
+/* 분야 글자와 제목 사이를 좁게 */
+.side-info .side-top + h2 { margin-top: -8px; }
+.head-txt .cat-txt + h2 { margin-top: -4px; }
