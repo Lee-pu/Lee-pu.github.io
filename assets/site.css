@@ -134,6 +134,19 @@ dialog.dlg[open] { animation: dlg .35s var(--ease); }
 .btn-out { justify-self: start; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
 .btn-out:hover { background: var(--pink); color: var(--pink-ink); }
 @media (max-width: 560px) { .dlg-in { padding: 20px; } dialog.dlg { border-radius: 22px; } }
+/* 세로 영상 창: 왼쪽 영상 · 오른쪽 분야·날짜 → 제목 → 설명 */
+dialog.dlg.side { width: min(860px, calc(100vw - 24px)); }
+.dlg-in.side { grid-template-columns: auto minmax(0, 1fr); gap: 32px; align-items: start; }
+.side-media iframe, .side-media .ytcard, .side-media video { width: calc(min(72vh, 680px) * 9 / 16); height: auto; aspect-ratio: 9 / 16; max-height: none; margin: 0; object-fit: cover; }
+.side-info { display: flex; flex-direction: column; gap: 14px; min-width: 0; padding-top: 2px; }
+.side-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.side-info h2 { margin: 6px 0 0; font-family: var(--kr); font-size: clamp(22px, 2.4vw, 30px); font-weight: 900; line-height: 1.35; letter-spacing: -.02em; word-break: keep-all; overflow-wrap: anywhere; }
+.side-info .desc { margin: 0; }
+@media (max-width: 640px) {
+  .dlg-in.side { grid-template-columns: 1fr; gap: 16px; }
+  .side-media { order: 2; }
+  .side-media iframe, .side-media .ytcard, .side-media video { width: min(100%, calc(62vh * 9 / 16)); margin: 0 auto; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

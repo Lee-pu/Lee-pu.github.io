@@ -147,17 +147,34 @@ function open(id) {
   const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
   // 사진이 한 장뿐이면 갤러리 대신 크게 한 장으로
   const one = media.length ? "" : imgs.length === 1 ? imgs[0] : !imgs.length ? w.thumbnail : "";
-  $("dlg").innerHTML = `<div class="dlg-in">
-    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">✕</button></div>
-    ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
-    <div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>
+  const descHtml = w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : "";
+  const metaHtml = `<div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>`;
+  const dlg = $("dlg");
+  // 세로 영상 하나뿐이면: 왼쪽 영상, 오른쪽에 분야·날짜 → 제목 → 설명
+  const side = media.length === 1 && !imgs.length && (isShort(media[0]) || !ytId(media[0]));
+  dlg.classList.toggle("side", side);
+  dlg.classList.remove("narrow");
+  if (side) {
+    dlg.innerHTML = `<div class="dlg-in side">
+      <div class="side-media">${player(media[0])}</div>
+      <div class="side-info">
+        <div class="side-top">${metaHtml}<button class="x" id="x" aria-label="닫기" autofocus>✕</button></div>
+        <h2>${esc(w.title.trim())}</h2>
+        ${descHtml}
+      </div>
+    </div>`;
+    $("x").onclick = () => dlg.close();
+    if (!dlg.open) dlg.showModal();
+    return;
+  }
+  dlg.innerHTML = `<div class="dlg-in">
+    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기" autofocus>✕</button></div>
+    ${descHtml}
+    ${metaHtml}
     ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : one ? `<div class="media"><img src="${esc(one)}" alt="" ${IMGERR}></div>` : ""}
     ${imgs.length > 1 || (imgs.length && media.length) ? `<div class="gallery">${imgs.map((u, k) => `<a class="${galleryCls(imgs.length, k)}" href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
     ${w.link_url && !yt ? `<a class="btn-out" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">원본 보기 ↗</a>` : ""}
   </div>`;
-  // 세로 쇼츠만 있으면 창을 좁게
-  const dlg = $("dlg");
-  dlg.classList.toggle("narrow", media.length > 0 && media.every(isShort) && !imgs.length);
   // 사진 한 장이나 영상 파일 하나뿐이면: 그 비율에 맞춰 크기를 정하고 창도 거기에 맞춤 (양옆 빈 띠 없음)
   const parts = dlg.querySelectorAll(".media > *");
   const solo = parts.length === 1 && /^(IMG|VIDEO)$/.test(parts[0].tagName) && !dlg.querySelector(".gallery") ? parts[0] : null;
