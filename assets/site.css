@@ -94,6 +94,7 @@ button, input, select { font: inherit; color: inherit; }
 .foot-links a, .foot-dc { appearance: none; background: none; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font-size: 12px; font-weight: 600; text-decoration: none; border: 1px solid #4b4549; color: #fff; }
 .foot-links a:first-child { background: var(--pink); border-color: var(--pink); color: var(--pink-ink); font-weight: 800; }
 .foot-links a:hover, .foot-dc:hover { border-color: var(--pink); color: var(--pink-soft); }
+.foot-links svg { width: 12px; height: 12px; margin-right: 6px; fill: currentColor; flex: none; }
 .foot-dc.done { border-color: var(--pink); color: var(--pink-soft); }
 .foot-links a:first-child:hover { color: var(--pink-ink); filter: brightness(1.08); }
 .foot-copy { font-size: 13px; color: #9a9196; }
