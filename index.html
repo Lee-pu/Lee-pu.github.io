@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leepu</title>
+<meta name="description" content="Leepu 포트폴리오 · 시네머신 쇼츠, 3D 아바타 세팅, 디자인">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* 레이아웃: 위쪽 프로필 → 탭(작업물 / 보유 아이템) → 카드 격자. 포인트 색은 data.json의 accent_color */
+:root {
+  --accent: #E5007E;
+  --accent-ink: #ffffff;
+  --bg: #faf8f9;
+  --surface: #ffffff;
+  --fg: #1d1a1c;
+  --muted: #6f6970;
+  --line: #ece6ea;
+  --chip: #f3eef1;
+  --ok-bg: #e4f6ec; --ok-fg: #17663f;
+  --shadow: 0 1px 2px rgba(40,10,30,.05), 0 8px 24px -12px rgba(40,10,30,.18);
+  --font: "Inter", "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --r: 14px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141113; --surface: #1d191c; --fg: #f2edf0; --muted: #a39aa1; --line: #2e282c; --chip: #2a2428;
+  --ok-bg: #143323; --ok-fg: #8fe0b2; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6); color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141113; --surface: #1d191c; --fg: #f2edf0; --muted: #a39aa1; --line: #2e282c; --chip: #2a2428;
+  --ok-bg: #143323; --ok-fg: #8fe0b2; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6); color-scheme: dark }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.6 var(--font); }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding-block: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* 프로필 */
+.hero { padding-block: 48px 28px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+.avatar { width: 104px; height: 104px; border-radius: 28px; overflow: hidden; background: var(--chip); box-shadow: var(--shadow); }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hero h1 { margin: 0; font-size: clamp(32px, 6vw, 52px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; }
+.hero h1 .dot { color: var(--accent); }
+.intro { margin: 8px 0 0; color: var(--muted); white-space: pre-wrap; max-width: 60ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; align-items: center; font-size: 13px; color: var(--muted); }
+.meta a { text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.meta a:hover { color: var(--accent); }
+.tools { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--chip); color: var(--fg); }
+.ico { width: 16px; height: 16px; flex-shrink: 0; }
+@media (max-width: 560px) { .hero { grid-template-columns: 1fr; padding-top: 32px; } .avatar { width: 84px; height: 84px; border-radius: 22px; } }
+
+/* 탭 */
+.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.tabs .wrap { display: flex; gap: 4px; }
+.tab { appearance: none; border: 0; background: none; padding: 14px 6px; margin-right: 18px; font-weight: 700; font-size: 16px; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tab[aria-selected="true"] { color: var(--fg); border-color: var(--accent); }
+.tab .n { font-weight: 500; font-size: 13px; margin-left: 4px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+main.wrap { padding-block: 24px 64px; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px; }
+.chip { appearance: none; border: 1px solid var(--line); background: var(--surface); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
+.chip:hover { color: var(--fg); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.field { height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); min-width: 0; }
+.search { flex: 1 1 220px; max-width: 320px; }
+.toggle { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; cursor: pointer; user-select: none; }
+.count { font-size: 13px; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+/* 작업물 카드 */
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.card { display: block; text-align: left; width: 100%; padding: 0; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); overflow: hidden; cursor: pointer; text-decoration: none; transition: transform .25s, box-shadow .25s; }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.thumb { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--chip); overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.card:hover .thumb img { transform: scale(1.04); }
+.badge { position: absolute; bottom: 8px; right: 8px; display: inline-flex; gap: 4px; align-items: center; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(0,0,0,.62); color: #fff; }
+.badge .ico { width: 12px; height: 12px; }
+.body { padding: 14px 16px 16px; display: grid; gap: 8px; }
+.title { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.cat { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--accent); }
+.date { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+
+/* 아이템 */
+.notice { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: var(--muted); white-space: pre-wrap; margin-bottom: 20px; }
+.items { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.items .title { font-size: 13.5px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.8em; }
+.av { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--fg); border: 0; cursor: pointer; }
+.av:hover { background: color-mix(in srgb, var(--accent) 18%, var(--chip)); }
+.ok { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--ok-bg); color: var(--ok-fg); }
+.go { font-size: 12px; font-weight: 600; color: var(--accent); margin-left: auto; text-decoration: none; }
+.go:hover { text-decoration: underline; }
+.items .card { cursor: default; }
+.items .card:hover { transform: none; }
+
+.empty { text-align: center; color: var(--muted); padding: 64px 0; }
+.more { display: flex; justify-content: center; margin-top: 28px; }
+.btn { appearance: none; border: 1px solid var(--line); background: var(--surface); padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
+
+/* 상세 창 */
+dialog { border: 0; padding: 0; border-radius: 18px; width: min(860px, calc(100vw - 24px)); max-height: calc(100vh - 32px); background: var(--surface); color: var(--fg); box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); }
+dialog::backdrop { background: rgba(10,5,8,.6); backdrop-filter: blur(3px); }
+.dlg { padding: 24px; display: grid; gap: 16px; }
+.dlg-head { display: flex; gap: 12px; align-items: flex-start; }
+.dlg-head h2 { margin: 0; font-size: 20px; line-height: 1.35; flex: 1; min-width: 0; text-wrap: balance; }
+.x { appearance: none; border: 0; background: var(--chip); width: 34px; height: 34px; border-radius: 10px; cursor: pointer; display: grid; place-items: center; flex-shrink: 0; }
+.desc { margin: 0; color: var(--muted); white-space: pre-wrap; word-break: break-word; }
+.media { display: grid; gap: 12px; }
+.media video, .media iframe { width: 100%; border: 0; border-radius: 12px; background: #000; display: block; }
+.media video { max-height: 70vh; }
+.media iframe { aspect-ratio: 16 / 9; max-width: 100%; }
+.media iframe.short { aspect-ratio: 9 / 16; width: min(100%, calc(70vh * 9 / 16), 380px); margin: 0 auto; }
+.ytcard { position: relative; display: block; border-radius: 12px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+.ytcard.short { aspect-ratio: 9 / 16; width: min(100%, calc(70vh * 9 / 16), 380px); margin: 0 auto; }
+.ytcard img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
+.ytcard span { position: absolute; inset: auto 0 0; display: flex; gap: 6px; align-items: center; justify-content: center; padding: 12px; font-weight: 700; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
+.ytout { font-size: 12px; color: var(--muted); text-align: center; text-decoration: none; margin-top: -4px; }
+.ytout:hover { color: var(--accent); }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.gallery a { border-radius: 10px; overflow: hidden; background: var(--chip); }
+.gallery img { width: 100%; height: auto; }
+footer { border-top: 1px solid var(--line); padding-block: 24px; font-size: 12px; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="wrap hero" id="hero"></header>
+<nav class="tabs" aria-label="페이지">
+  <div class="wrap" role="tablist">
+    <button class="tab" id="tab-works" role="tab" data-v="works">작업물<span class="n" id="n-works"></span></button>
+    <button class="tab" id="tab-items" role="tab" data-v="items">보유 아이템<span class="n" id="n-items"></span></button>
+  </div>
+</nav>
+<main class="wrap" id="page"><p class="empty">불러오는 중…</p></main>
+<footer class="wrap" id="foot"></footer>
+<dialog id="dlg"></dialog>
+
+<script>
+(() => {
+"use strict";
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const list = (v) => (Array.isArray(v) ? v : String(v || "").split(",")).map((x) => String(x).trim()).filter(Boolean);
+const safe = (u) => (/^(https?:\/\/|\.?\/|assets\/)/i.test(u || "") ? u : "#");
+const ko = (a, b) => a.localeCompare(b, "ko");
+const ytId = (u) => ((u || "").match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{6,})/) || [])[1] || "";
+const isShort = (u) => /youtube\.com\/shorts\//.test(u || "");
+const IMGERR = `onerror="this.style.visibility='hidden'"`;
+const SVG = {
+  play: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  img: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>',
+  link: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
+  mail: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  x: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>',
+  close: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+};
+const linkIcon = (u) => (/(^|\/\/|\.)(x|twitter)\.com/i.test(u) ? SVG.x : SVG.link);
+
+let D, view = "works";
+const W = { cat: "" };
+const I = { q: "", cat: "", av: "", ok: false, shown: 60 };
+
+// 포인트 색: 밝은 색이면 글자를 검게
+function accent(hex) {
+  if (!/^#[0-9a-f]{6}$/i.test(hex || "")) return;
+  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+  document.documentElement.style.setProperty("--accent", hex);
+  document.documentElement.style.setProperty("--accent-ink", (r * 299 + g * 587 + b * 114) / 1000 > 160 ? "#1d1a1c" : "#ffffff");
+}
+
+function hero() {
+  const s = D.site;
+  document.title = s.name;
+  $("hero").innerHTML = `
+    <div class="avatar">${s.profile_image ? `<img src="${esc(s.profile_image)}" alt="${esc(s.name)}" ${IMGERR}>` : ""}</div>
+    <div style="min-width:0">
+      <h1>${esc(s.name)}<span class="dot">.</span></h1>
+      ${s.intro ? `<p class="intro">${esc(s.intro)}</p>` : ""}
+      <div class="meta">
+        ${s.email ? `<a href="mailto:${esc(s.email)}">${SVG.mail}${esc(s.email)}</a>` : ""}
+        ${(s.links || []).map((l) => `<a href="${esc(safe(l.url))}" target="_blank" rel="noopener">${linkIcon(l.url)}${esc(l.label || l.url.replace(/^https?:\/\/(www\.)?/, ""))}</a>`).join("")}
+        ${(s.tools || []).length ? `<span class="tools">${[...s.tools].sort(ko).map((t) => `<span class="tool">${esc(t)}</span>`).join("")}</span>` : ""}
+      </div>
+    </div>`;
+  $("foot").textContent = `© ${new Date().getFullYear()} ${s.name}`;
+  $("n-works").textContent = D.works.length;
+  $("n-items").textContent = D.items.length;
+}
+
+// ───── 작업물 ─────
+function works() {
+  const cats = [...new Set(D.works.flatMap((w) => list(w.category)))].sort(ko);
+  if (W.cat && !cats.includes(W.cat)) W.cat = "";
+  const rows = D.works.filter((w) => !W.cat || list(w.category).includes(W.cat));
+  const chip = (v, label) => `<button class="chip" data-cat="${esc(v)}" aria-pressed="${W.cat === v}">${esc(label)}</button>`;
+  $("page").innerHTML = `
+    <div class="bar">${chip("", "전체")}${cats.map((c) => chip(c, c)).join("")}<span class="count">${rows.length}개</span></div>
+    ${rows.length ? `<div class="grid">${rows.map((w) => {
+      const i = D.works.indexOf(w), direct = w.link_url && !(w.images || []).length && !(w.video_urls || []).length;
+      const kind = (w.video_urls || []).length || ytId(w.link_url) ? `<span class="badge">${SVG.play}영상</span>` : (w.images || []).length ? `<span class="badge">${SVG.img}${w.images.length}</span>` : direct ? `<span class="badge">${linkIcon(w.link_url)}링크</span>` : "";
+      const inner = `<div class="thumb">${w.thumbnail ? `<img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : ""}${kind}</div>
+        <div class="body"><h3 class="title" title="${esc(w.title)}">${esc(w.title.trim())}</h3>
+          <div class="row">${list(w.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}<span class="date">${esc((w.date || "").replace(/-/g, "."))}</span></div></div>`;
+      return direct ? `<a class="card" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">${inner}</a>` : `<button class="card" data-work="${i}">${inner}</button>`;
+    }).join("")}</div>` : `<p class="empty">작업물이 없습니다</p>`}`;
+}
+function openWork(i) {
+  const w = D.works[i], vids = w.video_urls || [], imgs = w.images || [];
+  const yt = ytId(w.link_url);
+  // YouTube는 사이트 주소(Referer)를 확인해서 재생을 허락함. 컴퓨터에서 바로 연 파일(file://)이나 미리보기에서는 주소가 없어 오류 153이 나므로 YouTube로 가는 카드를 대신 보여 줌
+  const local = /^(file|blob|about):/.test(location.protocol);
+  const ytLink = (u) => `https://www.youtube.com/${isShort(u) ? "shorts" : "watch?v="}${isShort(u) ? "/" : ""}${ytId(u)}`;
+  const player = (u) => ytId(u)
+    ? (local
+      ? `<a class="ytcard ${isShort(u) ? "short" : ""}" href="${ytLink(u)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${ytId(u)}/hqdefault.jpg" alt="" ${IMGERR}><span>${SVG.play}YouTube에서 보기</span></a>`
+      : `<iframe class="${isShort(u) ? "short" : ""}" src="https://www.youtube.com/embed/${ytId(u)}?rel=0&playsinline=1" title="영상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><a class="ytout" href="${ytLink(u)}" target="_blank" rel="noopener">재생이 안 되면 YouTube에서 보기 →</a>`)
+    : `<video src="${esc(u)}" controls playsinline preload="metadata"${w.thumbnail ? ` poster="${esc(w.thumbnail)}"` : ""}></video>`;
+  const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
+  $("dlg").innerHTML = `<div class="dlg">
+    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">${SVG.close}</button></div>
+    <div class="row">${list(w.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}<span class="date">${esc((w.date || "").replace(/-/g, "."))}</span></div>
+    ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" style="border-radius:12px" ${IMGERR}></div>` : ""}
+    ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
+    ${imgs.length ? `<div class="gallery">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
+    ${w.link_url ? `<div><a class="btn primary" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">${linkIcon(w.link_url)}원본 보기</a></div>` : ""}
+  </div>`;
+  $("x").onclick = () => $("dlg").close();
+  $("dlg").showModal();
+}
+$("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
+$("dlg").addEventListener("close", () => { $("dlg").innerHTML = ""; }); // 영상 멈춤
+
+// ───── 보유 아이템 ─────
+function items() {
+  const uniq = (arr) => { const m = new Map(); arr.forEach((x) => m.has(x.toLowerCase()) || m.set(x.toLowerCase(), x)); return [...m.values()].sort(ko); };
+  const cats = uniq(D.items.flatMap((i) => list(i.category))), avs = uniq(D.items.flatMap((i) => list(i.avatar)));
+  const opt = (arr, cur, all) => `<option value="">${all}</option>` + arr.map((x) => `<option ${cur.toLowerCase() === x.toLowerCase() ? "selected" : ""}>${esc(x)}</option>`).join("");
+  $("page").innerHTML = `
+    ${D.site.items_notice ? `<div class="notice">${esc(D.site.items_notice)}</div>` : ""}
+    <div class="bar">
+      <input id="i-q" class="field search" type="search" placeholder="아이템 이름 검색" aria-label="아이템 이름 검색" value="${esc(I.q)}">
+      <select id="i-cat" class="field" aria-label="카테고리">${opt(cats, I.cat, "전체 카테고리")}</select>
+      <select id="i-av" class="field" aria-label="아바타">${opt(avs, I.av, "전체 아바타")}</select>
+      <label class="toggle"><input id="i-ok" type="checkbox" ${I.ok ? "checked" : ""}>방송 가능만</label>
+      <span class="count" id="i-count"></span>
+    </div>
+    <div id="i-list"></div>`;
+  $("i-q").oninput = (e) => { I.q = e.target.value; I.shown = 60; itemList(); };
+  $("i-cat").onchange = (e) => { I.cat = e.target.value; I.shown = 60; itemList(); };
+  $("i-av").onchange = (e) => { I.av = e.target.value; I.shown = 60; itemList(); };
+  $("i-ok").onchange = (e) => { I.ok = e.target.checked; I.shown = 60; itemList(); };
+  itemList();
+}
+function itemList() {
+  const q = I.q.toLowerCase(), has = (arr, v) => !v || arr.some((x) => x.toLowerCase() === v.toLowerCase());
+  const rows = D.items.filter((i) => (!q || i.name.toLowerCase().includes(q)) && has(list(i.category), I.cat) && has(list(i.avatar), I.av) && (!I.ok || i.broadcast_available));
+  $("i-count").textContent = `${rows.length}개`;
+  $("i-list").innerHTML = rows.length ? `<div class="grid items">${rows.slice(0, I.shown).map((i) => `
+    <article class="card">
+      <a class="thumb" href="${esc(safe(i.product_link))}" target="_blank" rel="noopener" style="display:block">${i.thumbnail ? `<img src="${esc(i.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : ""}</a>
+      <div class="body">
+        <div class="row">${list(i.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}</div>
+        <h3 class="title" title="${esc(i.name)}">${esc(i.name)}</h3>
+        ${list(i.avatar).length ? `<div class="row">${list(i.avatar).map((a) => `<button class="av" data-av="${esc(a)}">${esc(a)}</button>`).join("")}</div>` : ""}
+        <div class="row">${i.broadcast_available ? `<span class="ok">방송 가능</span>` : ""}${i.product_link ? `<a class="go" href="${esc(safe(i.product_link))}" target="_blank" rel="noopener">BOOTH에서 보기 →</a>` : ""}</div>
+      </div>
+    </article>`).join("")}</div>
+    ${rows.length > I.shown ? `<div class="more"><button class="btn" id="i-more">더 보기 (${rows.length - I.shown}개 남음)</button></div>` : ""}` : `<p class="empty">조건에 맞는 아이템이 없습니다</p>`;
+  if ($("i-more")) $("i-more").onclick = () => { I.shown += 60; itemList(); };
+}
+
+// ───── 화면 전환 ─────
+function show(v) {
+  view = v === "items" ? "items" : "works";
+  document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.v === view));
+  view === "works" ? works() : items();
+}
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-v],[data-cat],[data-work],[data-av]");
+  if (!t) return;
+  if (t.dataset.v) { if (location.hash !== "#" + t.dataset.v) location.hash = t.dataset.v; else show(t.dataset.v); }
+  else if (t.dataset.cat !== undefined) { W.cat = W.cat === t.dataset.cat ? "" : t.dataset.cat; works(); }
+  else if (t.dataset.work) openWork(+t.dataset.work);
+  else if (t.dataset.av) { I.av = t.dataset.av; I.shown = 60; items(); }
+});
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+
+(async () => {
+  try {
+    D = window.SITE_DATA || await (await fetch("data.json", { cache: "no-cache" })).json();
+  } catch (e) {
+    $("page").innerHTML = `<p class="empty">data.json을 불러오지 못했습니다. 파일을 컴퓨터에서 바로 열면 이렇게 됩니다. GitHub Pages에 올리거나 로컬 서버로 열어 주세요.</p>`;
+    return;
+  }
+  D.works = (D.works || []).filter((w) => w.public !== false);
+  D.items = (D.items || []).filter((i) => !i.pending && i.name);
+  accent(D.site.accent_color);
+  hero();
+  show(location.hash.slice(1));
+})();
+})();
+</script>
+</body>
+</html>

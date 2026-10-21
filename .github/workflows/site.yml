@@ -1,0 +1,56 @@
+# 저장할 때마다: BOOTH 정보 채우기 → 사이트 배포
+# Settings → Pages → Source 를 "GitHub Actions" 로 해 두어야 합니다.
+name: 사이트 배포
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 사진·영상 가져오기 + BOOTH 정보 채우기
+        run: |
+          pip install --quiet pillow
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 그 사이 관리 화면에서 또 저장했어도 최신 내용 위에 다시 적용
+          for i in 1 2 3; do
+            git fetch --quiet origin main
+            git reset --quiet --hard origin/main
+            python tools/files_import.py
+            python tools/booth_fill.py
+            git add data.json
+            if [ -d assets ]; then git add assets; fi
+            if git diff --cached --quiet; then break; fi
+            git commit --quiet -m "사진 가져오기 · BOOTH 정보 자동 채움"
+            if git push --quiet origin HEAD:main; then break; fi
+            sleep 5
+          done
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4

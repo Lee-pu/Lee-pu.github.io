@@ -1,0 +1,2347 @@
+{
+ "site": {
+  "name": "Leepu",
+  "intro": "키동부",
+  "email": "kimleeepu@gmail.com",
+  "profile_image": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/a707f7ecc___28_001_.png",
+  "tools": [
+   "Blender",
+   "Photoshop",
+   "Premiere Pro",
+   "Unity",
+   "CLIP STUDIO PAINT"
+  ],
+  "links": [
+   {
+    "label": "",
+    "url": "https://x.com/leeepu_"
+   }
+  ],
+  "accent_color": "#E5007E",
+  "items_notice": "커미션은 꼭 양측 구매가 원칙이며, 이용약관은 의뢰자 분이 꼭 체크해 주셔야 합니다.\n방송 가능이라고 적혀 있거나 양식 제출 후 사용 가능한 것은 방송 가능으로 표시해 두었으며,\n명확한 명시가 없거나 애매한 것은 의뢰자 분이 직접 물어보셔야 합니다."
+ },
+ "works": [
+  {
+   "id": "0c0903824f",
+   "title": "디아나 님 '君のココロをハッキング'",
+   "category": "CINEMACHINE",
+   "date": "2026-10-05",
+   "description": "치지직 디아나 님 'ki-you - 君のココロをハッキング' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/46532c758__02mp4_20260923_211647342.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/VX57OWNjS5g"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "faa059045a",
+   "title": "디아나 님 'You & 合図'",
+   "category": "CINEMACHINE",
+   "date": "2026-09-23",
+   "description": "치지직 디아나 님 'Otonose Kanade - You & 合図' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/727094e7a_FD.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/fdhdhr11obs"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "d2ddc73734",
+   "title": "류채경 님 & 아홀로 루파 님 'LEMONADE'",
+   "category": "CINEMACHINE",
+   "date": "2026-09-04",
+   "description": "치지직 류채경 님 & 아홀로 루파 님 '에스파 - LEMONADE' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/1b72aacc4_LEMONADE1.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/-EvLv-XvqAM"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "496fbc2da5",
+   "title": "연빛yeonvvit 님 성형 + 페이셜 + Warudo 세팅",
+   "category": "3D",
+   "date": "2026-08-30",
+   "description": "성형 및 페이셜, Warudo 관련 세팅(API, 팬듈럼 등등.)",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/25a33436d_WarudoTransparent_Main_7680x4110_20260905_195724_572-.png",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/d4951899d_--.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/fe23ea614_WarudoTransparent_Main_7680x4110_20260905_195452_155.png"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "620060f82e",
+   "title": "김과일 님 'Perfect Target✨'",
+   "category": "CINEMACHINE",
+   "date": "2026-08-18",
+   "description": "치지직 김과일 님 '최유정 - Perfect Target ✨' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/274e96eb5_7.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/II9eYUcnujw"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "66fe7c6441",
+   "title": "오구 님 API",
+   "category": "3D",
+   "date": "2026-08-17",
+   "description": "SOOP 오구 님 API 세팅",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/355113393_2026-09-2405-48-5500_00_45_58001.png",
+   "images": [],
+   "video_urls": [],
+   "link_url": "https://x.com/leeepu_/status/2102893149127602503",
+   "tags": []
+  },
+  {
+   "id": "3c67bedf88",
+   "title": "베쿠 님 'You are my perfect target 💘'",
+   "category": "CINEMACHINE",
+   "date": "2026-08-12",
+   "description": "SOOP 베쿠 님 '최유정 - Perfect Target 💘' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/af3eb9655_PerfectTarget_01100_01_26_34097.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/aH-HVKvkNwM"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "4d535617f3",
+   "title": "프링짱 님 'Perfect Target 🎯✨'",
+   "category": "CINEMACHINE",
+   "date": "2026-08-09",
+   "description": "치지직 프링짱 님 '최유정 - Perfect Target 🎯✨' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/bf1828cb0_2.png",
+   "images": [],
+   "video_urls": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/73da9d7fa_-PerfectTarget.mp4"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "ee8e23350f",
+   "title": "선안나 님 'Perfect Target 🖤'",
+   "category": "CINEMACHINE",
+   "date": "2026-08-04",
+   "description": "치지직 선안나 님 '최유정 - Perfect Target 🖤' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/7cbe61550_3.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/TPHUQxDzeoY"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "f08ec2f065",
+   "title": "KOUBLY 님 'Peppy Twintail🎀' 썸네일",
+   "category": "DESIGN",
+   "date": "2026-08-02",
+   "description": "KOUBLY 님 상품 'Peppy Twintail🎀' 썸네일 디자인\n상품 링크 : https://booth.pm/ko/items/8675251",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/6477400fa_-.png",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/b44e19a11_-.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/39c0e5b0d__2.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/1e1256f16__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/b290d07b6__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/56a176be5__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/22c5b52df__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/a48328d01__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/2484d0c34__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/5833db08d__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/4239c29d3_Three-View.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/8b3034960_Custom-Variation.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/91e75467e_color-variation.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/fb5913390_Custom-Variation-2.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/00dbe1454_--.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/41d7edfe7__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/7a9ddfd04__.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/882b3ef57__.png"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "843048d85a",
+   "title": "'Peppy Twintail' Booth 상품 모델",
+   "category": "BOOTH",
+   "date": "2026-08-02",
+   "description": "'KOUBLY - Peppy Twintail | 양갈래 '밀피' 모델\n상품 링크 : https://booth.pm/ko/items/8675251",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/6b07bc272__.png",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "a6f1d28b10",
+   "title": "푸두리 님 'Perfect Target 💘'",
+   "category": "CINEMACHINE",
+   "date": "2026-08-01",
+   "description": "SOOP 푸두리 님 '최유정 - Perfect Target 💘' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/b24917896_PerfectTarget_01100_00_29_51012.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/WTdY-XbZxqI"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "cbfc6a48ce",
+   "title": "푸두리 님 노래책 ",
+   "category": "ETC",
+   "date": "2026-07-29",
+   "description": "푸두리 님 노래책 사이트 제작 ",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/30196b079_2026-08-06135408.png",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "defb396061",
+   "title": "류채경 님 'How tall are you?💙'",
+   "category": "CINEMACHINE",
+   "date": "2026-07-26",
+   "description": "치지직 류채경 님 '하츠네 미쿠 - How tall are you?💙' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/a977c8a25_WXWDDoHQKNE_oar1.jpg",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/WXWDDoHQKNE"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "14946f9dcc",
+   "title": "Happy Birth Day, Kyren!",
+   "category": "ETC",
+   "date": "2026-07-19",
+   "description": "2026 키렌 생일 프로젝트 총괄 기획 및 프로젝트 관리 등등",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/5c68437f9_--.png",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/aaa5c0f36_.png"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "2bca4fa342",
+   "title": "류채경 님 '삐져버린 미쿠'",
+   "category": "CINEMACHINE",
+   "date": "2026-07-18",
+   "description": "치지직 류채경 님 '삐져버린 미쿠 챌린지' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/0a73ca9c8_1j6v2tLVOCo_oar1.jpg",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/1j6v2tLVOCo"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "cfad7b8029",
+   "title": "텔라 Tella 님 'IRIS OUT'",
+   "category": "CINEMACHINE",
+   "date": "2026-07-12",
+   "description": "치지직 텔라 Tella 님 'Kenshi Yonezu - IRIS OUT' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/37ab29b9d_5.png",
+   "images": [],
+   "video_urls": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/3f39169e0_IRISOUT_.mp4"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "385d767d80",
+   "title": "쿠뽀미 님 VRC 세팅 및 업로드",
+   "category": "3D",
+   "date": "2026-07-08",
+   "description": "VRC 세팅 (뚜따, 피직스본 세팅, 옷장 세팅) 및 업로드",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/ef2af9152_SceneCapture_Frame0000.png",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/a08634ed0_SceneCapture_Frame0000_2.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/c670bd42a_SceneCapture_Frame0000_5.png"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "dff686dc4e",
+   "title": "우루냥이 님 와루도 변환 + 웃감눈 + 뽀잉눈 + Warudo 및 API 세팅",
+   "category": "3D",
+   "date": "2026-06-27",
+   "description": "와루도 변환, 웃감눈 및 뽀잉눈 추가, API 세팅",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/229bb4958_Warudo_2026-06-01-19-10-14_3840x2160_8xAA.png",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/ce5da62fa_Warudo_2026-06-01-19-09-56_3840x2160_8xAA.png"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "5f36242188",
+   "title": "찌은 님 성형 + 페이셜 + VSF 세팅",
+   "category": "3D",
+   "date": "2026-06-05",
+   "description": "성형 및 페이셜, VSF 옷장 및 뽀잉눈 세팅",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/272c936c3_Warudo_2026-05-09-07-19-30_3840x2160_8xAA.png",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/db1b87083_Warudo_2026-05-09-07-20-17_3840x2160_8xAA.png",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/f1de39543_Warudo_2026-05-09-07-27-05_3840x2160_8xAA.png"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "4b2a2eb9a3",
+   "title": "아와네코 미루 님 와루도 변환 + Warudo 및 API 세팅",
+   "category": "3D",
+   "date": "2026-05-22",
+   "description": "와루도 변환 및 뽀잉눈, API 세팅 (치즈 맞기, 치즈 맞고 날아가기, 쓰담쓰담, ?핑) ",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/bc6d96042_p.jpg",
+   "images": [
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/adeb63e66_HJhfx9rbIAAPcT4.jpg",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/c50e2d86c_HJhfx9paQAIH0aT.jpg",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/48991268f_HJhfx9na8AA9Z8C.jpg",
+    "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/ea5a79d18_HJhfx9nbUAAzW36.jpg"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "51f52486a4",
+   "title": "익명 님 성형 + 페이셜 + Warudo 세팅",
+   "category": "3D",
+   "date": "2026-05-22",
+   "description": "지인 분이 주신 자료를 참고하여, 성형 + 페이셜 + Warudo 세팅 및 유니티 패키지 전달",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c43cec217_Warudo_2026-05-21-12-43-51_3840x2160_8xAA.png",
+   "images": [
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f4b49ca19_2026-05-2112-41-31_8-ezgifcom-video-to-gif-converter.gif",
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0b8dbb834_2026-05-2112-41-31_4-ezgifcom-video-to-gif-converter.gif"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "779ded0700",
+   "title": " 두양 님 'mosi mosi'",
+   "category": "CINEMACHINE",
+   "date": "2026-05-15",
+   "description": "치지직 두양 님 'sasane - mosi mosi' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/4959a5c43_mosimosi-.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/s-eZXOnb2Lg"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "f9bf163fcf",
+   "title": "Ramyo 님 'Pulsoid Bridge - リアルタイム心拍数連携' 썸네일",
+   "category": "DESIGN",
+   "date": "2026-05-10",
+   "description": "Ramyo 님 상품 'Pulsoid Bridge - リアルタイム心拍数連携' 썸네일 디자인\n상품 링크 : https://ramyo.booth.pm/items/8341166\n",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/722099e99_c4a8762e-323c-417e-9654-eceef517b51d_base_resized.jpg",
+   "images": [
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/161363ecd_c4a8762e-323c-417e-9654-eceef517b51d_base_resized.jpg",
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/38ddd6780_6ad28ac8-1df4-4a22-bc78-8ad2b9c28697_base_resized.jpg",
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/268a27604_2bf9aef0-162c-4a9b-b6a7-1a11808ac971_base_resized.jpg",
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ea797d5d8_4ecdcf97-83bb-49d0-90d8-67d6e03d09e5_base_resized.jpg",
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c8b872879_a10e1196-13b1-45ed-b41b-dc76f22f4af6_base_resized.jpg"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "4f8c42021d",
+   "title": "'Animal Ear Headband_heartbeat' Booth 상품 모델",
+   "category": "BOOTH",
+   "date": "2026-05-10",
+   "description": "'KOUBLY - Animal Ear Headband_heartbeat' 모델\n상품 링크 : https://koubly.booth.pm/items/8341117",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3b82667b6_6f3f56d4-faf3-47db-97c0-d020b2182e0c.png",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "3c4cba17e1",
+   "title": "아와네코 미루 님 '앙탈 챌린지'",
+   "category": "CINEMACHINE",
+   "date": "2026-05-01",
+   "description": "치지직 아와네코 미루 님 'TWS - 앙탈챌린지' 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/458003726_RecorderClip_01700_00_16_57001.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/7KvTlovNipQ"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "9a747a7240",
+   "title": "아와네코 미루 님 '귀엽기만 하면 안 되나요?'",
+   "category": "CINEMACHINE",
+   "date": "2026-04-22",
+   "description": "치지직 아와네코 미루 님 CUTIE STREET - 귀엽기만 하면 안 되나요? 시네머신 쇼츠 제작",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/347879762__00200_00_39_13003qhgrtkqhrtk.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/XV-3XYqufIs"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "5f205c2b3c",
+   "title": "희노아 님 New 3D 공개 포스터",
+   "category": "DESIGN",
+   "date": "2026-03-16",
+   "description": "치지직 희노아 님 New 3D 공개 포스터 디자인",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/26856f368_HDc3vHzaAAAfSkn.jpg",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "7760678b31",
+   "title": "익명 님 성형 + 페이셜 + VRC 세팅",
+   "category": "3D",
+   "date": "2026-03-10",
+   "description": "지인 분이 주신 자료를 참고하여, 성형 + 페이셜 + VRC 세팅 및 유니티 패키지 전달",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/adb8a51c3_6.png",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "6719761af7",
+   "title": "'Old School Sailor' Booth 상품 모델",
+   "category": "BOOTH",
+   "date": "2025-12-28",
+   "description": "'Studio Mya - Old School Sailor | 세라복' 시나노 모델\n상품 링크 : https://myong.booth.pm/items/7804957",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/53c4bbfc8_7aff8562-a4bd-4850-afde-69d0dd1c55e5_base_resized.jpg",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "f13f692991",
+   "title": "아와네코 미루 님 테스트 방송 Shorts",
+   "category": "EDIT",
+   "date": "2025-10-06",
+   "description": "치지직 아와네코 미루 님 테스트 방송 쇼츠 영상 편집",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/642a86065_2026-05-05072014.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/TXTmsHyijTY"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "17c5e83354",
+   "title": "'Cute Head Wrap' Booth 상품 모델",
+   "category": "BOOTH",
+   "date": "2025-09-04",
+   "description": "'nyarostudio - Cute Head Wrap' 마누카 모델\n상품 링크 : https://nyarostudio.booth.pm/items/7385026",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/18e3a556d_62b9a328-e483-4edd-9a21-74be47dfc0ab_base_resized.jpg",
+   "images": [],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "88e8e5b2c9",
+   "title": "희노아 님 카페 타이틀 배너, 대문",
+   "category": "DESIGN",
+   "date": "2025-08-19",
+   "description": "치지직 희노아 님 카페 타이틀 배너, 대문 디자인",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/02b496eb0_GypW3L6bEAAsMNh.jpg",
+   "images": [
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/02b496eb0_GypW3L6bEAAsMNh.jpg"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "19fd7295d3",
+   "title": "아와네코 미루 님 페이셜 테스트",
+   "category": "EDIT",
+   "date": "2025-08-16",
+   "description": "치지직 아와네코 미루 님 페이셜 테스트 영상 편집",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/662a573b3_2026-05-05071535.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/Zj103i2KcTE"
+   ],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "1a4e8a07cd",
+   "title": "아와네코 미루 님 카페 타이틀 배너, 대문",
+   "category": "DESIGN",
+   "date": "2025-08-07",
+   "description": "치지직 아와네코 미루 님 카페 타이틀 배너, 대문 디자인 및 html 작업",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/46a82c102_Gycb-QrbEAAwqgu.jpg",
+   "images": [
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/46a82c102_Gycb-QrbEAAwqgu.jpg"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "378fd378b6",
+   "title": "디또띠 님 1주년 축하 영상",
+   "category": "EDIT",
+   "date": "2025-05-11",
+   "description": "치지직 디또띠 님 1주년 축하 영상 편집",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c46828397_GyfSH44a0AAwn5H.jpg",
+   "images": [
+    "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c46828397_GyfSH44a0AAwn5H.jpg"
+   ],
+   "video_urls": [],
+   "link_url": "",
+   "tags": []
+  },
+  {
+   "id": "7f0d68414d",
+   "title": "희노아 님 오버워치 Shorts",
+   "category": "EDIT",
+   "date": "2024-11-27",
+   "description": "치지직 희노아 님 오버워치 쇼츠 영상 편집",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5bc186b6d_2026-05-05071727.png",
+   "images": [],
+   "video_urls": [
+    "https://youtube.com/shorts/4g_7Sh28RA0"
+   ],
+   "link_url": "",
+   "tags": []
+  }
+ ],
+ "items": [
+  {
+   "id": "db76d69cc2",
+   "name": "✠漆黒セレナーデ✠棺移動ギミック付き【17Avatar対応】",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Mayo, Milfy, Milltina, Shinano, Sio",
+   "thumbnail": "https://booth.pximg.net/2c32971b-6bde-44dd-ad58-a31eceb2c863/i/7199519/e328a0cf-10bc-46cc-b1fb-aa71af6aa6c1_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7199519",
+   "broadcast_available": false
+  },
+  {
+   "id": "13871d7bf0",
+   "name": "22アバター対応 🐉煌めき🏮",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Mayo, Milfy, Milltina, Shinano, Sio, Eku",
+   "thumbnail": "https://booth.pximg.net/05231431-3203-4c92-a7d2-5305f52af13e/i/8853669/ff4179aa-0644-4491-b5dc-390cfdf5e33b_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/8853669",
+   "broadcast_available": false
+  },
+  {
+   "id": "83142dbb5c",
+   "name": "【3Dmodel】 Fluffy Wings",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://booth.pximg.net/47cd53c0-d3d7-414f-976b-a951482cbe39/i/7862928/c0407ba1-a492-4b26-a905-e73bf969365e_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7862928",
+   "broadcast_available": false
+  },
+  {
+   "id": "9c3be8bcc7",
+   "name": "✨【15アバター対応】Sugar_Addict✨",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano, Sio",
+   "thumbnail": "https://booth.pximg.net/b1574cea-1837-4fdb-9654-27cc43c52f3a/i/7331809/d55af79c-cbef-4b68-878c-7dc6c0140f75_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7331809",
+   "broadcast_available": false
+  },
+  {
+   "id": "0a8ef645e5",
+   "name": "【ピアス３種+チョーカー+リング】Strawberry Whip",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://booth.pximg.net/37f291a3-fab9-40bd-a2b5-4adee2e26ac1/i/7110473/98f2d9ae-6ad7-402e-ac78-d2ff9d527a6b_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7110473",
+   "broadcast_available": false
+  },
+  {
+   "id": "7a4e5c75ba",
+   "name": "mosi mosi? / sasane",
+   "category": "Motion",
+   "avatar": "",
+   "thumbnail": "https://booth.pximg.net/1e30d1c0-63ac-4fcd-8d49-5c49fd3a3325/i/8300858/8f21bc4e-1844-4849-8bb5-21b2f5ba2130_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/8300858",
+   "broadcast_available": false
+  },
+  {
+   "id": "4cdbb12d17",
+   "name": "くましろ [オリジナル3Dモデル]",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://booth.pximg.net/df325303-f5bd-4f74-b79b-b04663eb9e39/i/7930089/5926d5b5-a084-41ac-befd-7498f22ee165_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7930089",
+   "broadcast_available": false
+  },
+  {
+   "id": "bdf67eaa84",
+   "name": "【KUMALY】 Peach Makeup & Eye Texture",
+   "category": "Eye, Make Up",
+   "avatar": "",
+   "thumbnail": "https://booth.pximg.net/6700a3b7-af52-4aed-9115-4b6faa6f0bb9/i/7980028/14909212-1508-481d-b4f3-1c1c97dd7221_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7980028",
+   "broadcast_available": false
+  },
+  {
+   "id": "ef010ff665",
+   "name": "【しなの/Shinano専用】Refra eye ＋ Makeup texture",
+   "category": "Eye, Make Up",
+   "avatar": "Shinano",
+   "thumbnail": "https://booth.pximg.net/98e1d46c-b9c4-4cd6-8344-87e1df9571d8/i/7134506/bf68d22b-6641-4fc2-9795-87e5607ac97f_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7134506",
+   "broadcast_available": false
+  },
+  {
+   "id": "14868440c2",
+   "name": "🐾 (ฅ^･ω･^ ฅ) 5color 共用 猫 ライブ トゥディ 🐾",
+   "category": "ETC",
+   "avatar": "",
+   "thumbnail": "https://booth.pximg.net/e1968c67-9b98-41cb-aaff-860b8f7211ce/i/7286892/bd3dbc5a-d88f-472e-8459-a192d49874ff_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7286892",
+   "broadcast_available": false
+  },
+  {
+   "id": "ad71c6d731",
+   "name": "【35アバター対応】ツヤツヤ舌テクスチャ",
+   "category": "Make Up",
+   "avatar": "Manuka, Milfy, Milltina, Shinano, Sio, Eku",
+   "thumbnail": "https://booth.pximg.net/c6476de4-72bb-4c30-b399-803f9dc7a471/i/6450341/1c3b8055-4b00-468a-935b-a4425f7e3d14_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/6450341",
+   "broadcast_available": false
+  },
+  {
+   "id": "b88287f72b",
+   "name": "Manuka 専用 - Simple パンツ",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://booth.pximg.net/5c00918f-7f56-4fcf-958c-32afd3e4dcbf/i/5065147/0f0792e8-9eaf-4193-b4d2-8618e8e83a77_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/5065147",
+   "broadcast_available": false
+  },
+  {
+   "id": "d45939b6b7",
+   "name": "【12 avatars】【VRC Hair】♥ Lozy Hair ♥",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Mayo, Milfy, Milltina, Shinano, Sio, Eku",
+   "thumbnail": "https://booth.pximg.net/48ebe0c6-8767-42a8-a880-1c0164a7a48d/i/8013601/f89ec5b5-0011-49a8-8f54-9ea4f2fe2f55_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/8013601",
+   "broadcast_available": false
+  },
+  {
+   "id": "6aa8f876b6",
+   "name": "Aqua Shark 【19 体対応】",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Milltina, Shinano, Kipfel",
+   "thumbnail": "https://booth.pximg.net/c8ec00dd-0422-4ed3-afcf-3773306d13d7/i/7381719/8075a5e5-c7f7-41d6-b83c-bd511745abe6_base_resized.jpg",
+   "product_link": "https://booth.pm/ko/items/7381719",
+   "broadcast_available": false
+  },
+  {
+   "id": "52220d6525",
+   "name": "[ 愛莉 : Airi 対応] Lovable Kitsune Makeup + Animation 🦊",
+   "category": "Make Up",
+   "avatar": "Airi",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/c2893801b_0d90901a-ef77-4592-b638-007cc01dfcdb_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://lovable.booth.pm/items/8626611"
+  },
+  {
+   "id": "e9bf7c00af",
+   "name": "オリジナル3Dモデル「ねる-Neru-」",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/2179c543d_d2d7c6bf-9ef4-4671-99d5-741a851c4b1f_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://mememe-s.booth.pm/items/8725457"
+  },
+  {
+   "id": "8f97056ff5",
+   "name": "【 Messy Side Pony Hair 】",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano, Sio, Mayo ",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/5333dc956_bd402a87-494b-4481-8ad8-da51a485e106_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8720832"
+  },
+  {
+   "id": "9c99326890",
+   "name": "【オリジナル3Dモデル】 Sio / しお / ver.2.5",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/59bf6e34c_b620a7e2-feae-4c1c-a9da-0364bec82400_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://chocolaterice.booth.pm/items/5650156"
+  },
+  {
+   "id": "b8dfd6a332",
+   "name": "✟ギミック付き衣装✟グリモワール✟15avatar対応✟",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/7f2cfcc15_bd25737f-6674-4469-95ae-4bd6040c735f_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/6194760"
+  },
+  {
+   "id": "506b2a1e67",
+   "name": "[19アバター対応] Sunny Blossom Set 🎀",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/bc80806b9_68774c72-1a90-4eae-b59e-95256ab39997_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8384383"
+  },
+  {
+   "id": "884cba7d80",
+   "name": "☀️ENDLESS SUMMER☀️ １４アバター対応",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/83f14eb7f_ebcf42c7-ee7d-4484-b57e-415b20b63a4e_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8634268"
+  },
+  {
+   "id": "db4b863edf",
+   "name": "[VRC] 14 アバター対応 [Aerune]",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/2dcb6ab24_059ef683-ba8e-4161-baae-bc1c8981e27a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8563889"
+  },
+  {
+   "id": "64ecdace09",
+   "name": "【10アバター対応】Kitsch Picnic",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/834c2c0ca_682e2b8c-8c76-4da2-b918-c40c8a141797_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8654056"
+  },
+  {
+   "id": "0a066de735",
+   "name": "【17アバター対応】 𝐋𝐕.𝟐 Fancy_Breeze 💼",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/d97549d1a_c1b5d94b-b1f5-4808-a6d6-1eb2a5955c44_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6415336"
+  },
+  {
+   "id": "e56f4c2a81",
+   "name": "【VRC想定】Deer Bloom Long Hair",
+   "category": "Hair",
+   "avatar": "Mayo, Airi, Manuka, Shinano, Milfy",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/a5f4d683b_c74430a1-2556-450e-9606-224fe8748925_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8524766"
+  },
+  {
+   "id": "68a4d38eca",
+   "name": "Messy bun",
+   "category": "Hair",
+   "avatar": "Manuka, Milltina, Mayo, Shinano, Milfy, Airi",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/c8a2147fe_ce66759f-8c20-4923-910b-9a774c928c1b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8578284"
+  },
+  {
+   "id": "2ec9de99ae",
+   "name": "💤【VRC Hair】 ◈Neru Hair◈ + Cloth🥼💤",
+   "category": "Hair, Clothes",
+   "avatar": "Shinano, Milfy, Manuka, Milltina, Airi, Mayo",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/ee09be321_11335951-3ecd-4222-93ab-144b21e90fa6_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8637749"
+  },
+  {
+   "id": "1a6fe889db",
+   "name": "【VRC想定】Rabby Long Hair",
+   "category": "Hair",
+   "avatar": "Mayo, Milfy, Manuka, Airi, Shinano, Milltina",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/5f542fa83_cbfdbe32-03ba-4ed0-bcfe-692e44462fef_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8713582"
+  },
+  {
+   "id": "becbcf7cdd",
+   "name": "【17アバター対応】Twinkle Tails【VRChat】",
+   "category": "Hair",
+   "avatar": "Manuka, Milfy, Airi, Milltina, Mayo, ",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/a8b3dd927_22939284-66e6-49d1-9504-af83a5e9d999_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://pipi18.booth.pm/items/8711174"
+  },
+  {
+   "id": "4e58c59eb3",
+   "name": "🍬Happy Pop Lollipop🍬【29アバター対応】",
+   "category": "Clothes",
+   "avatar": "Milfy, Eku",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/ccfb337e4_ad032fbe-33cc-4f9b-a280-3a71980796ec_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://tempasta.booth.pm/items/5152681"
+  },
+  {
+   "id": "dfe937336c",
+   "name": "【１６アバター対応】angel soda #mirakore",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/f476728be_44bd20f3-471e-4eb6-bbc4-4a94a3d61d9b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8653332"
+  },
+  {
+   "id": "18685ff630",
+   "name": "【12アバター対応】 Twin Lolipop Buns🍬",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Airi, Milltina, Mayo, Milfy",
+   "thumbnail": "https://booth.pximg.net/428157be-1b8a-4d0e-a3e0-b9f7e8f7c245/i/8621408/b5aa6040-b129-492d-b835-809efb877a68_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8621408"
+  },
+  {
+   "id": "4753dc25dc",
+   "name": "MOFU EARS & TAIL🍒",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/1c5f917d3_71c66d99-dcb2-4aef-b499-1576c57d2c14_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5772943"
+  },
+  {
+   "id": "bfbe80362e",
+   "name": "[8人] Peppy Twintail🎀",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Mayo, Milfy, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/9c99924b8_-.png",
+   "broadcast_available": true,
+   "product_link": "https://koubly.booth.pm/items/8675251"
+  },
+  {
+   "id": "ff6afa3e5d",
+   "name": "[18アバター対応] Girly Edit | Balletcore Casual Outfit 🎀",
+   "category": "Clothes",
+   "avatar": "Shinano, Manuka, Mayo, Airi, Milfy, Milltina",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/4be007b67_eba6e399-d4c7-4bba-88f0-885c4629e687_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://nanamo1.booth.pm/items/8589350"
+  },
+  {
+   "id": "37c7fbec4a",
+   "name": "[VRC] 🎉6000フォロワー感謝🎉 20 アバター対応 [Nyamori]",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano, Kipfel, Mayo, Fyuett",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/4fbcab62b_d3ca9c32-9936-44bd-99fb-f71595414c9a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7542812"
+  },
+  {
+   "id": "a3bcc04930",
+   "name": "Ocean Flower 【15アバター対応】",
+   "category": "Clothes",
+   "avatar": "Airi, Milfy, Manuka, Mayo, Shinano",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/4f5f11afb_33a61425-87a6-4256-9a78-f214b80117a4_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://serenelle.booth.pm/items/8597800"
+  },
+  {
+   "id": "5c02756a1e",
+   "name": "【 Milfy 】Ginger eyes&makeup texture",
+   "category": "Eye, Make Up",
+   "avatar": "Milfy",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/7bac74409_1a37a9b8-d7a6-40ea-90f3-add3708b9da7_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://sebyuk.booth.pm/items/7018467"
+  },
+  {
+   "id": "21087df5dd",
+   "name": "すずかぜロング",
+   "category": "Hair",
+   "avatar": "Milltina, Manuka, Mayo, Shinano, Milfy, Airi",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/c9aa21f97_f8044445-11ba-4102-b8b8-3912e09f344a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://muu03.booth.pm/items/8528011"
+  },
+  {
+   "id": "8a9d6e1e1d",
+   "name": "ゆるポップハーフツイン for Fyuett（フィユエ向け）",
+   "category": "Hair",
+   "avatar": "Fyuett",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/9322fe7ba_0442f92b-2b17-4b67-a901-4ae4a3d2462b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://pixpowpuf.booth.pm/items/8322236"
+  },
+  {
+   "id": "755b55d7bd",
+   "name": "[17Avatars]🖤Academia🎓",
+   "category": "Clothes",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/f85614a23_e2901ecc-5575-4054-9aad-fa3681aa6978_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://velvetsky.booth.pm/items/7767459"
+  },
+  {
+   "id": "ebff4b5d56",
+   "name": "[フィユエ/Fyuett] ♥ makeup+eye ♥",
+   "category": "Make Up, Eye",
+   "avatar": "Fyuett",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/dff51b087_70cefb50-0c47-4888-bcb7-2198407eefea_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://ouoshop.booth.pm/items/8217893"
+  },
+  {
+   "id": "3ad70fbc38",
+   "name": "フィユエ Fyuett / オリジナル3Dモデル",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/f9d7f58fc_c1ccca5d-7d6a-466e-91b9-99e7ddda504d_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://harunopupu.booth.pm/items/8147205"
+  },
+  {
+   "id": "16013e97ce",
+   "name": "✦ 【 16 アバター対応 】ヒロイン EYES TEXTURE ✦",
+   "category": "Eye",
+   "avatar": "Manuka, Milltina, Shinano, Milfy, Mayo, Airi ",
+   "thumbnail": "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/e20d70315_9b6ab67c-46ba-4f6a-b53d-381e15e1fb77_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://saycheese.booth.pm/items/8512933"
+  },
+  {
+   "id": "e25dfc6001",
+   "name": "⋆. 𐙚 ˚【Milltina/Plum対応】⋆ Soft Peachy🍑~ Make up ˚ 𐙚 .⋆",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5c44d2a2e_5100c08b-3315-4773-a6d8-41e11f1afb12_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7851003"
+  },
+  {
+   "id": "1f98706641",
+   "name": "【13アバター対応】 Lucent Eye",
+   "category": "Eye",
+   "avatar": "Mayo, Manuka, Airi, Milfy, Shinano, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/09335b285_f7a9849a-158c-4ae6-8aa2-f3982fe04e56_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7914728"
+  },
+  {
+   "id": "7e6d1b6763",
+   "name": "【11アバター対応】 𝐏♡𝐏.𝐇𝐚𝐢𝐫 𝟏𝟔 【VRChat用ヘアモデル】",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Airi, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/8ee8caba0_3c03e891-8a5b-4ebc-8fc1-57e3f1f62162_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7526769"
+  },
+  {
+   "id": "c5f4e90df4",
+   "name": "【✦ 𝐍𝐎𝐈𝐑 _𝐒𝐔𝐈𝐓 | 𝟮𝟳 𝐀𝐕𝐀𝐓𝐀𝐑 ✦】",
+   "category": "Clothes",
+   "avatar": "Shinano, Milltina, Airi, Manuka, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/11088392a_ec7a2f61-3245-4cc3-bdb8-7cfcc156535d_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7883046"
+  },
+  {
+   "id": "0ae3dfd385",
+   "name": "【14 avatars】【VRC Hair】♥ Maro_Hair ♥",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Mayo, Milfy, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/911bca77b_4370ca14-89b6-4024-8f4e-cdf97fa6aaf7_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7851601"
+  },
+  {
+   "id": "b38e571b12",
+   "name": "【9アバター対応】✨Heritage_Chic_Hair✨",
+   "category": "Hair",
+   "avatar": "Shinano, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/172dcc527_d0ce4e16-cd9f-49a3-83df-a8df8783a25f_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6269245"
+  },
+  {
+   "id": "7ceffac540",
+   "name": "【オリジナル3Dモデル】 Mayo / まよ / ver.1.01",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f7f7e9a59_d9c776e9-d7e4-4f7c-a091-c777beecf3bb_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8122803"
+  },
+  {
+   "id": "20f9328f2d",
+   "name": "【まよ, Mayo】 ✨Poyo Poyo✨ Makeup Texture",
+   "category": "Make Up",
+   "avatar": "Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c5643c58c_a1a63a0f-8f00-494e-8e9a-35fd6dd13a98_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8155467"
+  },
+  {
+   "id": "8dce362d16",
+   "name": "💝《 Preppy Tweed 》 「プレッピー・ツイード」 【20 Avatar】",
+   "category": "Clothes",
+   "avatar": "Shinano, Milfy, Airi, Manuka, Milltina, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ef2c9eafe_52f69aa6-47ee-43d2-8f53-c2e93dfec7bb_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8176127"
+  },
+  {
+   "id": "2d2e9be0cb",
+   "name": "[VRC] Z9 x #OwnPath [Mumu-Dre] 14 アバター対応",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3ba37df32_8bd1fa02-cf94-4ebb-ae2f-5d5b5f047477_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8085728"
+  },
+  {
+   "id": "60730d5e62",
+   "name": "[愛莉] Airi make up",
+   "category": "Make Up",
+   "avatar": "Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/7f5c9bf49_8568f12d-1f35-43f9-9eed-2c7d4c0915ce_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6086095"
+  },
+  {
+   "id": "00a2bb655e",
+   "name": "[まよ] MAYO make up",
+   "category": "Make Up",
+   "avatar": "Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/1bcd6d485_8d9f1201-b138-4b7b-83d6-fe4e0c1283c7_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8185605"
+  },
+  {
+   "id": "2725d4e021",
+   "name": "[愛莉/Airi] blendshape&makeup",
+   "category": "Make Up",
+   "avatar": "Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/bcd70a186_d6484ab4-c743-4712-a03c-2e91ab124a0e_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7201722"
+  },
+  {
+   "id": "30119a7f3f",
+   "name": "[ airi対応 ] koharu make up ᯓ ⊹",
+   "category": "Make Up",
+   "avatar": "Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/fd6950c33_38afa75b-881a-46a3-ac16-fe0284f6c317_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7549811"
+  },
+  {
+   "id": "c7c1227576",
+   "name": "🌸きさらぎ幼稚園 えんぷくセット🌸 【10アバター対応】",
+   "category": "Clothes",
+   "avatar": "Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/66c62b974_9f9a2a8e-d46d-4383-beda-9a8abb62176b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8051660"
+  },
+  {
+   "id": "4bda3faa4c",
+   "name": "【VRC/Free】 Happy Birthday",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/45f9e4c5a_b2bdf2f7-4c21-48b4-bb6b-4f23636bdaf1_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/4545463"
+  },
+  {
+   "id": "b095270753",
+   "name": "【3D髪型】 🎀あいどるついん🎤【6アバター対応】",
+   "category": "Hair",
+   "avatar": "Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ce2f1db1f_fe3d639f-4ea2-4699-b807-bc6147adb1be_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7854364"
+  },
+  {
+   "id": "c5b139a915",
+   "name": "🐶【VRC Hair】 ◈Fluffy Hair◈",
+   "category": "Hair",
+   "avatar": "Shinano, Milfy, Manuka, Milltina, Airi, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/19ebf7234_9500f1ce-f7b9-4ac6-8cae-107f88773b96_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7729580"
+  },
+  {
+   "id": "e2c38a5ce0",
+   "name": "✦ ミルティナ :: Milltina 対応 ✦ MilkyWay Makeup Texture",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c6fdcf7e3_fba5dc7b-22d8-405a-8d9c-e0f322eee5f6_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8026647"
+  },
+  {
+   "id": "4e505719de",
+   "name": "【19アバター対応】 𝐋𝐕.𝟖+ Noir_Hair 🕯️",
+   "category": "Hair",
+   "avatar": "Mayo, Shinano, Milfy, Milltina, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/b5cfc8b7e_337d3e0f-bca5-4cc6-aa0e-749c496b4bfb_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8278739"
+  },
+  {
+   "id": "7647c57099",
+   "name": "【9アバター対応】 Otome Hair",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3670ab3a9_80b6a61e-41c6-4b02-a07a-15f81e39f58d_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6766949"
+  },
+  {
+   "id": "1aa9a088f3",
+   "name": "【9アバター対応】 Pudoru Bob",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milfy, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5417da471_d4896251-7266-4098-9848-96cd7cdfbbc8_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6773227"
+  },
+  {
+   "id": "ed01495e86",
+   "name": "【#CORE】韓服 한복 Hanbok Korea's traditional attire",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/a3e64fabb_9f315299-f708-4f4b-ba31-2d10391165b0_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6524593"
+  },
+  {
+   "id": "39e9bacf7b",
+   "name": "【13アバター対応】Little Bunny Twintail🐰",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milfy, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/722bc2201_ebf20a71-2775-49e7-80aa-ba50a408a818_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://sourflavor.booth.pm/items/7322709"
+  },
+  {
+   "id": "586ff3cfb1",
+   "name": "【12アバター対応】 2way Tereru Hair",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milfy, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/835ebc1ed_375ba9ec-1d60-49e0-9df7-97887a276f77_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7086882"
+  },
+  {
+   "id": "e4b9f3620c",
+   "name": "✧･ﾟ•.MIRUKURU.+:｡:✧ - CREPSCOLO - クレプスコーロ🤍",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/aec40dbbd_c91e70e6-d51b-4ac2-86e0-ebeab0a27ac7_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6010473"
+  },
+  {
+   "id": "7669550808",
+   "name": "【9アバター対応】 Lovely Wavy Hair💗",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/2196cbaa8_947474d3-ff41-493d-993f-27ad0364490f_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6724559"
+  },
+  {
+   "id": "be0a774946",
+   "name": "【12アバター対応】Half-up Goth Twin💀",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milfy, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ad30c2531_9f612cd5-b073-45eb-b2e5-bfeb2f138012_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7164970"
+  },
+  {
+   "id": "f036e11cf1",
+   "name": "オリジナル3Dモデル「マヌカ」ver1.02",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/28f0a3b76_a18424fe-a56e-411a-9c47-27c56909593c_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5058077"
+  },
+  {
+   "id": "c7d991fb9c",
+   "name": "Fruity EYE +α for MANUKA",
+   "category": "Eye",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/076250f04_afcc30a1-ab76-4233-850b-b29b58a1640a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5064201"
+  },
+  {
+   "id": "1d16b503ed",
+   "name": "Hush Cut",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/4050cdc9e_ec4e77ff-6b1a-44d3-a9c4-b8b7e8165c67_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5372729"
+  },
+  {
+   "id": "844e9550fa",
+   "name": "【Manuka】 XoXo cargo",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/203d66974_7117bbd7-69ab-4312-aa81-a1fb53a9f682.png",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5077053"
+  },
+  {
+   "id": "2c77939916",
+   "name": "【マヌカ、萌対応】Comfy",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/55085d40a_caa3df94-070d-4f66-a02f-185f61be1c54_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5297776"
+  },
+  {
+   "id": "1b543db68a",
+   "name": "【マヌカ対応】ほわアイ【eye texture】",
+   "category": "Eye",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/4c0a0f89b_084e7730-1dce-4cf7-90f1-e0aa441feb8f_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5767494"
+  },
+  {
+   "id": "20167a57db",
+   "name": "Eye Textures For Manuka 2",
+   "category": "Eye",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/fdcac543f_d99678a9-892e-4268-b4ba-0a97575e25bf_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5576035"
+  },
+  {
+   "id": "3c177fa076",
+   "name": "[Manuka/マヌカ] makeup texture",
+   "category": "Make Up",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/82f572c03_b7c3f356-e5fa-4167-bcba-70170cb4fa04_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5742091"
+  },
+  {
+   "id": "d0da0f9294",
+   "name": "『6アバター対応』🐰Floral Bunny Bloom🌸",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/167a6793c_5e9aaabb-5be7-4e65-add7-29895d63d125_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5587929"
+  },
+  {
+   "id": "4073ee4853",
+   "name": "[3Dヘアモデル]Snowflake Braids Hair",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/bd8e4909b_569be29b-d84f-45e7-ad8c-764aab7e8273_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5632233"
+  },
+  {
+   "id": "b99e8a4403",
+   "name": "【22 Avatars】 Obje Eye Textures (8色 8Color)",
+   "category": "Eye",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3e5e4c555_74eced42-2496-4d80-b71e-7c55c0b63b7d_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5270071"
+  },
+  {
+   "id": "a285cf0592",
+   "name": "【8アバター対応】⚜️British_Classic⚜️",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/a1bfdc494_3dd86e82-8b0b-4421-a672-7704fda68f61_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5971186"
+  },
+  {
+   "id": "4100fb4b4d",
+   "name": "half up messy bun",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/09294001e_08d6dbc0-6ba7-4dd9-9a4d-98478e8a1584_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6259381"
+  },
+  {
+   "id": "e40aaec766",
+   "name": "[MANUKA] Cat Hood",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0bd0abf63_52d80653-f657-493c-8ec5-01a8bd9309c3_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5099078"
+  },
+  {
+   "id": "f3ebb21945",
+   "name": "【5アバター対応】 P♡P.Hair 09 【VRChat用ヘアモデル】",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/8347ae48d_9998219f-573f-4639-aab2-d22bda095b83_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6244479"
+  },
+  {
+   "id": "295201e9df",
+   "name": "[VRC] 4アバター対応 [Devilpong]",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/32d304327_283a8cfc-0614-4427-9b9e-3814522fcf41_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5938274"
+  },
+  {
+   "id": "199953946f",
+   "name": "✨Dazzling",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/845b075b2_a3bcd3a1-ede0-4cec-954a-d1dbff8392dc_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6299386"
+  },
+  {
+   "id": "95a3bc5486",
+   "name": "Double Twist Low Buns",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/86644c89e_a8274d94-3c6b-48ea-978b-83ccabefa205_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/4918666"
+  },
+  {
+   "id": "d8bfb81329",
+   "name": "C curl medium hair",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ce47e92ef_91e5f85f-cd9e-4d7b-a4ca-476c936a4b35_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5653577"
+  },
+  {
+   "id": "7b7fd3da1b",
+   "name": "✧･ﾟ•.MIRUKURU.+:｡:✧ - ARIETTA - アリエッタ🤍",
+   "category": "Clothes",
+   "avatar": "Manuka, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f16749871_a52810cd-03cf-4f52-b654-864db793185c_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6103527"
+  },
+  {
+   "id": "c5b60b99d8",
+   "name": "【19アバター対応】Rock U ⚡",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/85185146e_98afe543-7375-4872-b669-94a7c7fe70df_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6584413"
+  },
+  {
+   "id": "a121d28cec",
+   "name": "【4way Smooth Shift Hair】",
+   "category": "Hair",
+   "avatar": "Manuka, Airi, Shinano, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/60e78bcae_56f91e8e-a8db-4e0e-bf80-b39c2cb867a9_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6287431"
+  },
+  {
+   "id": "15d0a2c17e",
+   "name": "【VRC Hair】Serene_Hair",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/dc265adbb_8b651aed-5dcf-4e82-87d1-ebabfab2ddde_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6493713"
+  },
+  {
+   "id": "5561629a92",
+   "name": "✨セール中✨AFW【17アバター対応】",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/b0205dc9a_45d24e52-ec7e-40cb-ab34-7f20397101a9_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6733633"
+  },
+  {
+   "id": "d19b0e2b89",
+   "name": "[11 Avatar] ⁘MOMO⁘ EyeTexture",
+   "category": "Eye",
+   "avatar": "Shinano, Airi, Manuka, Kipfel, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/aa6d23615_dcfc223a-a17e-4b8a-8268-0fb467bf92c3_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6119724"
+  },
+  {
+   "id": "f3b2f22e30",
+   "name": "【22アバター対応】🫧Watery eye texture🫧",
+   "category": "Eye",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/2d85bc83f_df40badf-aa83-4326-afdd-09cb4c6685ae_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7043195"
+  },
+  {
+   "id": "1639730552",
+   "name": "[VRC] 11 アバター対応 [ふにゃこ (Funyako)]",
+   "category": "Clothes",
+   "avatar": "Shinano, Manuka, Milfy, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/9419b01ad_cb678a99-b05f-40d3-ac4c-0d7a03653b07_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7132208"
+  },
+  {
+   "id": "e2e4446e1e",
+   "name": "【16アバター対応】 𝐋𝐕.𝟒 Varsity_Scholar 🎓",
+   "category": "Clothes",
+   "avatar": "Shinano, Milltina, Milfy, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/a6214cb9d_cd441f42-4d6c-4a44-a3c8-5bdeef2e9d3b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6640868"
+  },
+  {
+   "id": "987781e95d",
+   "name": "オリジナル3Dモデル『ミルティナ』",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c92105f81_182b133f-1c86-4ae8-8536-5e00f63b86cf_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6538026"
+  },
+  {
+   "id": "fe0b40285e",
+   "name": "[ミルティナ/Milltina] Honey ~ Make up Texture ~",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/7af9c97a7_e1a45d73-fda2-4c89-ae11-1dd1d1fc6993_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/6634498"
+  },
+  {
+   "id": "2e39a99fd1",
+   "name": "【Milltina】Makeup Texture Part.2 💜",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5f42e9cc5_483b6d82-cb0b-4f5d-aa4a-4cda6d912b65_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7166809"
+  },
+  {
+   "id": "b9f96c22eb",
+   "name": "【14アバター対応】 𝐋𝐕.𝟐+ Fancy_Hair 💼",
+   "category": "Hair",
+   "avatar": "Milltina, Shinano, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f685769ff_655a55d6-4a5a-4a19-8e37-1a50666f9624_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7233871"
+  },
+  {
+   "id": "2116b1f5be",
+   "name": "♡⑅ Claselle Hair ⑅♡",
+   "category": "Hair",
+   "avatar": "Milfy, Shinano, Milltina, Manuka, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ac692ba08_6e945b7f-4182-4ef3-880f-cd31239d9366_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7036853"
+  },
+  {
+   "id": "457ef14094",
+   "name": "Teddy Puff TwinTail",
+   "category": "Hair",
+   "avatar": "Milfy, Manuka, Milltina, Airi, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/338141f70_419433ad-cd0c-4194-8ca1-0fe222a6fc2b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7241459"
+  },
+  {
+   "id": "ea529d85c2",
+   "name": "【 𝘿𝙖𝙮 𝙇𝙖𝙮𝙚𝙧𝙚𝙙 𝘾𝙪𝙩 𝙃𝙖𝙞𝙧 】",
+   "category": "Hair",
+   "avatar": "Manuka, Airi, Shinano, Milfy, Milltina, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/30c3b80ed_cb617a79-0a1c-4f34-a1df-5ae5691d8e23_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7254250"
+  },
+  {
+   "id": "5c254e491c",
+   "name": "𝐒.𝐂𝟔 【O₂ Series】19 Avatars⚾ PurrBall Set⚾",
+   "category": "Clothes",
+   "avatar": "Milfy, Airi, Manuka, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/fd96badb9_7cc1cfd8-7f7a-4440-9585-94addd2c9b06_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/7305127"
+  },
+  {
+   "id": "d5a32a6e75",
+   "name": "【9アバター対応】 𝐏♡𝐏.𝐇𝐚𝐢𝐫 𝟏𝟓 【VRChat用ヘアモデル】",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Airi, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/fc84e5f1a_28dc0fb0-4181-48ef-b191-fe627ea3ada6_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7290414"
+  },
+  {
+   "id": "7fb26ca041",
+   "name": "NecoMuffler",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/dfed9aee0_1aacb250-9f35-47ff-b64d-7c28ff7c21cb_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5269401"
+  },
+  {
+   "id": "657b791d3d",
+   "name": "オリジナル3Dモデル「しなの」",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/e4f8d9c04_07bd77df-a8ee-4244-8c4e-16cf7cb584bb_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6106863"
+  },
+  {
+   "id": "c5e1d01681",
+   "name": "【20アバター対応】Chewing Rush🫧",
+   "category": "Clothes",
+   "avatar": "Milltina, Shinano, Airi, Manuka, Milfy, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5b3b0cb1b_e6326600-9238-49e6-8456-0df52bda5e27_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7435582"
+  },
+  {
+   "id": "dc5c8944a1",
+   "name": "꒰ Cute Head Wrap꒱ ₍ᐢෆ ·̫ ෆᐢ₎",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/33e919f33_715b459a-4c9c-490f-aefe-eae4e0ad673b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7385026"
+  },
+  {
+   "id": "a75dc49f0d",
+   "name": "【8 ⊳ 12アバター対応】 Onemu Girl Hair [REMAKE]",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milfy, Milltina, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/703e12373_530f64ac-09c7-492c-bca8-bb441ba722af_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6868847"
+  },
+  {
+   "id": "e13c475800",
+   "name": "【16アバター対応】 𝐋𝐕.𝟒+ Varsity_Hair 🎓",
+   "category": "Hair",
+   "avatar": "Shinano, Milfy, Milltina, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/2de49824e_64d2bb90-2fea-41e9-b88a-eee8daef05ba_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7571453"
+  },
+  {
+   "id": "a5f48d170a",
+   "name": "[10 Avatar] ✧Iridescent✧ Eye Texture",
+   "category": "Eye",
+   "avatar": "Airi, Manuka, Shinano, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/b5eb37546_7654f675-dce8-471e-aa93-a758fed64ddf_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6476856"
+  },
+  {
+   "id": "e6f3ec8b1a",
+   "name": "【12アバター対応】❤️Mellow_Puff❤️",
+   "category": "Clothes",
+   "avatar": "Shinano, Manuka, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/bffb1c1dc_77e92e33-6fc4-400f-b142-e946d6f8596b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6618690"
+  },
+  {
+   "id": "894f577b7c",
+   "name": "🔥DAY OFF🔥 [25Avatars]",
+   "category": "Clothes",
+   "avatar": "Manuka, Shinano, Milfy, Milltina, Kipfel, Airi, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ab0ce52fa_d09c5b7b-2841-43af-b8e3-c0d0c331c908_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7638986"
+  },
+  {
+   "id": "2907d5e5f5",
+   "name": "【PB】 Flopiece 【8アバター対応】",
+   "category": "Clothes",
+   "avatar": "Manuka, Airi, Shinano, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f32ee18a8_d835eb45-55af-4b05-b7fd-cbddf600226d_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7116605"
+  },
+  {
+   "id": "0eec8cf075",
+   "name": "[しなの/shinano] 1.02v makeup",
+   "category": "Make Up",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/11c3088e2_082e8338-474f-4cf0-86ea-a5f6dc883f16_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6229756"
+  },
+  {
+   "id": "e37b728b7f",
+   "name": "【7アバター対応】 ♡ 𝐀𝐦𝐞𝐭𝐡𝐲𝐬𝐭 ♡ 【VRChat向け衣装モデル】",
+   "category": "Clothes",
+   "avatar": "Shinano, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/48a1a552e_408e5559-43bb-4f33-9ad3-038e63ca28db_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6536120"
+  },
+  {
+   "id": "71f6c9acf2",
+   "name": "✨Animation✨【♥Snow Kid♥】 【18 avatars】",
+   "category": "Clothes",
+   "avatar": "Manuka, Airi, Shinano, Kipfel, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ea68d3fa2_18f27de1-495b-4f43-a082-81b7893e564a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6495255"
+  },
+  {
+   "id": "cf56df3094",
+   "name": "【VRC想定】2Ｗay Vance Clip Hair Ver.2",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0587cdc97_305de346-18c8-4040-85d0-e1387448babe_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/4318998"
+  },
+  {
+   "id": "c2b008c6d8",
+   "name": "【マフラーギミック】ぬくぬくロング",
+   "category": "Hair",
+   "avatar": "Milltina, Manuka, Milfy, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/cd089b16f_232ed551-ccad-4291-8c91-bc8dcd06d0ef_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7698354"
+  },
+  {
+   "id": "aaa87becdd",
+   "name": "【7アバター対応】 Bunny Santa",
+   "category": "Clothes",
+   "avatar": "Shinano, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/d86bac84d_8fc910c8-1437-4ad3-9e32-b8f157627a1a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5324080"
+  },
+  {
+   "id": "cc2f467b7d",
+   "name": "[ milltina 対応 ] heroine make up 💌",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/98e5d5bb8_3707f027-586b-492c-a6d2-ebfec25dddd3_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7352257"
+  },
+  {
+   "id": "05c77cbb02",
+   "name": "[ 7アバター対応 ] heroine eye texture 💌",
+   "category": "Eye",
+   "avatar": "Milltina, Shinano, Manuka, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/d60734b6b_688c35c5-c784-490b-ae56-ca248d470d12_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7304356"
+  },
+  {
+   "id": "573370b44e",
+   "name": "[ milltina / shinano対応 ] night make up ɞ",
+   "category": "Make Up",
+   "avatar": "Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ad4b955bc_ca8ab829-ee31-4cf0-97d0-9df092c8e9ed_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7166966"
+  },
+  {
+   "id": "f66b64ce21",
+   "name": "❰Setup❱ 14アバター対応 Set_013 PoPo mustang",
+   "category": "Clothes",
+   "avatar": "Manuka, Shinano, Airi, Milfy, Milltina, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/62e32c26a_830e5d2f-73a3-4721-bc9c-aeeeddce7418_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7779348"
+  },
+  {
+   "id": "ea9430b045",
+   "name": "ʚ 14アバター対応 ɞ Juicy Eye Texture 🍍ˎˊ˗",
+   "category": "Eye",
+   "avatar": "Mayo, Milfy, Milltina, Shinano, Airi, Manuka, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/52ca78259_7f2408f2-4c91-4d0c-b044-a6991963996f_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6130660"
+  },
+  {
+   "id": "5ef634d63d",
+   "name": "🪼𝑴𝑶𝑵𝑼 𝑬𝒀𝑬 𝑵𝒐.𝑽 𝑱𝒆𝒘𝒆𝒍𝒓𝒚 𝑱𝒆𝒍𝒍𝒚 𝑬𝒀𝑬🪼",
+   "category": "Eye",
+   "avatar": "Manuka, Kipfel, Airi, Milfy, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ff035502f_693dd213-cf67-4726-a743-4f704bb5dae3_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/6151749"
+  },
+  {
+   "id": "1f83a5fdbc",
+   "name": "【18アバター対応】 𝐋𝐕.𝟏𝟐 Puffy_Buffy ❄️",
+   "category": "Clothes",
+   "avatar": "Milltina, Shinano, Airi, Manuka, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/b52c23ae1_26b3b13a-86e2-43f3-9608-1c69551da176_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7822755"
+  },
+  {
+   "id": "3c76dd4f79",
+   "name": "Milltina Make Up Textures",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/81823b55d_b97a32e4-ac26-4a87-8ac4-b90be586a8ee_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/7461916"
+  },
+  {
+   "id": "92a7e6fada",
+   "name": "Face Deco Effect 4 Types (VRChat)",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/fda5f097c_2048dd29-1e27-4006-a016-7d08536f95d8_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7931220"
+  },
+  {
+   "id": "2928727cd4",
+   "name": "Cutie Double Pony🦡【9アバター対応】",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5fdb788d2_e98c6ac7-00b3-4779-9a45-ccbefc235271_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6685697"
+  },
+  {
+   "id": "625b263896",
+   "name": "【22アバター対応】🌟Shinel eye texture🌟",
+   "category": "Eye",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/04af276e6_3be421c9-0ea0-4c9c-adc6-5c1cbca57f37_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8033827"
+  },
+  {
+   "id": "36e3ab76cd",
+   "name": "☁️ Fog Knit ☁️",
+   "category": "Clothes",
+   "avatar": "Milfy, Milltina, Shinano, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/41ccd8c31_85d8250c-0341-4a44-8529-05900c351a3f_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6976313"
+  },
+  {
+   "id": "a839c16eb8",
+   "name": "オリジナル3Ｄモデル「愛莉」Ver.1.01",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/37e7a396d_81021dbd-ca83-4c3b-8868-230e780b63a3_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6082686"
+  },
+  {
+   "id": "30825f2227",
+   "name": "Neko Tied Bob hair",
+   "category": "Hair",
+   "avatar": "Airi, Shinano, Manuka, Milltina, Milfy, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5edc31102_98cec420-587f-414d-9730-8a7bcc424b21_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7977491"
+  },
+  {
+   "id": "0fc7e847e4",
+   "name": "【9アバター対応】💘Fall_In_Love💘",
+   "category": "Clothes",
+   "avatar": "Manuka, Shinano, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c110d6278_bd88303a-6c27-40ed-82ff-35c8c8dfe3be_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5767163"
+  },
+  {
+   "id": "8423cfcd97",
+   "name": "Side ponytail",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3e6c4b340_dc9f521e-ab66-4e11-ba9b-048893498403_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6636641"
+  },
+  {
+   "id": "b1dd99beac",
+   "name": "【18アバター対応】 𝐋𝐕.𝟔+ Lazy_Hair 🌡️",
+   "category": "Hair",
+   "avatar": "Shinano, Milfy, Milltina, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3614a0507_fb3970f4-89af-4a81-8848-a1744636bf07_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7927176"
+  },
+  {
+   "id": "a630755f65",
+   "name": "[ milltina対応 ] doll make up & face animation 🖤",
+   "category": "Make Up",
+   "avatar": "Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/737873d0a_e045d85c-a20d-4caf-9e10-5676f08473f9_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6935797"
+  },
+  {
+   "id": "bb54c3c7a6",
+   "name": "【21アバター対応】セーラー戦乙女 / Sailor Valkyrie【3D衣装モデル】",
+   "category": "Clothes",
+   "avatar": "Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/40cd84c59_724b19d9-1c1c-4e1c-8d01-749bccea812b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7413765"
+  },
+  {
+   "id": "02bab00041",
+   "name": "Simple Twintail Hair",
+   "category": "Hair",
+   "avatar": "Airi, Shinano, Manuka, Milltina, Milfy, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/105a032ee_febc96d3-1d26-4b16-a702-958fbeff51f0_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8251363"
+  },
+  {
+   "id": "b850ecd746",
+   "name": "Layered Smooth Long Hair【17アバター対応】",
+   "category": "Hair",
+   "avatar": "Shinano, Milltina, Manuka, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/7b59bcb4e_2e08d14d-a3ac-4680-99d6-039528c9ef9f_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8178849"
+  },
+  {
+   "id": "040d40f356",
+   "name": "【13アバター対応】 Wavy Ponytail",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Airi, Milltina, Mayo, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/993b70b95_787f89b7-e528-466b-8892-a8e1645a0681_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7927459"
+  },
+  {
+   "id": "020e773929",
+   "name": "【16アバター対応 VRC Hair】Rosy Loop",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5003d095c_8332b32e-9794-49f7-9321-23f314ebf5e3_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7201039"
+  },
+  {
+   "id": "9094aa25d0",
+   "name": "【VRC想定】【7アバター対応】LF001 Classic Loafer / クラシックローファー",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3066d9fd8_18319fa7-fde1-42df-b9e8-a8162f313399_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5790580"
+  },
+  {
+   "id": "48872186ad",
+   "name": "【20アバター対応】487+Style Stockings 持続更新!!!",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/30d5b1452_fe455422-c90e-4d68-a971-bbd51a29d002_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6407457"
+  },
+  {
+   "id": "e0bf39551d",
+   "name": "Roll up Shorts & Hoodie for Manuka / ロールアップショーツ&パーカー 【マヌカ用】 (C18)",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c828e9ed3_2d4d894d-39b3-4a68-8c2e-a48f5e87fda0_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5785700"
+  },
+  {
+   "id": "4198c91902",
+   "name": "【7アバター対応】Off Shoulder",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/65a2e1917_a5022b96-64ab-442b-ac9e-15821d177e47_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5715216"
+  },
+  {
+   "id": "bd89130ad3",
+   "name": "【17Avatars】Shirts & Shorts, Skirt / シャツ&ショーツ,スカート (C3)",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/1678bbac1_88743b8a-d0eb-402c-a120-99f6bc4bfda7_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/3451012"
+  },
+  {
+   "id": "66b82b3326",
+   "name": "【無料】Milsy-ミルシィー-【二周年記念】",
+   "category": "Clothes",
+   "avatar": "Manuka, Shinano, Milfy, Milltina",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/8a62e7abb_c07d19d1-41eb-45fc-8a0e-a75c84416921_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7717360"
+  },
+  {
+   "id": "f848a5ab41",
+   "name": "★Purr Nocturne Hair ★【PB】【10 Avatars】",
+   "category": "Hair",
+   "avatar": "Milltina, Milfy, Manuka, Shinano, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/a354a3a95_6092bfac-021e-40f3-b3de-8d8ccfad1dce_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://yune-yune.booth.pm/items/7390821"
+  },
+  {
+   "id": "76e8dc27f0",
+   "name": "Neko bob",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/82f7a2762_ac6abf3f-3be2-429f-9603-5808dc2f77d5_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://tonarino8908.booth.pm/items/5823103"
+  },
+  {
+   "id": "9cab1f682a",
+   "name": "[11アバター] Doughnut Ribbon Hair",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Kipfel",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/34609d778_c6d47ec6-7041-4cbe-b1e6-7014fe25c3b9_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://toyopop.booth.pm/items/6221496"
+  },
+  {
+   "id": "dc793d36d6",
+   "name": "【20アバター対応】🌸Blooming eye texture🌸",
+   "category": "Eye",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/1f4449f4f_f353698f-494f-427b-ac30-8a0a23f75187_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://halo-by.booth.pm/items/6762338"
+  },
+  {
+   "id": "adf1703125",
+   "name": "【11 avatars】【VRC Hair】♥ Nova_Hair ♥",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f472db042_9056268a-8532-4371-ba81-70a6c3760a97_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://joe61.booth.pm/items/6715750"
+  },
+  {
+   "id": "883ec224d1",
+   "name": "【10アバター対応】Dreamy Angel🪽",
+   "category": "Clothes",
+   "avatar": "Mayo, Shinano, Milltina, Airi, Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/9c015b7f0_89e14f7b-30c7-4450-acd3-f64a03a7b355_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://todaycloth.booth.pm/items/8236581"
+  },
+  {
+   "id": "f2b822dd32",
+   "name": "【 12アバター対応】 Girly Layered Look 18 colors💗",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0e6b1b758_3949b6f3-3985-451b-b1aa-7d654f9e40f5_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://momosecret.booth.pm/items/8240037"
+  },
+  {
+   "id": "c13ffa746e",
+   "name": "✦ マヌカ :: Manuka 対応 ✦ MilkyWay Makeup Texture",
+   "category": "Make Up",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/7cffe03da_b890803d-7175-4941-8bea-9828a4c80337_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://lovable.booth.pm/items/7739731"
+  },
+  {
+   "id": "30a3691e85",
+   "name": "【19アバター対応】Wolf Float Hair",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Milltina, Milfy, Airi, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/d20bd6e1b_88dcfbde-1c02-422b-8cc1-03592e7041fd_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6467347"
+  },
+  {
+   "id": "20b448810d",
+   "name": "🐾Animal Ear Headband_heartbeat",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/e9550b07c_55931586-3f2f-4114-9889-7f922e67b1c0_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8341117"
+  },
+  {
+   "id": "883c48083f",
+   "name": "【Manuka専用】 No.12_Eyes & Makeup Texture",
+   "category": "Eye, Make Up",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/a02b9f995_56f0d672-9ef1-4d18-81bd-dfebb1b1e401_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/5769383"
+  },
+  {
+   "id": "6c642340aa",
+   "name": "【無料版あり/Shinano】Milkyway Glow Makeup & Eye",
+   "category": "Eye, Make Up",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/24bc6e4eb_8324e2e3-0856-4438-b31b-5c26324b261d_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8181799"
+  },
+  {
+   "id": "705a7f5764",
+   "name": "【まよ/Mayo】Bitter doll makeup & body & eye Texture",
+   "category": "Eye, Make Up",
+   "avatar": "Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/ab80cad05_28caad00-0d68-4469-92a9-76e282565c41.png",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/8237901"
+  },
+  {
+   "id": "e463b923b0",
+   "name": "【16アバター対応】どらごん！きぐるみパジャマ",
+   "category": "Clothes",
+   "avatar": "Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/59ac88354_68f63c50-dac3-4eda-817c-263ebcfc2a23_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8160272"
+  },
+  {
+   "id": "827f62a59f",
+   "name": "『エレガント・エクリプス』 ‐ Elegant Eclipse【23アバター対応】",
+   "category": "Clothes",
+   "avatar": "Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/5dbefcf4b_e49d86f0-5cb4-4d8e-9785-3bc4e1fa6556_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6924390"
+  },
+  {
+   "id": "282c487900",
+   "name": "【15アバター対応】Twinkle Tails【VRChat】",
+   "category": "Hair",
+   "avatar": "Manuka, Milltina, Shinano, Mayo, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/08cf4af62_cf8d42ac-6a4a-49de-8657-f9a312c0a4cf_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7803581"
+  },
+  {
+   "id": "01eee8ac72",
+   "name": "SoftEase",
+   "category": "Clothes",
+   "avatar": "Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/41068ef38_b0b2e5a2-2448-459a-b910-3dcc8cebef80_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8131048"
+  },
+  {
+   "id": "48b81e1311",
+   "name": "イヌ アイテムセット 3Dモデル",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/49a130dd6_6421b60a-3b1a-4d6e-b6b2-48ff628a0df9_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6150235"
+  },
+  {
+   "id": "5b398648fa",
+   "name": "【10 avatars】【VRC Hair】♥ Ivy_Hair ♥",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Milfy, Milltina, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/37cfbd84b_0b157a3e-3d8e-4531-9744-9d406e8688d2_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6537462"
+  },
+  {
+   "id": "fa7ce127d5",
+   "name": "【複数アバター対応】Simple_BoB【VRChat向けヘア】",
+   "category": "Hair",
+   "avatar": "Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/c1e65ed36_590c694d-6341-41c3-b10e-ea6ba7cf7de2_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6745224"
+  },
+  {
+   "id": "a1e437e9b5",
+   "name": "Lovely Low Twintail hair",
+   "category": "Hair",
+   "avatar": "Manuka, Airi, Shinano, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/300ea8e2a_592edd14-77ac-4c86-84eb-498ba941b5fc_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5208259"
+  },
+  {
+   "id": "0359362cef",
+   "name": "🩶Urban Bloom🩶【17アバター対応】",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/9ed031a4b_cc95b1fd-b5e4-4709-8285-cee0ddcd32cc_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7477128"
+  },
+  {
+   "id": "ff024411c3",
+   "name": "[3Dヘアモデル] Long wavy ponytail -Remake-",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0448f1dcc_c075e02e-2010-41b3-914b-fd146eb41a63_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/4219099"
+  },
+  {
+   "id": "7639f082ef",
+   "name": "[5人] Daenggi Hair 🌺 화결(花結) 댕기머리",
+   "category": "Hair",
+   "avatar": "Milltina, Manuka, Shinano, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0d11b90e0_6acd42c3-c474-4bfd-a21a-c9b19dcc67c7_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7972094"
+  },
+  {
+   "id": "113eb91430",
+   "name": "【9Avatar対応】くまちゃんサンタコーデ【VRC想定】",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f744d33ec_5c3901af-34c4-4346-bf11-30256830dfb2_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/6351394"
+  },
+  {
+   "id": "d993471197",
+   "name": "ミルフィ Milfy / オリジナル3Dモデル",
+   "category": "Avatar",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/985af56f2_7bda05bb-f9d5-45a8-811a-b95ac555beb8_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6571299"
+  },
+  {
+   "id": "012770a2fc",
+   "name": "【9 avatars】【VRC Hair】♥ Muffin_Hair ♥",
+   "category": "Hair",
+   "avatar": "Airi, Manuka, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/805b11b1d_a6b3d271-2923-42e3-8a8e-4d3d2f85cf26_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6193199"
+  },
+  {
+   "id": "7a7bcb41e0",
+   "name": "【5アバター対応】 Old School Sailor | 세라복",
+   "category": "Clothes",
+   "avatar": "Manuka, Milltina, Airi, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/7b24a15df_fe06ccfc-2d89-4d75-a7f6-67c253e0af22_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7804957"
+  },
+  {
+   "id": "c2ed1723c0",
+   "name": "【Layered hush cut Hair】",
+   "category": "Hair",
+   "avatar": "Manuka, Shinano, Milltina, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/93679f25b_f0538971-d233-452a-a2b8-3822b2aa18c2_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5213334"
+  },
+  {
+   "id": "c2010c8d7b",
+   "name": "おさニャニャじみはローツイン",
+   "category": "Hair",
+   "avatar": "Milltina, Manuka, Shinano, Milfy, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/36d7b6763_58b449eb-e515-477a-9dab-ba0640fcef97_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7079888"
+  },
+  {
+   "id": "c975232f83",
+   "name": "2025年第3弾『THE LAVIEL ARCHIVES - ラヴィエル家の静謐』🫖",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/452ecab5e_f1e3783e-c772-4f4a-8593-c1649ea62d95_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6866075"
+  },
+  {
+   "id": "f4dafaa43d",
+   "name": "🎃 [Cute Halloween Pins ]🎃",
+   "category": "Accessories",
+   "avatar": "",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/f9285c107_09bb8089-04af-4710-9603-829728e82b44_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/7534090"
+  },
+  {
+   "id": "8dd1f1d335",
+   "name": "Foxy (23 Avatars 対応)",
+   "category": "Clothes",
+   "avatar": "Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/8b1b8bd2f_d46e9de9-8a17-43b8-a0e5-1c682998ac2a_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6775617"
+  },
+  {
+   "id": "77c73c6448",
+   "name": "✨【8アバター対応】 Mai Ponytail Hair",
+   "category": "Hair",
+   "avatar": "Milltina, Manuka, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/e8ccee4c8_70c4b36e-45cd-4e0a-a7a3-cfeca3b550c4_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/6687021"
+  },
+  {
+   "id": "706dddd57c",
+   "name": "Braided Bun hair",
+   "category": "Hair",
+   "avatar": "Manuka, Airi, Shinano, Milltina, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/0d46c2c3b_4455d5ba-af60-41c6-a21b-5e57e2751dd1_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5733831"
+  },
+  {
+   "id": "9aba67ef25",
+   "name": "【6アバター対応】 P♡P.Hair 02",
+   "category": "Hair",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/02dee9dfb_b1ea5161-0f6e-46ad-8fd2-64534e1e68ad_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5537865"
+  },
+  {
+   "id": "3d78870752",
+   "name": "【Manuka】 Let's go to kindergarten",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/41ec1fb36_092402eb-00c4-411e-bfab-dde501ba774b_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/5080816"
+  },
+  {
+   "id": "ac1c46083a",
+   "name": "【Milfy】eyetexture【ミルフィ】",
+   "category": "Eye",
+   "avatar": "Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/4417531f7_73b882e8-6905-4023-a9b0-d4ca4aa14e5e_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/8492738"
+  },
+  {
+   "id": "8c1bb7ba5e",
+   "name": "[2026 World Cup] K - Soccer Uniform",
+   "category": "Clothes",
+   "avatar": "Airi, Manuka, Mayo, Milfy, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/4b85221a4_ca164da3-4eb5-4304-944e-03b53d71bdde_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/8504900"
+  },
+  {
+   "id": "b0b2804cc9",
+   "name": "【🎀MilkyRibbonMaid🎀】ミルキーリボンメイド 16アバター対応Radiant-iseo",
+   "category": "Clothes",
+   "avatar": "Manuka",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/8d7096706_5339c16a-d834-4d96-bb01-f81182d12c48_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8083295"
+  },
+  {
+   "id": "28482349e3",
+   "name": "[21Avatars]🖤DeviCute",
+   "category": "Clothes",
+   "avatar": "Shinano, Milltina, Airi, Manuka, Mayo, Milfy",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/38453fbd2_95a0c449-1b8d-4cea-bb5d-f3b982759d13_base_resized.jpg",
+   "broadcast_available": false,
+   "product_link": "https://booth.pm/ko/items/8497386"
+  },
+  {
+   "id": "d8db92e274",
+   "name": "Angel Roll Hair",
+   "category": "Hair",
+   "avatar": "Milfy, Milltina, Shinano, Manuka, Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/65e3e40f4_f05c552e-d0c4-4ca8-8a43-f7ae7da2fa90_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8401606"
+  },
+  {
+   "id": "a2dc98ebe5",
+   "name": "✨【9アバター対応】 Toko Twintail Hair",
+   "category": "Hair",
+   "avatar": "Milfy, Milltina, Manuka, Shinano",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/3af74e834_1a7ef625-d18f-4047-9316-257b3ecc61cb_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://danastudio.booth.pm/items/6738143"
+  },
+  {
+   "id": "39d4837e35",
+   "name": "【7アバター対応】 𝐏♡𝐏.𝐇𝐚𝐢𝐫 𝟏𝟏 【VRChat用ヘアモデル】",
+   "category": "Hair",
+   "avatar": "Shinano, Manuka, Airi",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/a260049cc_ce49555b-daad-4e06-bf21-47b82766f0fe_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://pinkpuddinghair.booth.pm/items/6538150"
+  },
+  {
+   "id": "8330d3bbb9",
+   "name": "♥15アバター対応♥ウサトレSetup♥",
+   "category": "Clothes",
+   "avatar": "Mayo",
+   "thumbnail": "https://base44.app/api/apps/69f8e21c2a78ab28c376267a/files/mp/public/69f8e21c2a78ab28c376267a/77d8f1a1a_e1a71671-c18c-4171-95e8-23d6740b7205_base_resized.jpg",
+   "broadcast_available": true,
+   "product_link": "https://booth.pm/ko/items/8204434"
+  }
+ ]
+}
