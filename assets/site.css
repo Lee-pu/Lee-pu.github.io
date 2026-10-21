@@ -83,7 +83,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* ── 하단 ── */
 .foot { background: var(--ink); color: #fff; border-radius: 48px 48px 0 0; position: relative; margin-top: -40px; }
-.foot-in { padding: 4vh var(--gutter) 32px; }
+.foot-in { padding: 2vh var(--gutter) 32px; }
 .foot h2 { margin: 0; font-weight: 800; font-size: clamp(56px, 8.4vw, 144px); line-height: .9; letter-spacing: -.055em; }
 .foot-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-top: 26px; }
 .foot-label { display: flex; align-items: center; gap: 8px; font-family: var(--kr); font-size: 15px; font-weight: 700; color: var(--pink-soft); }
