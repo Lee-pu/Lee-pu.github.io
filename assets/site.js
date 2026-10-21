@@ -107,8 +107,8 @@ function footer() {
       <h2 class="rv">${t}</h2>
       <div class="foot-row">
         <div>
-          <div class="foot-label">커미션 문의</div>
           ${msg ? `<p class="foot-msg">${esc(msg)}</p>` : ""}
+          <div class="foot-label">커미션 문의</div>
           <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}>${esc(l.label)}</a>`).join("")}</div>
         </div>
         <span class="foot-copy">© ${new Date().getFullYear()} ${esc(s.name || "Leepu")}<span class="dot">.</span></span>
