@@ -74,8 +74,8 @@ document.addEventListener("click", (e) => {
     pages = {}
     for name in ("index", "works", "items"):
         h = (ROOT / f"{name}.html").read_text(encoding="utf-8")
-        h = h.replace('<link rel="stylesheet" href="assets/site.css">', "<style>\n" + css + "\n</style>")
-        h = h.replace('<script src="assets/site.js"></script>',
+        h = h.replace('<link rel="stylesheet" href="assets/site.css?v=dev">', "<style>\n" + css + "\n</style>")
+        h = h.replace('<script src="assets/site.js?v=dev"></script>',
                       "<script>window.SITE_DATA = parent.SITE_DATA;</script>\n<script>\n" + js + "\n</script>\n" + nav)
         pages[name] = h
 

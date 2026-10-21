@@ -48,6 +48,9 @@ jobs:
             sleep 5
           done
 
+      - name: 새 CSS·JS가 바로 보이게 (브라우저 캐시 무시용 버전 붙이기)
+        run: sed -i "s/?v=dev/?v=${GITHUB_SHA::8}/g" index.html works.html items.html
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
