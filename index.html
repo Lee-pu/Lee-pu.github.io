@@ -176,8 +176,8 @@ $("about").innerHTML = `
   <div class="info rv">
     ${(s.tools || []).length ? `<p class="tools">${(s.tools || []).map((t) => `<span>${esc(t)}</span>`).join(" <i>·</i> ")}</p>` : ""}
     ${steps.length ? `<div class="rule" aria-hidden="true"></div>
-    <div class="lbl">경력</div>
-    <ol class="tl" aria-label="경력" style="list-style:none;padding:0;margin-bottom:0">${steps.map((c) => `
+    <div class="lbl">EXPERIENCE</div>
+    <ol class="tl" aria-label="Experience" style="list-style:none;padding:0;margin-bottom:0">${steps.map((c) => `
       <li class="st${c.past ? " past" : ""}"><b aria-hidden="true"></b><small>${esc(c.period)}</small><strong>${esc(c.name)}</strong></li>`).join("")}
     </ol>` : ""}
   </div>`;
