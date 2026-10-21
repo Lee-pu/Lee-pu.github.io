@@ -44,19 +44,28 @@ button, input, select { font: inherit; color: inherit; }
 .wrap { max-width: 1200px; margin: 0 auto; padding-block: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
 /* 프로필 */
-.hero { padding-block: 48px 28px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
-.avatar { width: 104px; height: 104px; border-radius: 28px; overflow: hidden; background: var(--chip); box-shadow: var(--shadow); }
+/* 높이는 프로필 사진에 맞춰 고정: 소개를 펼치면 글이 사진 중앙을 기준으로 위아래로 고르게 늘어남 */
+.hero { box-sizing: border-box; height: calc(112px + 44px + 28px); padding-block: 44px 28px; display: flex; gap: 22px; align-items: center; }
+.avatar { flex: 0 0 auto; width: 112px; height: 112px; border-radius: 28px; overflow: hidden; background: var(--chip); box-shadow: var(--shadow); }
 .avatar img { width: 100%; height: 100%; object-fit: cover; }
-.hero h1 { margin: 0; font-size: clamp(32px, 6vw, 52px); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance; }
-.hero h1 .dot { color: var(--accent); }
-.intro { margin: 8px 0 0; color: var(--muted); white-space: pre-wrap; max-width: 60ch; }
-.meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; align-items: center; font-size: 13px; color: var(--muted); }
-.meta a { text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
-.meta a:hover { color: var(--accent); }
-.tools { display: flex; flex-wrap: wrap; gap: 6px; }
-.tool { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--chip); color: var(--fg); }
+.pinfo { flex: 1; min-width: 0; display: grid; gap: 10px; }
+.pname { appearance: none; border: 0; background: none; padding: 0; margin: 0; justify-self: start; text-align: left; color: var(--fg); font: 800 clamp(30px, 5.5vw, 50px)/1.05 var(--font); letter-spacing: -0.03em; }
+button.pname { cursor: pointer; }
+.pname .dot { color: var(--accent); display: inline-block; transition: transform .3s; }
+button.pname:hover .dot, .pname[aria-expanded="true"] .dot { transform: translateY(-4px); }
+.intro-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; margin-top: -10px; transition: grid-template-rows .3s ease, opacity .25s ease, margin-top .3s ease; }
+.intro-wrap.open { grid-template-rows: 1fr; opacity: 1; margin-top: -5px; }
+.intro { overflow: hidden; margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); white-space: pre-wrap; max-width: 60ch; }
+.links { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.ibtn { appearance: none; flex: 0 0 auto; width: 34px; height: 34px; border: 0; border-radius: 10px; display: grid; place-items: center; background: var(--chip); color: var(--muted); cursor: pointer; text-decoration: none; transition: color .2s, background .2s; }
+.ibtn:hover { color: var(--accent); }
+.ibtn[aria-expanded="true"] { background: var(--accent); color: var(--accent-ink); }
+.toolpanel { flex: 0 1 auto; min-width: 0; max-width: 0; opacity: 0; display: flex; gap: 6px; overflow: hidden; transition: max-width .45s ease, opacity .3s ease; scrollbar-width: none; }
+.toolpanel::-webkit-scrollbar { display: none; }
+.toolpanel.open { max-width: 900px; opacity: 1; overflow-x: auto; }
+.tool { flex: 0 0 auto; font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--chip); color: var(--fg); white-space: nowrap; }
 .ico { width: 16px; height: 16px; flex-shrink: 0; }
-@media (max-width: 560px) { .hero { grid-template-columns: 1fr; padding-top: 32px; } .avatar { width: 84px; height: 84px; border-radius: 22px; } }
+@media (max-width: 560px) { .hero { gap: 16px; height: calc(84px + 32px + 28px); padding-top: 32px; } .avatar { width: 84px; height: 84px; border-radius: 22px; } .pinfo { gap: 8px; } .intro-wrap { margin-top: -8px; } .intro-wrap.open { margin-top: -4px; } .ibtn { width: 32px; height: 32px; } }
 
 /* 탭 */
 .tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
@@ -163,6 +172,7 @@ const SVG = {
   play: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
   img: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>',
   link: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
+  wrench: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
   mail: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
   x: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>',
   close: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>',
@@ -182,19 +192,23 @@ function accent(hex) {
 }
 
 function hero() {
-  const s = D.site;
+  const s = D.site, tools = [...(s.tools || [])].sort(ko);
   document.title = s.name;
   $("hero").innerHTML = `
     <div class="avatar">${s.profile_image ? `<img src="${esc(s.profile_image)}" alt="${esc(s.name)}" ${IMGERR}>` : ""}</div>
-    <div style="min-width:0">
-      <h1>${esc(s.name)}<span class="dot">.</span></h1>
-      ${s.intro ? `<p class="intro">${esc(s.intro)}</p>` : ""}
-      <div class="meta">
-        ${s.email ? `<a href="mailto:${esc(s.email)}">${SVG.mail}${esc(s.email)}</a>` : ""}
-        ${(s.links || []).map((l) => `<a href="${esc(safe(l.url))}" target="_blank" rel="noopener">${linkIcon(l.url)}${esc(l.label || l.url.replace(/^https?:\/\/(www\.)?/, ""))}</a>`).join("")}
-        ${(s.tools || []).length ? `<span class="tools">${[...s.tools].sort(ko).map((t) => `<span class="tool">${esc(t)}</span>`).join("")}</span>` : ""}
+    <div class="pinfo">
+      ${s.intro ? `<button class="pname" id="pname" aria-expanded="false" aria-controls="intro-wrap" title="소개 보기">${esc(s.name)}<span class="dot">.</span></button>
+      <div class="intro-wrap" id="intro-wrap"><p class="intro">${esc(s.intro)}</p></div>` : `<h1 class="pname">${esc(s.name)}<span class="dot">.</span></h1>`}
+      <div class="links">
+        ${s.email ? `<a class="ibtn" href="mailto:${esc(s.email)}" title="${esc(s.email)}" aria-label="메일 보내기">${SVG.mail}</a>` : ""}
+        ${(s.links || []).map((l) => `<a class="ibtn" href="${esc(safe(l.url))}" target="_blank" rel="noopener" title="${esc(l.label || l.url)}" aria-label="${esc(l.label || l.url)}">${linkIcon(l.url)}</a>`).join("")}
+        ${tools.length ? `<button class="ibtn" id="tool-btn" aria-expanded="false" aria-controls="toolpanel" title="다룰 수 있는 툴" aria-label="다룰 수 있는 툴 보기">${SVG.wrench}</button>
+        <div class="toolpanel" id="toolpanel">${tools.map((t) => `<span class="tool">${esc(t)}</span>`).join("")}</div>` : ""}
       </div>
     </div>`;
+  const tog = (btn, panel) => { if (!btn) return; btn.onclick = () => { const on = btn.getAttribute("aria-expanded") !== "true"; btn.setAttribute("aria-expanded", on); panel.classList.toggle("open", on); }; };
+  tog($("pname"), $("intro-wrap"));
+  tog($("tool-btn"), $("toolpanel"));
   $("foot").textContent = `© ${new Date().getFullYear()} ${s.name}`;
   $("n-works").textContent = D.works.length;
   $("n-items").textContent = D.items.length;
