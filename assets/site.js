@@ -108,8 +108,10 @@ function footer() {
       <div class="foot-row">
         <div>
           ${msg ? `<p class="foot-msg">${esc(msg)}</p>` : ""}
-          <div class="foot-label">커미션 문의</div>
-          <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}>${esc(l.label)}</a>`).join("")}</div>
+          <div class="foot-contact">
+            <div class="foot-label">문의</div>
+            <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}>${esc(l.label)}</a>`).join("")}</div>
+          </div>
         </div>
         <span class="foot-copy">© ${new Date().getFullYear()} ${esc(s.name || "Leepu")}<span class="dot">.</span></span>
       </div>
