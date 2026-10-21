@@ -88,6 +88,19 @@ function render() {
 }
 addEventListener("resize", () => { const n = innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4; if (+$("grid").dataset.n !== n) render(); });
 
+// 사진 칸 나누기: 6칸 격자에서 줄마다 꽉 차도록 (PC 3장씩, 남는 1~2장은 넓게 / 휴대폰 2장씩)
+function galleryCls(n, k) {
+  const c = [];
+  if (n === 1) c.push("w6");
+  else if (n === 2 || n === 4) c.push("w3");
+  else {
+    const rest = n % 3;
+    if (rest === 2 && k >= n - 2) c.push("w3");
+    if (rest === 1 && k >= n - 4) c.push("w3");
+  }
+  if (n % 2 === 1 && k === n - 1) c.push("m6");
+  return c.join(" ");
+}
 function open(id) {
   const w = D.works.find((x) => x.id === id);
   if (!w) return;
@@ -101,16 +114,38 @@ function open(id) {
       : `<iframe class="${isShort(u) ? "short" : ""}" src="https://www.youtube.com/embed/${ytId(u)}?rel=0&playsinline=1" title="영상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
     : `<video src="${esc(u)}" controls playsinline preload="metadata"${w.thumbnail ? ` poster="${esc(w.thumbnail)}"` : ""}></video>`;
   const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
+  // 사진이 한 장뿐이면 갤러리 대신 크게 한 장으로
+  const one = media.length ? "" : imgs.length === 1 ? imgs[0] : !imgs.length ? w.thumbnail : "";
   $("dlg").innerHTML = `<div class="dlg-in">
     <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">✕</button></div>
     ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
     <div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>
-    ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" ${IMGERR}></div>` : ""}
-    ${imgs.length ? `<div class="gallery" style="--n:${imgs.length === 4 ? 2 : Math.min(imgs.length, 3)}">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
+    ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : one ? `<div class="media"><img src="${esc(one)}" alt="" ${IMGERR}></div>` : ""}
+    ${imgs.length > 1 || (imgs.length && media.length) ? `<div class="gallery">${imgs.map((u, k) => `<a class="${galleryCls(imgs.length, k)}" href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
     ${w.link_url && !yt ? `<a class="btn-out" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">원본 보기 ↗</a>` : ""}
   </div>`;
   // 세로 쇼츠만 있으면 창을 좁게
-  $("dlg").classList.toggle("narrow", media.length > 0 && media.every(isShort) && !imgs.length);
+  const dlg = $("dlg");
+  dlg.classList.toggle("narrow", media.length > 0 && media.every(isShort) && !imgs.length);
+  // 사진 한 장이나 영상 파일 하나뿐이면: 그 비율에 맞춰 크기를 정하고 창도 거기에 맞춤 (양옆 빈 띠 없음)
+  const parts = dlg.querySelectorAll(".media > *");
+  const solo = parts.length === 1 && /^(IMG|VIDEO)$/.test(parts[0].tagName) && !dlg.querySelector(".gallery") ? parts[0] : null;
+  if (solo) {
+    dlg.classList.add("narrow");
+    const fit = (r) => {
+      if (!r || !isFinite(r)) return;
+      const maxW = Math.min(880, innerWidth - 24) - (innerWidth <= 560 ? 40 : 56);
+      solo.style.width = Math.round(Math.min(maxW, innerHeight * 0.72 * r)) + "px";
+      solo.style.aspectRatio = String(r);
+    };
+    if (solo.tagName === "IMG") {
+      if (solo.complete && solo.naturalWidth) fit(solo.naturalWidth / solo.naturalHeight);
+      else solo.addEventListener("load", () => fit(solo.naturalWidth / solo.naturalHeight), { once: true });
+    } else {
+      solo.addEventListener("loadedmetadata", () => fit(solo.videoWidth / solo.videoHeight), { once: true });
+      if (w.thumbnail) { const im = new Image(); im.onload = () => fit(im.naturalWidth / im.naturalHeight); im.src = w.thumbnail; }
+    }
+  }
   $("x").onclick = () => $("dlg").close();
   if (!$("dlg").open) $("dlg").showModal();
 }
