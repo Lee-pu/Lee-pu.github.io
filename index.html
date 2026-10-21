@@ -157,9 +157,9 @@ const has = (w, c) => list(w.category).includes(c);
 const link = (w) => `works.html#${encodeURIComponent(w.id || "")}`;
 
 // 흐르는 띠: 위는 쇼츠, 아래는 3D · 디자인
-const shorts = D.works.filter((w) => has(w, "CINEMACHINE") && w.thumbnail);
+const shorts = D.works.filter((w) => has(w, "CINEMACHINE") && (w.thumbnail || LP.ytOf(w)));
 const others = D.works.filter((w) => !has(w, "CINEMACHINE") && !has(w, "EDIT") && w.thumbnail);
-const strip = (arr) => arr.map((w) => `<a href="${link(w)}" title="${esc(w.title)}"><img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}></a>`).join("");
+const strip = (arr) => arr.map((w) => `<a href="${link(w)}" title="${esc(w.title)}">${LP.thumbImg(w)}</a>`).join("");
 $("stripA").innerHTML = twice(strip(shorts.slice(0, 10)));
 $("stripB").innerHTML = twice(strip(others.slice(0, 10)));
 
@@ -191,7 +191,7 @@ $("w-count").textContent = `전체 ${D.works.length}`;
 $("bento").innerHTML = pick.map(([w, cls]) => {
   const c = list(w.category)[0] || "";
   return `<a class="tile pop ${cls}" href="${link(w)}">
-    <img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}>
+    ${LP.thumbImg(w)}
     <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>
     <span class="cap"><b>${esc(w.title.trim())}</b><small>${esc(ymd(w.date))}</small></span>
   </a>`;

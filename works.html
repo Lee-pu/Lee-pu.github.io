@@ -25,8 +25,7 @@
 .card { appearance: none; display: block; width: 100%; margin: 0; padding: 0; border: 0; text-align: left; background: #fff; border-radius: 24px; overflow: hidden; cursor: pointer; box-shadow: 0 0 0 1px var(--line); transition: transform .4s var(--ease), box-shadow .4s; text-decoration: none; color: var(--ink); }
 .card:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px var(--line), 0 24px 50px -28px rgba(255,61,139,.55); }
 .card .th { position: relative; overflow: hidden; background: var(--blush-2); }
-.card .th img { width: 100%; height: auto; transition: transform .6s var(--ease); }
-.card .th.sq img { aspect-ratio: 9 / 16; object-fit: cover; }
+.card .th img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
 .card:hover .th img { transform: scale(1.04); }
 .card .play { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; background: rgba(20,18,20,.7); color: #fff; font-size: 11px; font-weight: 700; }
 .card .bd { padding: 14px 16px 18px; }
@@ -67,26 +66,52 @@ if (!cats.includes(cur)) cur = "";
 const count = (c) => D.works.filter((w) => !c || list(w.category).includes(c)).length;
 $("lead").textContent = `전체 ${D.works.length}개 · ` + cats.map((c) => `${catLabel(c)} ${count(c)}`).join(" · ");
 
+// 카드 사진 칸 비율: 세로 쇼츠 9:16 · 3D 4:3 · 디자인/BOOTH 1:1 · 그 밖 4:3
+function ratioOf(w) {
+  const y = LP.ytOf(w), c = list(w.category);
+  if (y && y.short) return "9 / 16";
+  if (c.includes("DESIGN") || c.includes("BOOTH")) return "1 / 1";
+  if (!y && (w.video_urls || []).length) return "9 / 16"; // 저장소 영상 파일(세로 쇼츠)
+  return "4 / 3";
+}
+const colCount = () => (innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4);
+
 function render() {
   $("tabs").innerHTML = ["", ...cats].map((c) => `<button class="tab" data-cat="${esc(c)}" aria-pressed="${cur === c}">${c ? esc(catLabel(c)) : "전체"}<small>${count(c)}</small></button>`).join("");
   const rows = D.works.filter((w) => !cur || list(w.category).includes(cur));
-  const n = innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4;
-  const cards = rows.map((w) => {
+  const n = colCount();
+  $("grid").dataset.n = n;
+  if (!rows.length) { $("grid").innerHTML = `<p class="empty">작업물이 없어요</p>`; return; }
+  $("grid").innerHTML = Array.from({ length: n }, () => `<div class="col"></div>`).join("");
+  const cols = [...$("grid").children];
+  rows.forEach((w) => {
     const c = list(w.category)[0] || "";
     const vid = (w.video_urls || []).length || ytId(w.link_url);
-    return `<a class="card" href="#${encodeURIComponent(w.id)}" data-id="${esc(w.id)}">
-      <div class="th">${w.thumbnail ? `<img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : `<div style="aspect-ratio:4/3"></div>`}
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = "#" + encodeURIComponent(w.id);
+    card.dataset.id = w.id;
+    card.innerHTML = `<div class="th" style="aspect-ratio:${ratioOf(w)}">${LP.thumbImg(w)}
         <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>${vid ? `<span class="play">▶ 영상</span>` : (w.images || []).length ? `<span class="play">사진 ${w.images.length}</span>` : ""}</div>
-      <div class="bd"><div class="t">${esc(w.title.trim())}</div><div class="d">${esc(ymd(w.date))}</div></div>
-    </a>`;
+      <div class="bd"><div class="t">${esc(w.title.trim())}</div><div class="d">${esc(ymd(w.date))}</div></div>`;
+    // 가장 짧은 칸에 넣어서 칸 길이를 고르게 (최신 작업이 위쪽에 와요)
+    cols.reduce((a, b) => (b.offsetHeight < a.offsetHeight ? b : a)).appendChild(card);
   });
-  // 최신순이 왼쪽→오른쪽으로 읽히도록 칸마다 차례로 나눠 담아요
-  const cols = Array.from({ length: n }, () => []);
-  cards.forEach((c, k) => cols[k % n].push(c));
-  $("grid").innerHTML = rows.length ? cols.map((c) => `<div class="col">${c.join("")}</div>`).join("") : `<p class="empty">작업물이 없어요</p>`;
-  $("grid").dataset.n = n;
+  even();
 }
-addEventListener("resize", () => { const n = innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4; if (+$("grid").dataset.n !== n) render(); });
+// 칸마다 끝나는 높이를 맞춰요: 짧은 칸의 맨 아래 카드 사진을 그만큼 늘려서 아래가 비지 않게
+function even() {
+  const cols = [...$("grid").querySelectorAll(".col")];
+  if (cols.length < 2) return;
+  cols.forEach((c) => { const th = c.lastElementChild && c.lastElementChild.querySelector(".th"); if (th) { th.style.height = ""; } });
+  const hs = cols.map((c) => c.offsetHeight), max = Math.max(...hs);
+  cols.forEach((c, i) => {
+    const th = c.lastElementChild && c.lastElementChild.querySelector(".th");
+    if (th && max - hs[i] > 1) th.style.height = th.offsetHeight + (max - hs[i]) + "px";
+  });
+}
+addEventListener("resize", () => { if (+$("grid").dataset.n !== colCount()) render(); else even(); });
+if (document.fonts) document.fonts.ready.then(even);
 
 // 사진 칸 나누기: 6칸 격자에서 줄마다 꽉 차도록 (PC 3장씩, 남는 1~2장은 넓게 / 휴대폰 2장씩)
 function galleryCls(n, k) {

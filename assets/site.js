@@ -27,6 +27,36 @@ function career(intro) {
   });
 }
 
+// 작업 썸네일: YouTube 영상이 연결된 작업은 YouTube 썸네일을 써요.
+// 쇼츠는 세로 원본(oardefault) → 큰 가로(maxresdefault) → 기본(hqdefault) → 저장된 썸네일 순서로 시도해요.
+function ytOf(w) {
+  const u = [...(w.video_urls || []), w.link_url || ""].find((x) => ytId(x));
+  return u ? { id: ytId(u), short: isShort(u) } : null;
+}
+function thumbList(w) {
+  const y = ytOf(w), out = [];
+  if (y) {
+    const b = `https://i.ytimg.com/vi/${y.id}/`;
+    if (y.short) out.push(b + "oardefault.jpg");
+    out.push(b + "maxresdefault.jpg", b + "hqdefault.jpg");
+  }
+  if (w.thumbnail) out.push(w.thumbnail);
+  return out;
+}
+// 다음 후보로 넘기기 (YouTube는 없는 크기를 120px짜리 회색 그림으로 돌려줘서 그것도 실패로 봐요)
+window.LP_THUMB_NEXT = (img, failed) => {
+  if (!failed && !(img.naturalWidth <= 120 && /ytimg/.test(img.src))) return;
+  const rest = (img.dataset.next || "").split("|").filter(Boolean);
+  if (!rest.length) { img.style.visibility = "hidden"; img.onerror = img.onload = null; return; }
+  img.dataset.next = rest.slice(1).join("|");
+  img.src = rest[0];
+};
+function thumbImg(w, extra = "") {
+  const list = thumbList(w);
+  if (!list.length) return "";
+  return `<img src="${esc(list[0])}" data-next="${esc(list.slice(1).join("|"))}" alt="" loading="lazy" ${extra} onload="LP_THUMB_NEXT(this)" onerror="LP_THUMB_NEXT(this, true)">`;
+}
+
 function accent(hex) {
   if (!/^#[0-9a-f]{6}$/i.test(hex || "")) return;
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
@@ -93,5 +123,5 @@ async function boot(page) {
   return D;
 }
 
-window.LP = { esc, list, safe, ko, ytId, isShort, IMGERR, ymd, catLabel, catClass, career, boot, D: null };
+window.LP = { esc, list, safe, ko, ytId, isShort, IMGERR, ymd, catLabel, catClass, career, boot, ytOf, thumbImg, D: null };
 })();
