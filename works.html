@@ -135,13 +135,7 @@ function galleryCls(n, k) {
   return c.join(" ");
 }
 // 제목에서 버튜버 이름(… 님)과 작품 이름을 나눠요. 예) "디아나 님 'You & 合図'" → 디아나 님 / You & 合図
-function splitTitle(t) {
-  t = String(t || "").trim();
-  const m = t.match(/^(.*님)\s+(['"‘“].*)$/) || t.match(/^(.*?님)\s+(.+)$/);
-  if (!m) return { who: "", what: t };
-  const what = m[2].trim().replace(/^['"‘“]\s*/, "").replace(/\s*['"’”]$/, "");
-  return { who: m[1].trim(), what: what || t };
-}
+function splitTitle(t) { return LP.splitTitle(t); }
 function open(id) {
   const w = D.works.find((x) => x.id === id);
   if (!w) return;

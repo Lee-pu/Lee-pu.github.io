@@ -67,7 +67,7 @@
 .tile .cap { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.95); transform: translateY(12px); opacity: 0; transition: transform .45s var(--ease), opacity .35s; }
 .tile:hover .cap, .tile:focus-visible .cap { transform: none; opacity: 1; }
 .tile .cap b { display: block; font-family: var(--kr); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tile .cap small { font-size: 12px; color: #7d7579; }
+.tile .cap small { display: block; margin-top: 2px; font-family: var(--kr); font-size: 12px; color: #7d7579; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .c2 { grid-column: span 2; } .r2 { grid-row: span 2; }
 .works .foot-more { display: flex; justify-content: center; margin-top: 40px; }
 
@@ -193,7 +193,7 @@ $("bento").innerHTML = pick.map(([w, cls]) => {
   return `<a class="tile pop ${cls}" href="${link(w)}">
     ${LP.thumbImg(w)}
     <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>
-    <span class="cap"><b>${esc(w.title.trim())}</b><small>${esc(ymd(w.date))}</small></span>
+    <span class="cap"><b>${esc(LP.splitTitle(w.title).what)}</b>${LP.splitTitle(w.title).who ? `<small>${esc(LP.splitTitle(w.title).who)}</small>` : ""}</span>
   </a>`;
 }).join("");
 

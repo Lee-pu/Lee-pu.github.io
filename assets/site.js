@@ -57,6 +57,18 @@ function thumbImg(w, extra = "") {
   return `<img src="${esc(list[0])}" data-next="${esc(list.slice(1).join("|"))}" alt="" loading="lazy" ${extra} onload="LP_THUMB_NEXT(this)" onerror="LP_THUMB_NEXT(this, true)">`;
 }
 
+// 제목에서 버튜버 이름(… 님)과 작품 이름을 나눠요. 예) "디아나 님 'You & 合図'" → 디아나 님 / You & 合図
+function splitTitle(t) {
+  t = String(t || "").trim();
+  const m = t.match(/^(.*님)\s+(['"‘“].*)$/) || t.match(/^(.*?님)\s+(.+)$/);
+  if (!m) return { who: "", what: t };
+  let what = m[2].trim();
+  // 따옴표로 감싼 부분의 따옴표만 빼요: 'Peppy Twintail' 썸네일 → Peppy Twintail 썸네일
+  const q = what.match(/^(['"‘“])(.*?)(['"’”])(.*)$/);
+  if (q) what = (q[2] + q[4]).trim();
+  return { who: m[1].trim(), what: what || t };
+}
+
 function accent(hex) {
   if (!/^#[0-9a-f]{6}$/i.test(hex || "")) return;
   const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
@@ -123,5 +135,5 @@ async function boot(page) {
   return D;
 }
 
-window.LP = { esc, list, safe, ko, ytId, isShort, IMGERR, ymd, catLabel, catClass, career, boot, ytOf, thumbImg, D: null };
+window.LP = { esc, list, safe, ko, ytId, isShort, IMGERR, ymd, catLabel, catClass, career, boot, ytOf, thumbImg, splitTitle, D: null };
 })();
