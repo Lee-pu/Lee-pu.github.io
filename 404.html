@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leepu</title>
+<script>
+// 예전 주소(…github.io/leepu/…)로 들어오면 새 주소로 옮겨 줘요
+(function () {
+  var p = location.pathname;
+  if (/^\/leepu(\/|$)/i.test(p)) location.replace(p.replace(/^\/leepu/i, "") .replace(/^$/, "/") + location.search + location.hash);
+})();
+</script>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #ffe4ef; color: #141214; font-family: Manrope, "Noto Sans KR", system-ui, sans-serif; text-align: center; }
+  h1 { margin: 0; font-size: clamp(56px, 12vw, 120px); font-weight: 800; letter-spacing: -.05em; }
+  h1 span { color: #ff3d8b; }
+  p { margin: 10px 0 24px; color: #6b4a58; }
+  a { display: inline-block; padding: 12px 22px; border-radius: 999px; background: #141214; color: #fff; font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+<main><h1>404<span>.</span></h1><p>페이지를 찾을 수 없어요.</p><a href="/">홈으로</a></main>
+</body>
+</html>
