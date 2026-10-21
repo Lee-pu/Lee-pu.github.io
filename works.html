@@ -112,7 +112,9 @@ function open(id) {
   $("x").onclick = () => $("dlg").close();
   if (!$("dlg").open) $("dlg").showModal();
 }
-const close = () => { $("dlg").innerHTML = ""; if (location.hash) history.replaceState(null, "", location.pathname + location.search); };
+// 주소창 바꾸기 (미리보기 파일처럼 주소를 못 바꾸는 곳에서는 조용히 넘어가요)
+const setUrl = (u) => { try { history.replaceState(null, "", u); } catch (e) { /* 무시 */ } };
+const close = () => { $("dlg").innerHTML = ""; if (location.hash) setUrl(location.pathname + location.search); };
 $("dlg").addEventListener("close", close);
 $("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
 
@@ -121,11 +123,11 @@ document.addEventListener("click", (e) => {
   if (!t) return;
   if (t.dataset.cat !== undefined) {
     cur = t.dataset.cat;
-    history.replaceState(null, "", cur ? `?cat=${encodeURIComponent(cur)}` : location.pathname);
+    setUrl(cur ? `?cat=${encodeURIComponent(cur)}` : location.pathname);
     render();
   } else if (t.dataset.id) {
     e.preventDefault();
-    history.replaceState(null, "", "#" + encodeURIComponent(t.dataset.id));
+    setUrl("#" + encodeURIComponent(t.dataset.id));
     open(t.dataset.id);
   }
 });
