@@ -42,7 +42,6 @@
 
 <main class="page">
   <h1><span><span class="up">Works<span class="dot">.</span></span></span></h1>
-  <p class="lead fade" id="lead"></p>
   <div class="tabs" id="tabs" role="group" aria-label="분야 고르기"></div>
   <div class="grid" id="grid"></div>
 </main>
@@ -64,7 +63,6 @@ try { cur = new URLSearchParams(location.search).get("cat") || ""; } catch (e) {
 if (!cats.includes(cur)) cur = "";
 
 const count = (c) => D.works.filter((w) => !c || list(w.category).includes(c)).length;
-$("lead").textContent = `전체 ${D.works.length}개 · ` + cats.map((c) => `${catLabel(c)} ${count(c)}`).join(" · ");
 
 // 카드 사진 칸 비율: 세로 쇼츠 9:16 · 3D 4:3 · 디자인/BOOTH 1:1 · 그 밖 4:3
 function ratioOf(w) {
@@ -91,7 +89,7 @@ function render() {
     card.className = "card";
     card.href = "#" + encodeURIComponent(w.id);
     card.dataset.id = w.id;
-    card.innerHTML = `<div class="th" style="aspect-ratio:${ratioOf(w)}">${LP.thumbImg(w)}
+    card.innerHTML = `<div class="th" data-r="${ratioOf(w)}" style="aspect-ratio:${ratioOf(w)}">${LP.thumbImg(w)}
         <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>${vid ? `<span class="play">▶ 영상</span>` : (w.images || []).length ? `<span class="play">사진 ${w.images.length}</span>` : ""}</div>
       <div class="bd"><div class="t">${esc(w.title.trim())}</div><div class="d">${esc(ymd(w.date))}</div></div>`;
     // 가장 짧은 칸에 넣어서 칸 길이를 고르게 (최신 작업이 위쪽에 와요)
@@ -99,15 +97,23 @@ function render() {
   });
   even();
 }
-// 칸마다 끝나는 높이를 맞춰요: 짧은 칸의 맨 아래 카드 사진을 그만큼 늘려서 아래가 비지 않게
+// 칸마다 끝나는 높이를 맞춰요: 짧은 칸의 카드 사진들을 조금씩 나눠서 늘려요 (한 장당 최대 25%).
+// 그렇게 해도 다 못 채우면(작업 수가 적은 분야) 억지로 늘리지 않고 원래 비율 그대로 둬요.
 function even() {
   const cols = [...$("grid").querySelectorAll(".col")];
   if (cols.length < 2) return;
-  cols.forEach((c) => { const th = c.lastElementChild && c.lastElementChild.querySelector(".th"); if (th) { th.style.height = ""; } });
+  cols.forEach((c) => c.querySelectorAll(".th").forEach((th) => { th.style.height = ""; th.style.aspectRatio = th.dataset.r; }));
   const hs = cols.map((c) => c.offsetHeight), max = Math.max(...hs);
-  cols.forEach((c, i) => {
-    const th = c.lastElementChild && c.lastElementChild.querySelector(".th");
-    if (th && max - hs[i] > 1) th.style.height = th.offsetHeight + (max - hs[i]) + "px";
+  const plan = cols.map((c, i) => {
+    const ths = [...c.querySelectorAll(".th")];
+    const need = max - hs[i], room = ths.reduce((s, th) => s + th.offsetHeight * 0.25, 0);
+    return { ths, need, room };
+  });
+  if (plan.some((x) => x.need > x.room + 1)) return;
+  plan.forEach(({ ths, need }) => {
+    if (need < 2) return;
+    const total = ths.reduce((s, th) => s + th.offsetHeight, 0);
+    ths.forEach((th) => { const base = th.offsetHeight; th.style.aspectRatio = "auto"; th.style.height = base + need * (base / total) + "px"; });
   });
 }
 addEventListener("resize", () => { if (+$("grid").dataset.n !== colCount()) render(); else even(); });
