@@ -31,6 +31,7 @@
 .card .play { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; background: rgba(20,18,20,.7); color: #fff; font-size: 11px; font-weight: 700; }
 .card .bd { padding: 14px 16px 18px; }
 .card .t { font-family: var(--kr); font-size: 15px; font-weight: 700; line-height: 1.45; }
+.card .n { margin-top: 4px; font-family: var(--kr); font-size: 13px; font-weight: 500; color: var(--muted); }
 .card .d { margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--muted-2); }
 @media (max-width: 760px) {
   .grid, .col { gap: 12px; } .card { border-radius: 18px; } .card .bd { padding: 10px 12px 14px; } .card .t { font-size: 13px; }
@@ -92,7 +93,7 @@ function render() {
     card.dataset.id = w.id;
     card.innerHTML = `<div class="th" data-r="${ratioOf(w)}" style="aspect-ratio:${ratioOf(w)}">${LP.thumbImg(w)}
         <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>${vid ? `<span class="play">▶ 영상</span>` : (w.images || []).length ? `<span class="play">사진 ${w.images.length}</span>` : ""}</div>
-      <div class="bd"><div class="t">${esc(w.title.trim())}</div></div>`;
+      <div class="bd"><div class="t">${esc(splitTitle(w.title).what)}</div>${splitTitle(w.title).who ? `<div class="n">${esc(splitTitle(w.title).who)}</div>` : ""}</div>`;
     // 가장 짧은 칸에 넣어서 칸 길이를 고르게 (최신 작업이 위쪽에 와요)
     cols.reduce((a, b) => (b.offsetHeight < a.offsetHeight ? b : a)).appendChild(card);
   });
