@@ -96,7 +96,7 @@
   },
   {
    "id": "66fe7c6441",
-   "title": "오구 님 API",
+   "title": "오구 님 'API 세팅'",
    "category": "3D",
    "date": "2026-08-17",
    "description": "SOOP 오구 님 API 세팅",
@@ -104,7 +104,8 @@
    "images": [],
    "video_urls": [],
    "link_url": "https://x.com/leeepu_/status/2102893149127602503",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "3c67bedf88",
