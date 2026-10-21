@@ -106,7 +106,7 @@ function open(id) {
     ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
     <div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>
     ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" ${IMGERR}></div>` : ""}
-    ${imgs.length ? `<div class="gallery">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
+    ${imgs.length ? `<div class="gallery" style="--n:${imgs.length === 4 ? 2 : Math.min(imgs.length, 3)}">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
     ${w.link_url && !yt ? `<a class="btn-out" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">원본 보기 ↗</a>` : ""}
   </div>`;
   // 세로 쇼츠만 있으면 창을 좁게
