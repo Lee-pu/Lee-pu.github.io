@@ -107,7 +107,7 @@ function footer() {
   const msg = s.message ?? "모든 작업에 최선을 다하며,\n아름답고 완성도 높은 결과물을 위해 늘 노력합니다.";
   const t = esc(title).replace(/\n/g, "<br>").replace(/([.!?])\s*$/, '<span class="dot">$1</span>');
   const links = [
-    ...(s.email ? [{ url: "mailto:" + s.email, label: s.email, icon: ICON.mail }] : []),
+    ...(s.email ? [{ url: "mailto:" + s.email, label: s.email, icon: ICON.mail, aria: "메일 " + s.email }] : []),
     ...(s.links || []).filter((l) => l.url).map((l) => {
       const x = l.url.match(/(?:^|\/\/|\.)(?:x|twitter)\.com\/([^/?#]+)/i);
       return { url: l.url, label: l.label || (x ? "@" + x[1] : l.url.replace(/^https?:\/\//, "")), icon: x ? ICON.x : "", aria: x ? "X @" + x[1] : "" };
@@ -120,7 +120,7 @@ function footer() {
           ${msg ? `<p class="foot-msg">${esc(msg)}</p>` : ""}
           <div class="foot-contact">
             <div class="foot-label">CONTACT</div>
-            <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}${l.aria ? ` aria-label="${esc(l.aria)}"` : ""}>${l.icon || ""}${esc(l.label)}</a>`).join("")}${s.discord ? `<button type="button" class="foot-dc" data-copy="${esc(s.discord)}" title="누르면 디스코드 아이디가 복사돼요" aria-label="Discord ${esc(s.discord)} 아이디 복사">${ICON.discord}<span>${esc(s.discord)}</span></button>` : ""}</div>
+            <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}${l.aria ? ` aria-label="${esc(l.aria)}"` : ""}>${l.icon || ""}<span class="tx">${esc(l.label)}</span></a>`).join("")}${s.discord ? `<button type="button" class="foot-dc" data-copy="${esc(s.discord)}" title="누르면 디스코드 아이디가 복사돼요" aria-label="Discord ${esc(s.discord)} 아이디 복사">${ICON.discord}<span class="tx">${esc(s.discord)}</span></button>` : ""}</div>
           </div>
         </div>
         <span class="foot-copy">© ${new Date().getFullYear()} ${esc(s.name || "Leepu")}<span class="dot">.</span></span>

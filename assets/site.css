@@ -166,3 +166,14 @@ dialog.dlg.side { width: min(860px, calc(100vw - 24px)); }
 /* 분야 글자와 제목 사이를 좁게 */
 .side-info .side-top + h2 { margin-top: -12px; }
 .head-txt .cat-txt + h2 { margin-top: -7px; }
+
+/* 휴대폰: 하단 연락처는 아이콘만 (디스코드는 복사됐을 때만 글자 표시) */
+@media (max-width: 640px) {
+  .foot-in { padding-top: calc(var(--gutter) + 1px); } /* 글자 윗선과 왼쪽 간격을 같게 */
+  .foot-links { gap: 10px; }
+  .foot-links a, .foot-dc { height: 40px; min-width: 40px; padding: 0; justify-content: center; }
+  .foot-links svg { width: 16px; height: 16px; margin: 0; }
+  .foot-links .tx { display: none; }
+  .foot-dc.done { padding: 0 14px; }
+  .foot-dc.done .tx { display: inline; margin-left: 6px; }
+}
