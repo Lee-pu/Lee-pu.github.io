@@ -1,6 +1,8 @@
 # Leepu 포트폴리오 사이트
 
-GitHub Pages에 올리는 사이트입니다. 방문자에게는 **작업물**과 **보유 아이템** 두 화면이 보이고, 나는 **관리 화면**(`/admin.html`)에서 등록·수정·설정을 합니다.
+주소: https://lee-pu.github.io/ · 관리: https://lee-pu.github.io/admin.html
+
+GitHub Pages에 올리는 사이트입니다. 방문자에게는 **홈**(`index.html`), **Works**(`works.html`), **Items**(`items.html`) 세 페이지가 보이고, 나는 **관리 화면**(`/admin.html`)에서 등록·수정·설정을 합니다. 예전 주소(`/leepu/…`)로 들어오면 `404.html`이 새 주소로 옮겨 줘요.
 
 ```
 index.html                  공개 사이트
