@@ -71,7 +71,7 @@
    "title": "연빛yeonvvit 님 성형 + 페이셜 + Warudo 세팅",
    "category": "3D",
    "date": "2026-08-30",
-   "description": "성형 및 페이셜, Warudo 관련 세팅(API, 팬듈럼 등등.)",
+   "description": "성형 및 페이셜, Warudo 관련 세팅(API, 팬듈럼 등등.)\n닐로툰 @kim_raming",
    "thumbnail": "assets/img/27e24c1f791a.webp",
    "images": [
     "assets/img/356089c8b04b.webp",
@@ -79,7 +79,8 @@
    ],
    "video_urls": [],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "620060f82e",
