@@ -17,7 +17,8 @@
 .hero h1 > span { display: block; overflow: hidden; padding-bottom: .2em; margin-bottom: -.1em; }
 .clip { overflow: hidden; }
 
-.strips { margin-top: 8vh; padding-bottom: 4vh; overflow: hidden; }
+/* 띠가 기울어져도 위아래가 잘리지 않게 여유 공간(6vw)을 두고, 그만큼 바깥 여백을 빼서 자리는 그대로 */
+.strips { margin: calc(8vh - 6vw) 0 -6vw; padding: 6vw 0 calc(4vh + 6vw); overflow: hidden; }
 .strips .tilt { width: 110vw; margin-left: -5vw; }
 .strips .mq + .mq { margin-top: 16px; }
 .strips .mq-track { padding: 8px 0; }
