@@ -102,7 +102,7 @@ function open(id) {
     : `<video src="${esc(u)}" controls playsinline preload="metadata"${w.thumbnail ? ` poster="${esc(w.thumbnail)}"` : ""}></video>`;
   const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
   $("dlg").innerHTML = `<div class="dlg-in">
-    <div class="dlg-head"><h2>${esc(w.title.trim()).replace(/^(.+?님)\s+(?=\S)/, "$1<br>")}</h2><button class="x" id="x" aria-label="닫기">✕</button></div>
+    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">✕</button></div>
     ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
     <div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>
     ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" ${IMGERR}></div>` : ""}
@@ -116,7 +116,7 @@ function open(id) {
 }
 // 주소창 바꾸기 (미리보기 파일처럼 주소를 못 바꾸는 곳에서는 조용히 넘어가요)
 const setUrl = (u) => { try { history.replaceState(null, "", u); } catch (e) { /* 무시 */ } };
-const close = () => { $("dlg").innerHTML = ""; if (location.hash) setUrl(location.pathname + location.search); };
+const close = () => { if ($("dlg").open) return; $("dlg").innerHTML = ""; if (location.hash) setUrl(location.pathname + location.search); };
 $("dlg").addEventListener("close", close);
 $("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
 
