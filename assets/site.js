@@ -109,7 +109,7 @@ function footer() {
         <div>
           ${msg ? `<p class="foot-msg">${esc(msg)}</p>` : ""}
           <div class="foot-contact">
-            <div class="foot-label">문의</div>
+            <div class="foot-label">Contact</div>
             <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}>${esc(l.label)}</a>`).join("")}</div>
           </div>
         </div>

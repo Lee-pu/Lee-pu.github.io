@@ -25,7 +25,8 @@ select.field { padding-right: 34px; appearance: none; background: #fff url("data
 .toggle { display: inline-flex; gap: 8px; align-items: center; height: 40px; padding: 0 16px; border-radius: 999px; background: #fff; font-size: 14px; font-weight: 700; cursor: pointer; user-select: none; }
 .toggle input { accent-color: var(--pink); }
 .count { margin-left: auto; font-size: 13px; font-weight: 700; color: #6b4a58; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin-top: 28px; align-items: start; }
+.grid { display: flex; gap: 16px; margin-top: 28px; align-items: flex-start; }
+.col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
 .it { background: #fff; border-radius: 22px; padding: 10px 10px 14px; display: flex; flex-direction: column; gap: 10px; transition: transform .4s var(--ease), box-shadow .4s; }
 .it:hover { transform: translateY(-5px); box-shadow: 0 24px 50px -30px rgba(214,31,108,.5); }
 .it .th { display: block; border-radius: 14px; overflow: hidden; background: var(--blush-2); aspect-ratio: 1; }
@@ -44,7 +45,7 @@ select.field { padding-right: 34px; appearance: none; background: #fff url("data
 @media (max-width: 640px) {
   .bar { position: static; margin-inline: 0; padding-inline: 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .search { max-width: none; flex-basis: 100%; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .grid, .col { gap: 10px; }
   .it { border-radius: 18px; }
 }
 </style>
@@ -90,21 +91,33 @@ $("cat").onchange = (e) => { S.cat = e.target.value; S.shown = 60; draw(); };
 $("av").onchange = (e) => { S.av = e.target.value; S.shown = 60; draw(); };
 $("ok").onchange = (e) => { S.ok = e.target.checked; S.shown = 60; draw(); };
 
-function draw() {
-  const q = S.q.toLowerCase(), has = (arr, v) => !v || arr.some((x) => x.toLowerCase() === v.toLowerCase());
-  const rows = D.items.filter((i) => (!q || i.name.toLowerCase().includes(q)) && has(list(i.category), S.cat) && has(list(i.avatar), S.av) && (!S.ok || i.broadcast_available));
-  $("count").textContent = `${rows.length}개`;
-  $("list").innerHTML = rows.length ? `<div class="grid">${rows.slice(0, S.shown).map((i) => `
+// 칸 수: 카드 최소 210px 기준 (휴대폰 2칸)
+const colCount = () => { const w = $("list").clientWidth || innerWidth; return innerWidth <= 640 ? 2 : Math.max(2, Math.floor((w + 16) / (210 + 16))); };
+const card = (i) => `
     <article class="it">
       <a class="th" href="${esc(safe(i.product_link))}" target="_blank" rel="noopener" aria-label="${esc(i.name)} BOOTH에서 보기">${i.thumbnail ? `<img src="${esc(i.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : ""}</a>
       <div class="row">${list(i.category).map((c) => `<span class="c">${esc(c)}</span>`).join("")}</div>
       <h3 class="nm" title="${esc(i.name)}">${esc(i.name)}</h3>
       ${list(i.avatar).length ? `<div class="row">${list(i.avatar).map((a) => `<button class="av" data-av="${esc(a)}">${esc(a)}</button>`).join("")}</div>` : ""}
       <div class="row">${i.broadcast_available ? `<span class="ok">방송 가능</span>` : ""}${i.product_link ? `<a class="go" href="${esc(safe(i.product_link))}" target="_blank" rel="noopener">BOOTH →</a>` : ""}</div>
-    </article>`).join("")}</div>
-    ${rows.length > S.shown ? `<div class="more"><button id="more">더 보기 (${rows.length - S.shown}개 남음)</button></div>` : ""}` : `<p class="empty">조건에 맞는 아이템이 없어요</p>`;
+    </article>`;
+function draw() {
+  const q = S.q.toLowerCase(), has = (arr, v) => !v || arr.some((x) => x.toLowerCase() === v.toLowerCase());
+  const rows = D.items.filter((i) => (!q || i.name.toLowerCase().includes(q)) && has(list(i.category), S.cat) && has(list(i.avatar), S.av) && (!S.ok || i.broadcast_available));
+  $("count").textContent = `${rows.length}개`;
+  if (!rows.length) { $("list").innerHTML = `<p class="empty">조건에 맞는 아이템이 없어요</p>`; return; }
+  const n = colCount();
+  $("list").innerHTML = `<div class="grid" id="grid" data-n="${n}">${Array.from({ length: n }, () => `<div class="col"></div>`).join("")}</div>
+    ${rows.length > S.shown ? `<div class="more"><button id="more">더 보기 (${rows.length - S.shown}개 남음)</button></div>` : ""}`;
+  // 위에서부터 차례로, 가장 짧은 칸에 넣어서 빈 곳 없이 채워요
+  const cols = [...$("grid").children], tmp = document.createElement("div");
+  rows.slice(0, S.shown).forEach((i) => {
+    tmp.innerHTML = card(i);
+    cols.reduce((a, b) => (b.offsetHeight < a.offsetHeight ? b : a)).appendChild(tmp.firstElementChild);
+  });
   if ($("more")) $("more").onclick = () => { S.shown += 60; draw(); };
 }
+addEventListener("resize", () => { if ($("grid") && +$("grid").dataset.n !== colCount()) draw(); });
 document.addEventListener("click", (e) => {
   const t = e.target.closest("[data-av]");
   if (!t) return;
