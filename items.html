@@ -115,7 +115,13 @@ function draw() {
     tmp.innerHTML = card(i);
     cols.reduce((a, b) => (b.offsetHeight < a.offsetHeight ? b : a)).appendChild(tmp.firstElementChild);
   });
-  if ($("more")) $("more").onclick = () => { S.shown += 60; draw(); };
+  // 더 보기: 다시 그리는 동안 목록 높이를 잡아 둬서 화면이 위로 튀지 않게
+  if ($("more")) $("more").onclick = () => {
+    const y = scrollY, L = $("list");
+    L.style.minHeight = L.offsetHeight + "px";
+    S.shown += 60; draw();
+    L.style.minHeight = ""; scrollTo(0, y);
+  };
 }
 addEventListener("resize", () => { if ($("grid") && +$("grid").dataset.n !== colCount()) draw(); });
 document.addEventListener("click", (e) => {

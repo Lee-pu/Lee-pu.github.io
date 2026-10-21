@@ -397,7 +397,7 @@ function workForm(id) {
     <div><span class="lbl">카테고리 <span class="hint" style="display:inline">(복수 선택 가능)</span></span><div class="chips" id="wf-cats"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-newcat" class="field" placeholder="새 카테고리" aria-label="새 카테고리"><button class="btn sm" id="wf-addcat">추가</button></div></div>
     <div class="two"><div><label class="lbl" for="wf-date">날짜</label><input id="wf-date" type="date" class="field" value="${esc(w?.date || today())}"></div>
-      <div><label class="lbl" for="wf-pub">공개</label><label class="switch"><input id="wf-pub" type="checkbox" aria-label="공개" ${!w || w.public !== false ? "checked" : ""}></label></div></div>
+      <div><label class="lbl" for="wf-pub">공개</label><label class="switch" style="min-height:40px"><input id="wf-pub" type="checkbox" aria-label="공개" ${!w || w.public !== false ? "checked" : ""}></label></div></div>
     <div><label class="lbl" for="wf-desc">설명</label><textarea id="wf-desc" class="field" rows="3">${esc(w?.description || "")}</textarea></div>
     <div><span class="lbl">링크 <span class="hint" style="display:inline">(YouTube 또는 외부 링크)</span></span><div class="stack" style="gap:6px" id="wf-links"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-url" class="field" placeholder="https://" aria-label="링크 주소"><button class="btn sm" id="wf-addurl">추가</button><label class="btn sm" for="wf-vfile" title="영상 파일 직접 올리기 (50MB까지)">영상 파일</label><input id="wf-vfile" type="file" accept="video/mp4,video/webm,video/quicktime" hidden></div></div>
