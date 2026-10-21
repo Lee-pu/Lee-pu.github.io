@@ -91,9 +91,10 @@ label.lbl, .lbl { display: block; font-weight: 600; margin-bottom: 6px; }
 .thumbs .one { position: relative; width: 96px; height: 64px; border-radius: 8px; overflow: hidden; background: var(--chip); }
 .thumbs .one img { width: 100%; height: 100%; object-fit: cover; }
 .thumbs .one button { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; border: 0; background: rgba(0,0,0,.65); color: #fff; cursor: pointer; font-size: 12px; line-height: 1; }
-.thumbs .one .st { left: 3px; right: auto; font-size: 11px; opacity: .55; }
+.thumbs .one[data-star] { cursor: pointer; }
+.thumbs .one .st { left: 3px; right: auto; font-size: 11px; color: rgba(255,255,255,.75); }
 .thumbs .one.star { outline: 2px solid var(--accent, #ff3d8b); outline-offset: 2px; }
-.thumbs .one.star .st { opacity: 1; background: var(--accent, #ff3d8b); }
+.thumbs .one.star .st { color: #fff; background: var(--accent, #ff3d8b); }
 .thumbs .one .note { position: absolute; left: 0; right: 0; bottom: 0; padding: 2px 4px; background: rgba(0,0,0,.6); color: #fff; font-size: 10px; text-align: center; }
 .vid { display: flex; gap: 8px; align-items: center; font-size: 12.5px; background: var(--chip); padding: 6px 10px; border-radius: 8px; }
 .vid span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -391,19 +392,17 @@ function workForm(id) {
     video_urls: [...(w?.video_urls || [])], link_url: w?.link_url || "", tags: [...(w?.tags || [])] };
   openDlg(`<div class="dlg">
     <h2>${id ? "작업물 수정" : "작업물 추가"}</h2>
-    <div><label class="lbl" for="wf-title">제목</label><input id="wf-title" class="field" value="${esc(sp.what)}" placeholder="예: You & 合図"></div>
-    <div><label class="lbl" for="wf-who">버튜버 이름 <span class="hint" style="display:inline">(선택 · "님"은 자동으로 붙어요)</span></label><input id="wf-who" class="field" value="${esc(sp.who.replace(/\s*님$/, ""))}" placeholder="예: 디아나">
-      <div class="hint">사이트 카드에 제목이 위, 버튜버 이름이 아래 줄로 보여요.</div></div>
-    <div><span class="lbl">카테고리 <span class="hint" style="display:inline">(여러 개 가능)</span></span><div class="chips" id="wf-cats"></div>
+    <div><label class="lbl" for="wf-title">제목</label><input id="wf-title" class="field" value="${esc(sp.what)}"></div>
+    <div><label class="lbl" for="wf-who">버튜버 이름 <span class="hint" style="display:inline">(님은 자동으로 붙어요)</span></label><input id="wf-who" class="field" value="${esc(sp.who.replace(/\s*님$/, ""))}"></div>
+    <div><span class="lbl">카테고리 <span class="hint" style="display:inline">(복수 선택 가능)</span></span><div class="chips" id="wf-cats"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-newcat" class="field" placeholder="새 카테고리" aria-label="새 카테고리"><button class="btn sm" id="wf-addcat">추가</button></div></div>
     <div class="two"><div><label class="lbl" for="wf-date">날짜</label><input id="wf-date" type="date" class="field" value="${esc(w?.date || today())}"></div>
-      <div><span class="lbl">공개</span><label class="switch"><input id="wf-pub" type="checkbox" ${!w || w.public !== false ? "checked" : ""}>사이트에 보이기</label><div class="hint">꺼도 사이트에서만 숨겨지고, 공개 저장소의 data.json에는 남아요.</div></div></div>
+      <div><label class="lbl" for="wf-pub">공개</label><label class="switch"><input id="wf-pub" type="checkbox" aria-label="공개" ${!w || w.public !== false ? "checked" : ""}></label></div></div>
     <div><label class="lbl" for="wf-desc">설명</label><textarea id="wf-desc" class="field" rows="3">${esc(w?.description || "")}</textarea></div>
     <div><span class="lbl">링크 <span class="hint" style="display:inline">(YouTube 또는 외부 링크)</span></span><div class="stack" style="gap:6px" id="wf-links"></div>
-      <div class="inline" style="margin-top:8px"><input id="wf-url" class="field" placeholder="https:// 주소 붙여넣기" aria-label="링크 주소"><button class="btn sm" id="wf-addurl">추가</button></div>
-      <div class="hint">YouTube 주소는 팝업에서 영상으로 재생돼요. 그 밖의 주소(X 등)는 외부 링크로 들어가고, 영상·사진이 없으면 카드를 누르면 바로 그 링크로 가요. 영상 파일(50MB까지)을 직접 올릴 수도 있어요: <input id="wf-vfile" type="file" accept="video/mp4,video/webm,video/quicktime"></div></div>
+      <div class="inline" style="margin-top:8px"><input id="wf-url" class="field" placeholder="https://" aria-label="링크 주소"><button class="btn sm" id="wf-addurl">추가</button><label class="btn sm" for="wf-vfile" title="영상 파일 직접 올리기 (50MB까지)">영상 파일</label><input id="wf-vfile" type="file" accept="video/mp4,video/webm,video/quicktime" hidden></div></div>
     <div><span class="lbl">썸네일 · 사진</span><div class="thumbs" id="wf-imgs"></div><input id="wf-ifile" type="file" accept="image/*" multiple style="margin-top:8px">
-      <div class="hint">올린 사진은 팝업에 보여요. ★ 표시한 사진이 썸네일이에요 (기본은 첫 번째). YouTube 영상이 있으면 사이트는 YouTube 썸네일을 먼저 써요.</div></div>
+      <div class="hint">★ 표시한 사진이 썸네일이에요. 사진이나 ★을 누르면 썸네일로 바뀌어요.</div></div>
     <div class="foot"><button class="btn" id="wf-cancel">취소</button><button class="btn primary" id="wf-save">${id ? "수정" : "등록"}</button></div></div>`);
   const parts = () => {
     const all = [...new Set([...D.works.flatMap((x) => list(x.category)), ...F.cats])].sort(ko);
@@ -414,7 +413,7 @@ function workForm(id) {
     ].join("");
     if (F.thumbnail && F.thumbnail !== F.thumbOnly && !F.images.includes(F.thumbnail)) F.thumbnail = F.thumbOnly || F.images[0] || "";
     if (!F.thumbnail) F.thumbnail = F.thumbOnly || F.images[0] || "";
-    const tile = (u, attrs, note) => `<div class="one${u === F.thumbnail ? " star" : ""}">${imgTag(u)}<button type="button" class="st" data-star="${esc(u)}" aria-label="썸네일로 쓰기" title="썸네일로 쓰기">★</button><button ${attrs} aria-label="빼기">×</button>${note ? `<span class="note">${note}</span>` : ""}</div>`;
+    const tile = (u, attrs, note) => `<div class="one${u === F.thumbnail ? " star" : ""}" data-star="${esc(u)}" title="썸네일로 쓰기">${imgTag(u)}<button type="button" class="st" data-star="${esc(u)}" aria-label="썸네일로 쓰기" title="썸네일로 쓰기">★</button><button ${attrs} aria-label="빼기">×</button>${note ? `<span class="note">${note}</span>` : ""}</div>`;
     $("wf-imgs").innerHTML = [
       ...(F.thumbOnly ? [tile(F.thumbOnly, "data-rto", "썸네일만")] : []),
       ...F.images.map((u, i) => tile(u, `data-ri="${i}"`)),
@@ -428,7 +427,7 @@ function workForm(id) {
     if (e.target.closest("[data-rl]")) { F.link_url = ""; parts(); }
     const ri = e.target.closest("[data-ri]"); if (ri) { F.images.splice(+ri.dataset.ri, 1); parts(); }
     if (e.target.closest("[data-rto]")) { if (F.thumbnail === F.thumbOnly) F.thumbnail = ""; F.thumbOnly = ""; parts(); }
-    const st = e.target.closest("[data-star]"); if (st) { F.thumbnail = st.dataset.star; parts(); }
+    const st = !e.target.closest("[data-ri],[data-rto]") && e.target.closest("[data-star]"); if (st) { F.thumbnail = st.dataset.star; parts(); }
   });
   $("wf-addcat").onclick = () => { const v = $("wf-newcat").value.trim(); if (v && !F.cats.includes(v)) F.cats.push(v); $("wf-newcat").value = ""; parts(); };
   $("wf-addurl").onclick = () => {
