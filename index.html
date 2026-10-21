@@ -226,14 +226,14 @@ function openWork(i) {
   const player = (u) => ytId(u)
     ? (local
       ? `<a class="ytcard ${isShort(u) ? "short" : ""}" href="${ytLink(u)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${ytId(u)}/hqdefault.jpg" alt="" ${IMGERR}><span>${SVG.play}YouTube에서 보기</span></a>`
-      : `<iframe class="${isShort(u) ? "short" : ""}" src="https://www.youtube.com/embed/${ytId(u)}?rel=0&playsinline=1" title="영상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><a class="ytout" href="${ytLink(u)}" target="_blank" rel="noopener">재생이 안 되면 YouTube에서 보기 →</a>`)
+      : `<iframe class="${isShort(u) ? "short" : ""}" src="https://www.youtube.com/embed/${ytId(u)}?rel=0&playsinline=1" title="영상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
     : `<video src="${esc(u)}" controls playsinline preload="metadata"${w.thumbnail ? ` poster="${esc(w.thumbnail)}"` : ""}></video>`;
   const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
   $("dlg").innerHTML = `<div class="dlg">
     <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">${SVG.close}</button></div>
+    ${w.description ? `<p class="desc" style="margin-top:-8px">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
     <div class="row">${list(w.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}<span class="date">${esc((w.date || "").replace(/-/g, "."))}</span></div>
     ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" style="border-radius:12px" ${IMGERR}></div>` : ""}
-    ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
     ${imgs.length ? `<div class="gallery">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
     ${w.link_url ? `<div><a class="btn primary" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">${linkIcon(w.link_url)}원본 보기</a></div>` : ""}
   </div>`;
