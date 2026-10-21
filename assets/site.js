@@ -17,7 +17,7 @@ const catClass = (c) => (c === "3D" ? "T3D" : String(c).replace(/[^\w-]/g, ""));
 
 // 경력: 설정의 '자기소개' 칸을 한 줄에 하나씩 읽음.
 //  "키동부 2025.02 ~"  → 현재 경력
-//  "- 리피스튜디오"     → 맨 앞에 - 를 붙이면 지난 경력 (기간이 없으면 '이전'으로 표시)
+//  "- Studio Leapy"    → 맨 앞에 - 를 붙이면 지난 경력 (기간이 없으면 '이전'으로 표시)
 function career(intro) {
   return String(intro || "").split("\n").map((l) => l.trim()).filter(Boolean).map((l) => {
     const past = /^[-–·]\s*/.test(l);
