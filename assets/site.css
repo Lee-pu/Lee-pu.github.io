@@ -85,10 +85,10 @@ button, input, select { font: inherit; color: inherit; }
 .foot { background: var(--ink); color: #fff; border-radius: 48px 48px 0 0; position: relative; margin-top: -40px; }
 .foot-in { padding: 7vh var(--gutter) 32px; }
 .foot h2 { margin: 0; font-weight: 800; font-size: clamp(56px, 8.4vw, 144px); line-height: .9; letter-spacing: -.055em; }
-.foot-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-top: 7vh; }
+.foot-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-top: 26px; }
 .foot-label { display: flex; align-items: center; gap: 8px; font-family: var(--kr); font-size: 15px; font-weight: 700; color: var(--pink-soft); }
 .foot-label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
-.foot-msg { margin: 0 0 18px; font-family: var(--kr); font-size: 14px; line-height: 1.75; color: #b9b0b4; white-space: pre-line; }
+.foot-msg { margin: 0 0 38px; font-family: var(--kr); font-size: 14px; line-height: 1.75; color: #b9b0b4; white-space: pre-line; }
 .foot-contact { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .foot-links { display: flex; gap: 8px; flex-wrap: wrap; }
 .foot-links a { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font-size: 12px; font-weight: 600; text-decoration: none; border: 1px solid #4b4549; color: #fff; }
