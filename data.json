@@ -178,7 +178,7 @@
   },
   {
    "id": "843048d85a",
-   "title": "'Peppy Twintail' Booth 상품 모델",
+   "title": "KOUBLY 님 'Peppy Twintail' Booth 상품 모델",
    "category": "BOOTH",
    "date": "2026-08-02",
    "description": "'KOUBLY - Peppy Twintail | 양갈래 '밀피' 모델\n상품 링크 : https://booth.pm/ko/items/8675251",
@@ -186,7 +186,8 @@
    "images": [],
    "video_urls": [],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "a6f1d28b10",
