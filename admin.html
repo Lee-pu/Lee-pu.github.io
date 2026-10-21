@@ -318,6 +318,8 @@ async function boot() {
   }
   if (!C.token) return connectView();
   busy("불러오는 중…");
+  // 저장소 이름이 바뀌었으면 새 이름으로 맞춤 (GitHub가 옛 이름을 새 저장소로 넘겨 줌)
+  try { const r = await api(R()); if (r.name && (r.name !== C.repo || r.owner?.login !== C.owner)) { C = { ...C, repo: r.name, owner: r.owner?.login || C.owner }; store.set(C); } } catch (e) { /* 아래에서 다시 안내 */ }
   try { D = normalize(await readData(await headSha())); }
   catch (e) { busy(false); return connectView(e.message); }
   busy(false);
