@@ -371,7 +371,7 @@ function workForm(id) {
     <div><span class="lbl">카테고리 <span class="hint" style="display:inline">(여러 개 가능)</span></span><div class="chips" id="wf-cats"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-newcat" class="field" placeholder="새 카테고리" aria-label="새 카테고리"><button class="btn sm" id="wf-addcat">추가</button></div></div>
     <div class="two"><div><label class="lbl" for="wf-date">날짜</label><input id="wf-date" type="date" class="field" value="${esc(F.date)}"></div>
-      <div><span class="lbl">공개</span><label class="switch"><input id="wf-pub" type="checkbox" ${F.public ? "checked" : ""}>사이트에 보이기</label></div></div>
+      <div><span class="lbl">공개</span><label class="switch"><input id="wf-pub" type="checkbox" ${F.public ? "checked" : ""}>사이트에 보이기</label><div class="hint">꺼도 사이트에서만 숨겨지고, 공개 저장소의 data.json에는 남아요. 남에게 보이면 안 되는 내용은 넣지 마세요.</div></div></div>
     <div><label class="lbl" for="wf-desc">설명</label><textarea id="wf-desc" class="field" rows="3">${esc(F.description)}</textarea></div>
     <div><span class="lbl">영상</span><div class="stack" style="gap:6px" id="wf-vids"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-yt" class="field" placeholder="YouTube 주소 붙여넣기" aria-label="YouTube 주소"><button class="btn sm" id="wf-addyt">추가</button></div>
