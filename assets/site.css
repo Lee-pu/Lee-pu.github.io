@@ -91,9 +91,10 @@ button, input, select { font: inherit; color: inherit; }
 .foot-msg { margin: 0 0 38px; font-family: var(--kr); font-size: 14px; line-height: 1.75; color: #b9b0b4; white-space: pre-line; }
 .foot-contact { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .foot-links { display: flex; gap: 8px; flex-wrap: wrap; }
-.foot-links a { display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font-size: 12px; font-weight: 600; text-decoration: none; border: 1px solid #4b4549; color: #fff; }
+.foot-links a, .foot-dc { appearance: none; background: none; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; font-size: 12px; font-weight: 600; text-decoration: none; border: 1px solid #4b4549; color: #fff; }
 .foot-links a:first-child { background: var(--pink); border-color: var(--pink); color: var(--pink-ink); font-weight: 800; }
-.foot-links a:hover { border-color: var(--pink); color: var(--pink-soft); }
+.foot-links a:hover, .foot-dc:hover { border-color: var(--pink); color: var(--pink-soft); }
+.foot-dc.done { border-color: var(--pink); color: var(--pink-soft); }
 .foot-links a:first-child:hover { color: var(--pink-ink); filter: brightness(1.08); }
 .foot-copy { font-size: 13px; color: #9a9196; }
 .foot.flat { margin-top: 0; }

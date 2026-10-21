@@ -55,8 +55,7 @@
 <script>
 (async () => {
 "use strict";
-const { esc, list, safe, ytId, isShort, IMGERR, catClass, ymd } = LP;
-const catLabel = (c) => LP.catLabel(c).toUpperCase(); // 워크 페이지는 카테고리를 대문자로
+const { esc, list, safe, ytId, isShort, IMGERR, catLabel, catClass, ymd } = LP;
 const D = await LP.boot("works");
 const $ = (id) => document.getElementById(id);
 const ORDER = ["CINEMACHINE", "3D", "DESIGN", "BOOTH", "EDIT", "ETC"];

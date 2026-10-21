@@ -11,8 +11,8 @@ const IMGERR = `onerror="this.style.visibility='hidden'"`;
 const ymd = (d) => String(d || "").replace(/-/g, ".");
 
 // 작업 분야 이름 (data.json에는 영문 대문자로 저장됨)
-const CAT = { CINEMACHINE: "Cinemachine", "3D": "3D", DESIGN: "Design", BOOTH: "BOOTH", EDIT: "Edit", ETC: "Etc" };
-const catLabel = (c) => CAT[c] || c;
+// 사이트 전체에서 카테고리는 대문자로 보여요
+const catLabel = (c) => String(c || "").toUpperCase();
 const catClass = (c) => (c === "3D" ? "T3D" : String(c).replace(/[^\w-]/g, ""));
 
 // 경력: 설정의 '자기소개' 칸을 한 줄에 하나씩 읽음.
@@ -110,12 +110,21 @@ function footer() {
           ${msg ? `<p class="foot-msg">${esc(msg)}</p>` : ""}
           <div class="foot-contact">
             <div class="foot-label">Contact</div>
-            <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}>${esc(l.label)}</a>`).join("")}</div>
+            <div class="foot-links">${links.map((l) => `<a href="${esc(safe(l.url))}"${/^mailto:/.test(l.url) ? "" : ' target="_blank" rel="noopener"'}>${esc(l.label)}</a>`).join("")}${s.discord ? `<button type="button" class="foot-dc" data-copy="${esc(s.discord)}" title="누르면 디스코드 아이디가 복사돼요">Discord ${esc(s.discord)}</button>` : ""}</div>
           </div>
         </div>
         <span class="foot-copy">© ${new Date().getFullYear()} ${esc(s.name || "Leepu")}<span class="dot">.</span></span>
       </div>
     </div>`;
+  // 디스코드는 링크가 없어서, 누르면 아이디를 복사해요
+  const dc = el.querySelector(".foot-dc");
+  if (dc) dc.onclick = async () => {
+    const id = dc.dataset.copy, label = dc.textContent;
+    try { await navigator.clipboard.writeText(id); }
+    catch (e) { const t = document.createElement("textarea"); t.value = id; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch (_) { /* 복사 불가 */ } t.remove(); }
+    dc.textContent = "아이디 복사됐어요"; dc.classList.add("done");
+    clearTimeout(dc._t); dc._t = setTimeout(() => { dc.textContent = label; dc.classList.remove("done"); }, 1600);
+  };
 }
 
 async function boot(page) {
