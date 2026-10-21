@@ -96,8 +96,8 @@ function footer() {
   const el = document.getElementById("contact");
   if (!el) return;
   const s = LP.D.site;
-  const title = s.footer_title || "Let's make it\nmove.";
-  const msg = s.message ?? "매 작업마다 최선을 다하며,\n예쁘고 좋은 결과물을 내기 위해 늘 노력하고 있습니다.";
+  const title = s.footer_title || "Let's make it\ncount.";
+  const msg = s.message ?? "모든 작업에 최선을 다하며,\n아름답고 완성도 높은 결과물을 위해 늘 노력합니다.";
   const t = esc(title).replace(/\n/g, "<br>").replace(/([.!?])\s*$/, '<span class="dot">$1</span>');
   const links = [
     ...(s.email ? [{ url: "mailto:" + s.email, label: s.email }] : []),

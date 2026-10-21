@@ -541,7 +541,7 @@ function settingsView() {
         <div><span class="lbl">프로필 이미지</span><input id="s-pfile" type="file" accept="image/*"></div></div>
       <div><label class="lbl" for="s-name">이름</label><input id="s-name" class="field" value="${esc(s.name || "")}"></div>
       <div><label class="lbl" for="s-intro">경력</label><textarea id="s-intro" class="field" rows="3">${esc(s.intro || "")}</textarea><div class="hint">한 줄에 하나씩, 예: 키동부 2025.02 ~ · 지난 경력은 맨 앞에 - 를 붙이면 회색으로 보여요 (예: - 리피스튜디오).</div></div>
-      <div><label class="lbl" for="s-msg">하단 소개 문구</label><textarea id="s-msg" class="field" rows="2">${esc(s.message || "")}</textarea><div class="hint">맨 아래 '커미션 문의' 밑에 보이는 문장이에요. 줄바꿈도 그대로 보여요.</div></div>
+      <div><label class="lbl" for="s-msg">하단 소개 문구</label><textarea id="s-msg" class="field" rows="2">${esc(s.message || "")}</textarea><div class="hint">맨 아래 큰 문구 밑, Contact 위에 보이는 문장이에요. 줄바꿈도 그대로 보여요.</div></div>
       <div><label class="lbl" for="s-email">이메일</label><input id="s-email" class="field" type="email" value="${esc(s.email || "")}"></div>
       <div><span class="lbl">링크</span><div class="stack" style="gap:8px" id="s-links"></div><button class="btn sm" id="s-addlink" style="margin-top:8px">+ 링크 추가</button>
         <div class="hint">X, YouTube, BOOTH 샵 등. 라벨을 비우면 주소가 그대로 보여요.</div></div>
