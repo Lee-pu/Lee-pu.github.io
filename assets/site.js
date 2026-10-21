@@ -60,13 +60,10 @@ function thumbImg(w, extra = "") {
 // 제목에서 버튜버 이름(… 님)과 작품 이름을 나눠요. 예) "디아나 님 'You & 合図'" → 디아나 님 / You & 合図
 function splitTitle(t) {
   t = String(t || "").trim();
-  const m = t.match(/^(.*님)\s+(['"‘“].*)$/) || t.match(/^(.*?님)\s+(.+)$/);
+  const m = t.match(/^(.*님)\s+(.+)$/);
   if (!m) return { who: "", what: t };
-  let what = m[2].trim();
-  // 따옴표로 감싼 부분의 따옴표만 빼요: 'Peppy Twintail' 썸네일 → Peppy Twintail 썸네일
-  const q = what.match(/^(['"‘“])(.*?)(['"’”])(.*)$/);
-  if (q) what = (q[2] + q[4]).trim();
-  return { who: m[1].trim(), what: what || t };
+  // 따옴표·쉼표 같은 문장부호는 적은 그대로 보여요 (자동으로 넣거나 빼지 않음)
+  return { who: m[1].trim(), what: m[2].trim() || t };
 }
 
 function accent(hex) {

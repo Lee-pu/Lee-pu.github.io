@@ -375,14 +375,11 @@ function worksView() {
 // 제목 "이름 님 '작품명'" ↔ 작품명 / 버튜버 이름 (사이트의 splitTitle과 같은 규칙)
 function splitTitle(t) {
   t = String(t || "").trim();
-  const m = t.match(/^(.*님)\s+(['"‘“].*)$/) || t.match(/^(.*?님)\s+(.+)$/);
+  const m = t.match(/^(.*님)\s+(.+)$/);
   if (!m) return { who: "", what: t };
-  let what = m[2].trim();
-  const q = what.match(/^(['"‘“])(.*?)(['"’”])(.*)$/);
-  if (q) what = (q[2] + q[4]).trim();
-  return { who: m[1].trim(), what: what || t };
+  return { who: m[1].trim(), what: m[2].trim() || t };
 }
-const joinTitle = (what, who) => { who = who.replace(/\s*님$/, "").trim(); return who ? `${who} 님 '${what}'` : what; };
+const joinTitle = (what, who) => { who = who.replace(/\s*님$/, "").trim(); return who ? `${who} 님 ${what}` : what; }; // 따옴표는 직접 적은 것만
 const isAutoThumb = (u) => /i\.ytimg\.com\//.test(u || "");
 
 function workForm(id) {
