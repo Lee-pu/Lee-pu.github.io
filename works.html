@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Works · Leepu</title>
+<meta name="description" content="Leepu 작업물 · 시네머신 쇼츠, 3D 아바타 세팅, 디자인">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.page { padding: 8vh var(--gutter) 16vh; }
+.page h1 { margin: 0; font-weight: 800; font-size: clamp(56px, 8vw, 132px); line-height: .9; letter-spacing: -.055em; }
+.page h1 > span { display: block; overflow: hidden; padding-bottom: .04em; }
+.lead { margin: 18px 0 0; font-family: var(--kr); font-size: 15px; color: var(--muted); }
+.tabs { position: sticky; top: 60px; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; margin: 40px calc(var(--gutter) * -1) 0; padding: 12px var(--gutter); background: rgba(255,255,255,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.tab { appearance: none; border: 1px solid var(--line); background: #fff; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 700; cursor: pointer; color: var(--ink); }
+.tab small { margin-left: 6px; font-weight: 600; color: var(--muted-2); }
+.tab:hover { border-color: var(--pink); }
+.tab[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.tab[aria-pressed="true"] small { color: var(--pink-soft); }
+.grid { display: flex; gap: 20px; align-items: flex-start; margin-top: 28px; }
+.col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.card { appearance: none; display: block; width: 100%; margin: 0; padding: 0; border: 0; text-align: left; background: #fff; border-radius: 24px; overflow: hidden; cursor: pointer; box-shadow: 0 0 0 1px var(--line); transition: transform .4s var(--ease), box-shadow .4s; text-decoration: none; color: var(--ink); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 0 0 1px var(--line), 0 24px 50px -28px rgba(255,61,139,.55); }
+.card .th { position: relative; overflow: hidden; background: var(--blush-2); }
+.card .th img { width: 100%; height: auto; transition: transform .6s var(--ease); }
+.card .th.sq img { aspect-ratio: 9 / 16; object-fit: cover; }
+.card:hover .th img { transform: scale(1.04); }
+.card .play { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; background: rgba(20,18,20,.7); color: #fff; font-size: 11px; font-weight: 700; }
+.card .bd { padding: 14px 16px 18px; }
+.card .t { font-family: var(--kr); font-size: 15px; font-weight: 700; line-height: 1.45; }
+.card .d { margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--muted-2); }
+@media (max-width: 760px) {
+  .grid, .col { gap: 12px; } .card { border-radius: 18px; } .card .bd { padding: 10px 12px 14px; } .card .t { font-size: 13px; }
+  .tabs { top: 52px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .tabs::-webkit-scrollbar { display: none; } .tab { flex: 0 0 auto; }
+}
+</style>
+</head>
+<body>
+<header class="top" id="top"></header>
+
+<main class="page">
+  <h1><span><span class="up">Works<span class="dot">.</span></span></span></h1>
+  <p class="lead fade" id="lead"></p>
+  <div class="tabs" id="tabs" role="group" aria-label="분야 고르기"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="foot flat" id="contact"></footer>
+<dialog class="dlg" id="dlg" aria-label="작업 자세히 보기"></dialog>
+
+<script src="assets/site.js"></script>
+<script>
+(async () => {
+"use strict";
+const { esc, list, safe, ytId, isShort, IMGERR, catLabel, catClass, ymd } = LP;
+const D = await LP.boot("works");
+const $ = (id) => document.getElementById(id);
+const ORDER = ["CINEMACHINE", "3D", "DESIGN", "BOOTH", "EDIT", "ETC"];
+const cats = [...new Set(D.works.flatMap((w) => list(w.category)))].sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99));
+let cur = "";
+try { cur = new URLSearchParams(location.search).get("cat") || ""; } catch (e) { /* 없음 */ }
+if (!cats.includes(cur)) cur = "";
+
+const count = (c) => D.works.filter((w) => !c || list(w.category).includes(c)).length;
+$("lead").textContent = `전체 ${D.works.length}개 · ` + cats.map((c) => `${catLabel(c)} ${count(c)}`).join(" · ");
+
+function render() {
+  $("tabs").innerHTML = ["", ...cats].map((c) => `<button class="tab" data-cat="${esc(c)}" aria-pressed="${cur === c}">${c ? esc(catLabel(c)) : "전체"}<small>${count(c)}</small></button>`).join("");
+  const rows = D.works.filter((w) => !cur || list(w.category).includes(cur));
+  const n = innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4;
+  const cards = rows.map((w) => {
+    const c = list(w.category)[0] || "";
+    const vid = (w.video_urls || []).length || ytId(w.link_url);
+    return `<a class="card" href="#${encodeURIComponent(w.id)}" data-id="${esc(w.id)}">
+      <div class="th">${w.thumbnail ? `<img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : `<div style="aspect-ratio:4/3"></div>`}
+        <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>${vid ? `<span class="play">▶ 영상</span>` : (w.images || []).length ? `<span class="play">사진 ${w.images.length}</span>` : ""}</div>
+      <div class="bd"><div class="t">${esc(w.title.trim())}</div><div class="d">${esc(ymd(w.date))}</div></div>
+    </a>`;
+  });
+  // 최신순이 왼쪽→오른쪽으로 읽히도록 칸마다 차례로 나눠 담아요
+  const cols = Array.from({ length: n }, () => []);
+  cards.forEach((c, k) => cols[k % n].push(c));
+  $("grid").innerHTML = rows.length ? cols.map((c) => `<div class="col">${c.join("")}</div>`).join("") : `<p class="empty">작업물이 없어요</p>`;
+  $("grid").dataset.n = n;
+}
+addEventListener("resize", () => { const n = innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4; if (+$("grid").dataset.n !== n) render(); });
+
+function open(id) {
+  const w = D.works.find((x) => x.id === id);
+  if (!w) return;
+  const vids = w.video_urls || [], imgs = w.images || [], yt = ytId(w.link_url);
+  // YouTube는 사이트 주소를 확인해서 재생을 허락해요. 파일을 바로 열면(file://) 주소가 없어 오류가 나므로 YouTube로 가는 카드를 대신 보여 줘요.
+  const local = /^(file|blob|about):/.test(location.protocol);
+  const ytLink = (u) => isShort(u) ? `https://www.youtube.com/shorts/${ytId(u)}` : `https://www.youtube.com/watch?v=${ytId(u)}`;
+  const player = (u) => ytId(u)
+    ? (local
+      ? `<a class="ytcard ${isShort(u) ? "short" : ""}" href="${ytLink(u)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${ytId(u)}/hqdefault.jpg" alt="" ${IMGERR}><span>▶ YouTube에서 보기</span></a>`
+      : `<iframe class="${isShort(u) ? "short" : ""}" src="https://www.youtube.com/embed/${ytId(u)}?rel=0&playsinline=1" title="영상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
+    : `<video src="${esc(u)}" controls playsinline preload="metadata"${w.thumbnail ? ` poster="${esc(w.thumbnail)}"` : ""}></video>`;
+  const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
+  $("dlg").innerHTML = `<div class="dlg-in">
+    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">✕</button></div>
+    ${w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
+    <div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>
+    ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" ${IMGERR}></div>` : ""}
+    ${imgs.length ? `<div class="gallery">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
+    ${w.link_url && !yt ? `<a class="btn-out" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">원본 보기 ↗</a>` : ""}
+  </div>`;
+  $("x").onclick = () => $("dlg").close();
+  if (!$("dlg").open) $("dlg").showModal();
+}
+const close = () => { $("dlg").innerHTML = ""; if (location.hash) history.replaceState(null, "", location.pathname + location.search); };
+$("dlg").addEventListener("close", close);
+$("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
+
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-cat],[data-id]");
+  if (!t) return;
+  if (t.dataset.cat !== undefined) {
+    cur = t.dataset.cat;
+    history.replaceState(null, "", cur ? `?cat=${encodeURIComponent(cur)}` : location.pathname);
+    render();
+  } else if (t.dataset.id) {
+    e.preventDefault();
+    history.replaceState(null, "", "#" + encodeURIComponent(t.dataset.id));
+    open(t.dataset.id);
+  }
+});
+window.addEventListener("hashchange", () => { const id = decodeURIComponent(location.hash.slice(1)); id ? open(id) : $("dlg").open && $("dlg").close(); });
+
+render();
+if (location.hash) open(decodeURIComponent(location.hash.slice(1)));
+})();
+</script>
+</body>
+</html>

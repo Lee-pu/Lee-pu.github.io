@@ -7,325 +7,205 @@
 <meta name="description" content="Leepu 포트폴리오 · 시네머신 쇼츠, 3D 아바타 세팅, 디자인">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-/* 레이아웃: 위쪽 프로필 → 탭(작업물 / 보유 아이템) → 카드 격자. 포인트 색은 data.json의 accent_color */
-:root {
-  --accent: #E5007E;
-  --accent-ink: #ffffff;
-  --bg: #faf8f9;
-  --surface: #ffffff;
-  --fg: #1d1a1c;
-  --muted: #6f6970;
-  --line: #ece6ea;
-  --chip: #f3eef1;
-  --ok-bg: #e4f6ec; --ok-fg: #17663f;
-  --shadow: 0 1px 2px rgba(40,10,30,.05), 0 8px 24px -12px rgba(40,10,30,.18);
-  --font: "Inter", "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --r: 14px;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #141113; --surface: #1d191c; --fg: #f2edf0; --muted: #a39aa1; --line: #2e282c; --chip: #2a2428;
-  --ok-bg: #143323; --ok-fg: #8fe0b2; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6); color-scheme: dark } }
-:root[data-theme="dark"] {
-  --bg: #141113; --surface: #1d191c; --fg: #f2edf0; --muted: #a39aa1; --line: #2e282c; --chip: #2a2428;
-  --ok-bg: #143323; --ok-fg: #8fe0b2; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6); color-scheme: dark }
+/* ── 첫 화면 ── */
+.hero { padding: 9vh var(--gutter) 0; text-align: center; }
+.badge { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--blush); color: #d61f6c; font-size: 13px; font-weight: 700; }
+.hero h1 { margin: 26px 0 0; font-weight: 800; font-size: clamp(46px, 8.6vw, 140px); line-height: .98; letter-spacing: -.05em; }
+.hero h1 > span { display: block; overflow: hidden; padding-bottom: .04em; }
+.clip { overflow: hidden; }
 
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.6 var(--font); }
-img { max-width: 100%; display: block; }
-a { color: inherit; }
-button, input, select { font: inherit; color: inherit; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-[hidden] { display: none !important; }
-
-.wrap { max-width: 1200px; margin: 0 auto; padding-block: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.strips { margin-top: 8vh; padding-bottom: 4vh; overflow: hidden; }
+.strips .tilt { width: 110vw; margin-left: -5vw; }
+.strips .mq + .mq { margin-top: 16px; }
+.strips .mq-track { padding: 8px 0; }
+.strips a { flex: 0 0 auto; display: block; border-radius: 14px; overflow: hidden; background: var(--blush-2); }
+.strips img { width: 100%; height: 100%; object-fit: cover; }
+.sA a { width: 200px; aspect-ratio: 9 / 16; }
+.sB a { width: 300px; aspect-ratio: 4 / 3; }
 
 /* 프로필 */
-/* 높이는 프로필 사진에 맞춰 고정: 소개를 펼치면 글이 사진 중앙을 기준으로 위아래로 고르게 늘어남 */
-.hero { box-sizing: border-box; height: calc(112px + 44px + 28px); padding-block: 44px 28px; display: flex; gap: 22px; align-items: center; }
-.avatar { flex: 0 0 auto; width: 112px; height: 112px; border-radius: 28px; overflow: hidden; background: var(--chip); box-shadow: var(--shadow); }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-.pinfo { flex: 1; min-width: 0; display: grid; gap: 4px; }
-.pname { appearance: none; border: 0; background: none; padding: 0; margin: 0; justify-self: start; text-align: left; color: var(--fg); font: 800 clamp(30px, 5.5vw, 50px)/1.05 var(--font); letter-spacing: -0.03em; }
-button.pname { cursor: pointer; }
-.pname .dot { color: var(--accent); display: inline-block; transition: transform .3s; }
-button.pname:hover .dot, .pname[aria-expanded="true"] .dot { transform: translateY(-4px); }
-.intro-wrap { display: grid; grid-template-rows: 0fr; opacity: 0; margin-top: -4px; transition: grid-template-rows .3s ease, opacity .25s ease, margin-top .3s ease; }
-.intro-wrap.open { grid-template-rows: 1fr; opacity: 1; margin-top: 0; }
-.intro { overflow: hidden; margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); white-space: pre-wrap; max-width: 60ch; }
-.links { display: flex; align-items: center; gap: 4px; min-width: 0; margin-left: -3px; }
-.ibtn { appearance: none; flex: 0 0 auto; width: 22px; height: 26px; border: 0; padding: 0; display: grid; place-items: center; background: none; color: var(--muted); cursor: pointer; text-decoration: none; transition: color .2s, transform .2s; }
-.ibtn .ico { width: 16px; height: 16px; }
-.ibtn:hover { color: var(--accent); }
-.ibtn[aria-expanded="true"] { color: var(--accent); }
-.toolpanel { margin-left: 4px; flex: 0 1 auto; min-width: 0; max-width: 0; opacity: 0; display: flex; gap: 6px; overflow: hidden; transition: max-width .45s ease, opacity .3s ease; scrollbar-width: none; }
-.toolpanel::-webkit-scrollbar { display: none; }
-.toolpanel.open { max-width: 900px; opacity: 1; overflow-x: auto; }
-.tool { flex: 0 0 auto; font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--chip); color: var(--fg); white-space: nowrap; }
-.ico { width: 16px; height: 16px; flex-shrink: 0; }
-@media (max-width: 560px) { .hero { gap: 16px; height: calc(84px + 32px + 28px); padding-top: 32px; } .avatar { width: 84px; height: 84px; border-radius: 22px; } .pinfo { gap: 4px; } .intro-wrap { margin-top: -4px; } .intro-wrap.open { margin-top: 0; } }
+.about { padding: 16vh var(--gutter) 12vh; display: flex; flex-direction: column; align-items: center; text-align: center; scroll-margin-top: 40px; }
+.orb { position: relative; width: 300px; height: 300px; }
+.orb::before { content: ""; position: absolute; inset: -26px; border-radius: 50%; background: var(--blush); }
+.orb::after { content: ""; position: absolute; inset: -46px; border-radius: 50%; border: 1.5px dashed #f6b8d2; }
+.orb img { position: relative; z-index: 1; width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 30px 60px -30px rgba(20,18,20,.45); background: var(--blush-2); }
+.orb .pill { position: absolute; z-index: 2; box-shadow: 0 12px 24px -14px rgba(20,18,20,.4); animation: bob 4s ease-in-out infinite; }
+.orb .p1 { left: -44px; top: 36px; }
+.orb .p2 { right: -82px; top: 90px; animation-delay: -1.2s; }
+.orb .p3 { left: -70px; bottom: 30px; animation-delay: -2.1s; }
+.orb .p4 { right: -64px; bottom: -4px; animation-delay: -.6s; }
+@keyframes bob { 50% { translate: 0 -8px; } }
+.about h2 { margin: 64px 0 0; font-weight: 800; font-size: clamp(52px, 5.6vw, 92px); line-height: .9; letter-spacing: -.055em; }
+.info { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 32px; }
+.tools { margin: 0; font-size: 13px; font-weight: 600; color: var(--muted); }
+.tools i { font-style: normal; color: var(--pink); padding: 0 3px; }
+.tools span { white-space: nowrap; }
+.rule { width: 24px; height: 1px; margin: 12px 0 6px; background: #f1c4d7; }
+.lbl { font-size: 11px; font-weight: 800; letter-spacing: .18em; color: var(--pink); }
+.tl { display: flex; align-items: flex-start; justify-content: center; margin-top: 6px; }
+.st { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px; }
+.st::after { content: ""; position: absolute; left: 50%; top: 5px; width: 100%; height: 2px; background: var(--pink); }
+.st.past::after { background: #ddd5d8; }
+.st:last-child::after { width: 60%; background: repeating-linear-gradient(90deg, #f1a6c6 0 6px, transparent 6px 11px); }
+.st:last-child::before { content: "→"; position: absolute; left: calc(110% + 4px); top: -1px; font-size: 12px; font-weight: 800; line-height: 12px; color: var(--pink); }
+.st b { position: relative; z-index: 1; width: 12px; height: 12px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 4px var(--blush); }
+.st.past b { background: #cfc6ca; box-shadow: 0 0 0 4px #f4eff1; }
+.st small { font-size: 12px; font-weight: 700; color: #7d7579; }
+.st strong { font-family: var(--kr); font-size: 15px; font-weight: 900; }
+.st.past small, .st.past strong { color: #a9a0a4; }
 
-/* 탭 */
-.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
-.tabs .wrap { display: flex; gap: 4px; }
-.tab { appearance: none; border: 0; background: none; padding: 14px 6px; margin-right: 18px; font-weight: 700; font-size: 16px; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
-.tab[aria-selected="true"] { color: var(--fg); border-color: var(--accent); }
-.tab .n { font-weight: 500; font-size: 13px; margin-left: 4px; color: var(--muted); font-variant-numeric: tabular-nums; }
-
-main.wrap { padding-block: 24px 64px; }
-.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 20px; }
-.chip { appearance: none; border: 1px solid var(--line); background: var(--surface); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); }
-.chip:hover { color: var(--fg); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.field { height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); min-width: 0; }
-.search { flex: 1 1 220px; max-width: 320px; }
-.toggle { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; cursor: pointer; user-select: none; }
-.count { font-size: 13px; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
-
-/* 작업물 카드 */
-.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-.card { display: block; text-align: left; width: 100%; padding: 0; border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); overflow: hidden; cursor: pointer; text-decoration: none; transition: transform .25s, box-shadow .25s; }
-.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.thumb { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: var(--chip); overflow: hidden; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.card:hover .thumb img { transform: scale(1.04); }
-.badge { position: absolute; bottom: 8px; right: 8px; display: inline-flex; gap: 4px; align-items: center; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(0,0,0,.62); color: #fff; }
-.badge .ico { width: 12px; height: 12px; }
-.body { padding: 14px 16px 16px; display: grid; gap: 8px; }
-.title { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-.cat { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--accent); }
-.date { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+/* 작업 타일 */
+.works { padding: 6vh var(--gutter) 14vh; }
+.works .sub { font-family: var(--kr); font-size: 14px; color: #7d7579; }
+.bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 22vw; gap: 16px; margin-top: 48px; }
+.tile { position: relative; overflow: hidden; border-radius: 28px; display: block; text-decoration: none; background: var(--blush); color: var(--ink); }
+.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.tile:hover img { transform: scale(1.06); }
+.tile .cap { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.95); transform: translateY(12px); opacity: 0; transition: transform .45s var(--ease), opacity .35s; }
+.tile:hover .cap, .tile:focus-visible .cap { transform: none; opacity: 1; }
+.tile .cap b { display: block; font-family: var(--kr); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tile .cap small { font-size: 12px; color: #7d7579; }
+.c2 { grid-column: span 2; } .r2 { grid-row: span 2; }
+.works .foot-more { display: flex; justify-content: center; margin-top: 40px; }
 
 /* 아이템 */
-.notice { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: var(--muted); white-space: pre-wrap; margin-bottom: 20px; }
-.items { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.items .title { font-size: 13.5px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.8em; }
-.av { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--chip); color: var(--fg); border: 0; cursor: pointer; }
-.av:hover { background: color-mix(in srgb, var(--accent) 18%, var(--chip)); }
-.ok { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--ok-bg); color: var(--ok-fg); }
-.go { font-size: 12px; font-weight: 600; color: var(--accent); margin-left: auto; text-decoration: none; }
-.go:hover { text-decoration: underline; }
-.items .card { cursor: default; }
-.items .card:hover { transform: none; }
+.items { padding: 11vh 0 18vh; background: var(--blush); }
+.items .sec-head { padding: 0 var(--gutter); }
+.items h2 { margin: 0; font-weight: 800; font-size: clamp(48px, 7vw, 120px); line-height: .9; letter-spacing: -.05em; }
+.items .note { margin: 0; text-align: right; font-family: var(--kr); font-size: 15px; line-height: 1.75; color: #6b4a58; white-space: pre-line; }
+.items .mq { margin-top: 72px; }
+.items .mq + .mq { margin-top: 16px; }
+.icard { flex: 0 0 auto; width: 210px; background: #fff; border-radius: 18px; padding: 10px; text-decoration: none; color: var(--ink); }
+.icard img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; background: var(--blush-2); }
+.icard span { display: block; margin-top: 8px; font-size: 13px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.items .foot-more { display: flex; justify-content: center; margin-top: 44px; }
 
-.empty { text-align: center; color: var(--muted); padding: 64px 0; }
-.more { display: flex; justify-content: center; margin-top: 28px; }
-.btn { appearance: none; border: 1px solid var(--line); background: var(--surface); padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; }
-.btn:hover { border-color: var(--accent); color: var(--accent); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
-
-/* 상세 창 */
-dialog { border: 0; padding: 0; border-radius: 18px; width: min(860px, calc(100vw - 24px)); max-height: calc(100vh - 32px); background: var(--surface); color: var(--fg); box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); }
-dialog::backdrop { background: rgba(10,5,8,.6); backdrop-filter: blur(3px); }
-.dlg { padding: 24px; display: grid; gap: 16px; }
-.dlg-head { display: flex; gap: 12px; align-items: flex-start; }
-.dlg-head h2 { margin: 0; font-size: 20px; line-height: 1.35; flex: 1; min-width: 0; text-wrap: balance; }
-.x { appearance: none; border: 0; background: var(--chip); width: 34px; height: 34px; border-radius: 10px; cursor: pointer; display: grid; place-items: center; flex-shrink: 0; }
-.desc { margin: 0; color: var(--muted); white-space: pre-wrap; word-break: break-word; }
-.media { display: grid; gap: 12px; }
-.media video, .media iframe { width: 100%; border: 0; border-radius: 12px; background: #000; display: block; }
-.media video { max-height: 70vh; }
-.media iframe { aspect-ratio: 16 / 9; max-width: 100%; }
-.media iframe.short { aspect-ratio: 9 / 16; width: min(100%, calc(70vh * 9 / 16), 380px); margin: 0 auto; }
-.ytcard { position: relative; display: block; border-radius: 12px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
-.ytcard.short { aspect-ratio: 9 / 16; width: min(100%, calc(70vh * 9 / 16), 380px); margin: 0 auto; }
-.ytcard img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
-.ytcard span { position: absolute; inset: auto 0 0; display: flex; gap: 6px; align-items: center; justify-content: center; padding: 12px; font-weight: 700; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
-.ytout { font-size: 12px; color: var(--muted); text-align: center; text-decoration: none; margin-top: -4px; }
-.ytout:hover { color: var(--accent); }
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
-.gallery a { border-radius: 10px; overflow: hidden; background: var(--chip); }
-.gallery img { width: 100%; height: auto; }
-footer { border-top: 1px solid var(--line); padding-block: 24px; font-size: 12px; color: var(--muted); }
-
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (max-width: 900px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 44vw; gap: 12px; }
+  .tile { border-radius: 22px; }
+  .tile .cap { transform: none; opacity: 1; padding: 10px 12px; border-radius: 14px; }
+  .items .note { text-align: left; white-space: normal; }
+}
+@media (max-width: 560px) {
+  .sA a { width: 130px; } .sB a { width: 200px; }
+  .about { padding-top: 12vh; }
+  .orb { scale: .7; margin: -45px 0; }
+  .about h2 { margin-top: 64px; }
+  .tools { max-width: 300px; line-height: 2; }
+  .st { width: 92px; } .st strong { font-size: 14px; }
+  .icard { width: 150px; }
+  .items .mq { margin-top: 40px; }
+}
 </style>
 </head>
 <body>
-<header class="wrap hero" id="hero"></header>
-<nav class="tabs" aria-label="페이지">
-  <div class="wrap" role="tablist">
-    <button class="tab" id="tab-works" role="tab" data-v="works">작업물<span class="n" id="n-works"></span></button>
-    <button class="tab" id="tab-items" role="tab" data-v="items">보유 아이템<span class="n" id="n-items"></span></button>
-  </div>
-</nav>
-<main class="wrap" id="page"><p class="empty">불러오는 중…</p></main>
-<footer class="wrap" id="foot"></footer>
-<dialog id="dlg"></dialog>
+<header class="top" id="top"></header>
 
-<script>
-(() => {
-"use strict";
-const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const list = (v) => (Array.isArray(v) ? v : String(v || "").split(",")).map((x) => String(x).trim()).filter(Boolean);
-const safe = (u) => (/^(https?:\/\/|\.?\/|assets\/)/i.test(u || "") ? u : "#");
-const ko = (a, b) => a.localeCompare(b, "ko");
-const ytId = (u) => ((u || "").match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{6,})/) || [])[1] || "";
-const isShort = (u) => /youtube\.com\/shorts\//.test(u || "");
-const IMGERR = `onerror="this.style.visibility='hidden'"`;
-const SVG = {
-  play: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
-  img: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>',
-  link: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
-  wrench: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-  mail: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
-  x: '<svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg>',
-  close: '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>',
-};
-const linkIcon = (u) => (/(^|\/\/|\.)(x|twitter)\.com/i.test(u) ? SVG.x : SVG.link);
+<main>
+  <section class="hero">
+    <div class="clip"><span class="badge up">Commission open · 커미션 받아요</span></div>
+    <h1>
+      <span><span class="up" style="animation-delay:.1s">Characters that</span></span>
+      <span><span class="up" style="animation-delay:.2s">move <span class="dot">beautifully.</span></span></span>
+    </h1>
+  </section>
 
-let D, view = "works";
-const W = { cat: "" };
-const I = { q: "", cat: "", av: "", ok: false, shown: 60 };
-
-// 포인트 색: 밝은 색이면 글자를 검게
-function accent(hex) {
-  if (!/^#[0-9a-f]{6}$/i.test(hex || "")) return;
-  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
-  document.documentElement.style.setProperty("--accent", hex);
-  document.documentElement.style.setProperty("--accent-ink", (r * 299 + g * 587 + b * 114) / 1000 > 160 ? "#1d1a1c" : "#ffffff");
-}
-
-function hero() {
-  const s = D.site, tools = [...(s.tools || [])].sort(ko);
-  document.title = s.name;
-  $("hero").innerHTML = `
-    <div class="avatar">${s.profile_image ? `<img src="${esc(s.profile_image)}" alt="${esc(s.name)}" ${IMGERR}>` : ""}</div>
-    <div class="pinfo">
-      ${s.intro ? `<button class="pname" id="pname" aria-expanded="false" aria-controls="intro-wrap" title="소개 보기">${esc(s.name)}<span class="dot">.</span></button>
-      <div class="intro-wrap" id="intro-wrap"><p class="intro">${esc(s.intro)}</p></div>` : `<h1 class="pname">${esc(s.name)}<span class="dot">.</span></h1>`}
-      <div class="links">
-        ${s.email ? `<a class="ibtn" href="mailto:${esc(s.email)}" title="${esc(s.email)}" aria-label="메일 보내기">${SVG.mail}</a>` : ""}
-        ${(s.links || []).map((l) => `<a class="ibtn" href="${esc(safe(l.url))}" target="_blank" rel="noopener" title="${esc(l.label || l.url)}" aria-label="${esc(l.label || l.url)}">${linkIcon(l.url)}</a>`).join("")}
-        ${tools.length ? `<button class="ibtn" id="tool-btn" aria-expanded="false" aria-controls="toolpanel" title="다룰 수 있는 툴" aria-label="다룰 수 있는 툴 보기">${SVG.wrench}</button>
-        <div class="toolpanel" id="toolpanel">${tools.map((t) => `<span class="tool">${esc(t)}</span>`).join("")}</div>` : ""}
-      </div>
-    </div>`;
-  const tog = (btn, panel) => { if (!btn) return; btn.onclick = () => { const on = btn.getAttribute("aria-expanded") !== "true"; btn.setAttribute("aria-expanded", on); panel.classList.toggle("open", on); }; };
-  tog($("pname"), $("intro-wrap"));
-  tog($("tool-btn"), $("toolpanel"));
-  $("foot").textContent = `© ${new Date().getFullYear()} ${s.name}`;
-  $("n-works").textContent = D.works.length;
-  $("n-items").textContent = D.items.length;
-}
-
-// ───── 작업물 ─────
-function works() {
-  const cats = [...new Set(D.works.flatMap((w) => list(w.category)))].sort(ko);
-  if (W.cat && !cats.includes(W.cat)) W.cat = "";
-  const rows = D.works.filter((w) => !W.cat || list(w.category).includes(W.cat));
-  const chip = (v, label) => `<button class="chip" data-cat="${esc(v)}" aria-pressed="${W.cat === v}">${esc(label)}</button>`;
-  $("page").innerHTML = `
-    <div class="bar">${chip("", "전체")}${cats.map((c) => chip(c, c)).join("")}<span class="count">${rows.length}개</span></div>
-    ${rows.length ? `<div class="grid">${rows.map((w) => {
-      const i = D.works.indexOf(w), direct = w.link_url && !(w.images || []).length && !(w.video_urls || []).length;
-      const kind = (w.video_urls || []).length || ytId(w.link_url) ? `<span class="badge">${SVG.play}영상</span>` : (w.images || []).length ? `<span class="badge">${SVG.img}${w.images.length}</span>` : direct ? `<span class="badge">${linkIcon(w.link_url)}링크</span>` : "";
-      const inner = `<div class="thumb">${w.thumbnail ? `<img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : ""}${kind}</div>
-        <div class="body"><h3 class="title" title="${esc(w.title)}">${esc(w.title.trim())}</h3>
-          <div class="row">${list(w.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}<span class="date">${esc((w.date || "").replace(/-/g, "."))}</span></div></div>`;
-      return direct ? `<a class="card" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">${inner}</a>` : `<button class="card" data-work="${i}">${inner}</button>`;
-    }).join("")}</div>` : `<p class="empty">작업물이 없습니다</p>`}`;
-}
-function openWork(i) {
-  const w = D.works[i], vids = w.video_urls || [], imgs = w.images || [];
-  const yt = ytId(w.link_url);
-  // YouTube는 사이트 주소(Referer)를 확인해서 재생을 허락함. 컴퓨터에서 바로 연 파일(file://)이나 미리보기에서는 주소가 없어 오류 153이 나므로 YouTube로 가는 카드를 대신 보여 줌
-  const local = /^(file|blob|about):/.test(location.protocol);
-  const ytLink = (u) => `https://www.youtube.com/${isShort(u) ? "shorts" : "watch?v="}${isShort(u) ? "/" : ""}${ytId(u)}`;
-  const player = (u) => ytId(u)
-    ? (local
-      ? `<a class="ytcard ${isShort(u) ? "short" : ""}" href="${ytLink(u)}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${ytId(u)}/hqdefault.jpg" alt="" ${IMGERR}><span>${SVG.play}YouTube에서 보기</span></a>`
-      : `<iframe class="${isShort(u) ? "short" : ""}" src="https://www.youtube.com/embed/${ytId(u)}?rel=0&playsinline=1" title="영상" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`)
-    : `<video src="${esc(u)}" controls playsinline preload="metadata"${w.thumbnail ? ` poster="${esc(w.thumbnail)}"` : ""}></video>`;
-  const media = [...vids, ...(yt && !vids.length ? [w.link_url] : [])];
-  $("dlg").innerHTML = `<div class="dlg">
-    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기">${SVG.close}</button></div>
-    ${w.description ? `<p class="desc" style="margin-top:-8px">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : ""}
-    <div class="row">${list(w.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}<span class="date">${esc((w.date || "").replace(/-/g, "."))}</span></div>
-    ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : !imgs.length && w.thumbnail ? `<div class="media"><img src="${esc(w.thumbnail)}" alt="" style="border-radius:12px" ${IMGERR}></div>` : ""}
-    ${imgs.length ? `<div class="gallery">${imgs.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
-    ${w.link_url ? `<div><a class="btn primary" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">${linkIcon(w.link_url)}원본 보기</a></div>` : ""}
-  </div>`;
-  $("x").onclick = () => $("dlg").close();
-  $("dlg").showModal();
-}
-$("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").close(); });
-$("dlg").addEventListener("close", () => { $("dlg").innerHTML = ""; }); // 영상 멈춤
-
-// ───── 보유 아이템 ─────
-function items() {
-  const uniq = (arr) => { const m = new Map(); arr.forEach((x) => m.has(x.toLowerCase()) || m.set(x.toLowerCase(), x)); return [...m.values()].sort(ko); };
-  const cats = uniq(D.items.flatMap((i) => list(i.category))), avs = uniq(D.items.flatMap((i) => list(i.avatar)));
-  const opt = (arr, cur, all) => `<option value="">${all}</option>` + arr.map((x) => `<option ${cur.toLowerCase() === x.toLowerCase() ? "selected" : ""}>${esc(x)}</option>`).join("");
-  $("page").innerHTML = `
-    ${D.site.items_notice ? `<div class="notice">${esc(D.site.items_notice)}</div>` : ""}
-    <div class="bar">
-      <input id="i-q" class="field search" type="search" placeholder="아이템 이름 검색" aria-label="아이템 이름 검색" value="${esc(I.q)}">
-      <select id="i-cat" class="field" aria-label="카테고리">${opt(cats, I.cat, "전체 카테고리")}</select>
-      <select id="i-av" class="field" aria-label="아바타">${opt(avs, I.av, "전체 아바타")}</select>
-      <label class="toggle"><input id="i-ok" type="checkbox" ${I.ok ? "checked" : ""}>방송 가능만</label>
-      <span class="count" id="i-count"></span>
+  <section class="strips fade" style="animation-delay:.5s" aria-label="작업 미리보기">
+    <div class="tilt">
+      <div class="mq sA"><div class="mq-track" id="stripA"></div></div>
+      <div class="mq sB"><div class="mq-track rev" id="stripB"></div></div>
     </div>
-    <div id="i-list"></div>`;
-  $("i-q").oninput = (e) => { I.q = e.target.value; I.shown = 60; itemList(); };
-  $("i-cat").onchange = (e) => { I.cat = e.target.value; I.shown = 60; itemList(); };
-  $("i-av").onchange = (e) => { I.av = e.target.value; I.shown = 60; itemList(); };
-  $("i-ok").onchange = (e) => { I.ok = e.target.checked; I.shown = 60; itemList(); };
-  itemList();
-}
-function itemList() {
-  const q = I.q.toLowerCase(), has = (arr, v) => !v || arr.some((x) => x.toLowerCase() === v.toLowerCase());
-  const rows = D.items.filter((i) => (!q || i.name.toLowerCase().includes(q)) && has(list(i.category), I.cat) && has(list(i.avatar), I.av) && (!I.ok || i.broadcast_available));
-  $("i-count").textContent = `${rows.length}개`;
-  $("i-list").innerHTML = rows.length ? `<div class="grid items">${rows.slice(0, I.shown).map((i) => `
-    <article class="card">
-      <a class="thumb" href="${esc(safe(i.product_link))}" target="_blank" rel="noopener" style="display:block">${i.thumbnail ? `<img src="${esc(i.thumbnail)}" alt="" loading="lazy" ${IMGERR}>` : ""}</a>
-      <div class="body">
-        <div class="row">${list(i.category).map((c) => `<span class="cat">${esc(c)}</span>`).join("")}</div>
-        <h3 class="title" title="${esc(i.name)}">${esc(i.name)}</h3>
-        ${list(i.avatar).length ? `<div class="row">${list(i.avatar).map((a) => `<button class="av" data-av="${esc(a)}">${esc(a)}</button>`).join("")}</div>` : ""}
-        <div class="row">${i.broadcast_available ? `<span class="ok">방송 가능</span>` : ""}${i.product_link ? `<a class="go" href="${esc(safe(i.product_link))}" target="_blank" rel="noopener">BOOTH에서 보기 →</a>` : ""}</div>
-      </div>
-    </article>`).join("")}</div>
-    ${rows.length > I.shown ? `<div class="more"><button class="btn" id="i-more">더 보기 (${rows.length - I.shown}개 남음)</button></div>` : ""}` : `<p class="empty">조건에 맞는 아이템이 없습니다</p>`;
-  if ($("i-more")) $("i-more").onclick = () => { I.shown += 60; itemList(); };
-}
+  </section>
 
-// ───── 화면 전환 ─────
-function show(v) {
-  view = v === "items" ? "items" : "works";
-  document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.v === view));
-  view === "works" ? works() : items();
-}
-document.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-v],[data-cat],[data-work],[data-av]");
-  if (!t) return;
-  if (t.dataset.v) { if (location.hash !== "#" + t.dataset.v) location.hash = t.dataset.v; else show(t.dataset.v); }
-  else if (t.dataset.cat !== undefined) { W.cat = W.cat === t.dataset.cat ? "" : t.dataset.cat; works(); }
-  else if (t.dataset.work) openWork(+t.dataset.work);
-  else if (t.dataset.av) { I.av = t.dataset.av; I.shown = 60; items(); }
-});
-window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+  <section class="about" id="about" aria-label="프로필"></section>
 
+  <section class="works" id="works">
+    <div class="sec-head rv">
+      <h2 class="h-big">Works<span class="dot">.</span></h2>
+      <span class="sub" id="w-count"></span>
+    </div>
+    <div class="bento" id="bento"></div>
+    <div class="foot-more"><a class="more-link" href="works.html">전체 작업 보기 →</a></div>
+  </section>
+
+  <section class="items" id="items">
+    <div class="sec-head rv">
+      <h2>Items <span class="dot" id="i-count"></span></h2>
+      <p class="note" id="i-note"></p>
+    </div>
+    <div class="mq"><div class="mq-track" id="itemsA"></div></div>
+    <div class="mq"><div class="mq-track rev" id="itemsB"></div></div>
+    <div class="foot-more"><a class="more-link" href="items.html">전체 아이템 보기 →</a></div>
+  </section>
+</main>
+
+<footer class="foot" id="contact"></footer>
+
+<script src="assets/site.js"></script>
+<script>
 (async () => {
-  try {
-    D = window.SITE_DATA || await (await fetch("data.json", { cache: "no-cache" })).json();
-  } catch (e) {
-    $("page").innerHTML = `<p class="empty">data.json을 불러오지 못했습니다. 파일을 컴퓨터에서 바로 열면 이렇게 됩니다. GitHub Pages에 올리거나 로컬 서버로 열어 주세요.</p>`;
-    return;
-  }
-  D.works = (D.works || []).filter((w) => w.public !== false);
-  D.items = (D.items || []).filter((i) => !i.pending && i.name);
-  accent(D.site.accent_color);
-  hero();
-  show(location.hash.slice(1));
-})();
+"use strict";
+const { esc, list, IMGERR, catLabel, catClass, career, ymd } = LP;
+const D = await LP.boot("home");
+const s = D.site;
+const $ = (id) => document.getElementById(id);
+const twice = (html) => html + html;
+const has = (w, c) => list(w.category).includes(c);
+const link = (w) => `works.html#${encodeURIComponent(w.id || "")}`;
+
+// 흐르는 띠: 위는 쇼츠, 아래는 3D · 디자인
+const shorts = D.works.filter((w) => has(w, "CINEMACHINE") && w.thumbnail);
+const others = D.works.filter((w) => !has(w, "CINEMACHINE") && !has(w, "EDIT") && w.thumbnail);
+const strip = (arr) => arr.map((w) => `<a href="${link(w)}" title="${esc(w.title)}"><img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}></a>`).join("");
+$("stripA").innerHTML = twice(strip(shorts.slice(0, 10)));
+$("stripB").innerHTML = twice(strip(others.slice(0, 10)));
+
+// 프로필
+const FIELDS = s.fields || ["3D", "시네머신", "디자인", "영상 편집"];
+const PCLS = ["ink", "pk", "wh", "bl"];
+const steps = career(s.intro);
+$("about").innerHTML = `
+  <div class="orb rv">
+    ${s.profile_image ? `<img src="${esc(s.profile_image)}" alt="${esc(s.name)} 프로필" ${IMGERR}>` : `<img alt="">`}
+    ${FIELDS.slice(0, 4).map((f, k) => `<span class="pill ${PCLS[k]} p${k + 1}">${esc(f)}</span>`).join("")}
+  </div>
+  <h2 class="rv">${esc(s.name || "Leepu")}<span class="dot">.</span></h2>
+  <div class="info rv">
+    ${(s.tools || []).length ? `<p class="tools">${(s.tools || []).map((t) => `<span>${esc(t)}</span>`).join(" <i>·</i> ")}</p>` : ""}
+    ${steps.length ? `<div class="rule" aria-hidden="true"></div>
+    <div class="lbl">경력</div>
+    <ol class="tl" aria-label="경력" style="list-style:none;padding:0;margin-bottom:0">${steps.map((c) => `
+      <li class="st${c.past ? " past" : ""}"><b aria-hidden="true"></b><small>${esc(c.period)}</small><strong>${esc(c.name)}</strong></li>`).join("")}
+    </ol>` : ""}
+  </div>`;
+
+// 작업 타일: 최신 쇼츠 · 3D · 디자인을 골라 배치
+const td = D.works.filter((w) => has(w, "3D") && w.thumbnail);
+const ds = D.works.filter((w) => (has(w, "DESIGN") || has(w, "BOOTH")) && w.thumbnail);
+// 세로 쇼츠는 세로로 긴 칸, 가로 사진이 많은 3D는 가로로 긴 칸에 넣어요
+const pick = [[shorts[0], "r2"], [td[0], "c2"], [shorts[1], "r2"], [ds[0], ""], [ds[1], ""], [td[1], "c2"], [td[2], "c2"]].filter(([w]) => w);
+$("w-count").textContent = `전체 ${D.works.length}`;
+$("bento").innerHTML = pick.map(([w, cls]) => {
+  const c = list(w.category)[0] || "";
+  return `<a class="tile pop ${cls}" href="${link(w)}">
+    <img src="${esc(w.thumbnail)}" alt="" loading="lazy" ${IMGERR}>
+    <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>
+    <span class="cap"><b>${esc(w.title.trim())}</b><small>${esc(ymd(w.date))}</small></span>
+  </a>`;
+}).join("");
+
+// 아이템 띠
+const its = D.items.filter((i) => i.thumbnail);
+const icard = (i) => `<a class="icard" href="${esc(LP.safe(i.product_link))}" target="_blank" rel="noopener" title="${esc(i.name)}"><img src="${esc(i.thumbnail)}" alt="" loading="lazy" ${IMGERR}><span>${esc(i.name)}</span></a>`;
+$("i-count").textContent = D.items.length;
+$("i-note").textContent = s.items_intro ?? "보유하고 있는 BOOTH 아이템 목록이에요.\n커미션은 양측 구매가 원칙이며, 이용약관은 의뢰인 분이 꼭 확인해 주세요.";
+$("itemsA").innerHTML = twice(its.slice(0, 12).map(icard).join(""));
+$("itemsB").innerHTML = twice(its.slice(12, 24).map(icard).join(""));
+
+if (location.hash === "#about") $("about").scrollIntoView();
 })();
 </script>
 </body>
