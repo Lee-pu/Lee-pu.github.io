@@ -132,6 +132,14 @@ function galleryCls(n, k) {
   if (n % 2 === 1 && k === n - 1) c.push("m6");
   return c.join(" ");
 }
+// 제목에서 버튜버 이름(… 님)과 작품 이름을 나눠요. 예) "디아나 님 'You & 合図'" → 디아나 님 / You & 合図
+function splitTitle(t) {
+  t = String(t || "").trim();
+  const m = t.match(/^(.*님)\s+(['"‘“].*)$/) || t.match(/^(.*?님)\s+(.+)$/);
+  if (!m) return { who: "", what: t };
+  const what = m[2].trim().replace(/^['"‘“]\s*/, "").replace(/\s*['"’”]$/, "");
+  return { who: m[1].trim(), what: what || t };
+}
 function open(id) {
   const w = D.works.find((x) => x.id === id);
   if (!w) return;
@@ -148,7 +156,11 @@ function open(id) {
   // 사진이 한 장뿐이면 갤러리 대신 크게 한 장으로
   const one = media.length ? "" : imgs.length === 1 ? imgs[0] : !imgs.length ? w.thumbnail : "";
   const descHtml = w.description ? `<p class="desc">${esc(w.description).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>` : "";
-  const metaHtml = `<div class="meta">${list(w.category).map((c) => `<span class="c">${esc(catLabel(c))}</span>`).join("")}<span>${esc(ymd(w.date))}</span></div>`;
+  // 분야는 글자로만, 제목 아래에 버튜버 이름과 날짜
+  const catHtml = `<div class="cat-txt">${list(w.category).map((c) => esc(catLabel(c))).join(" · ")}</div>`;
+  const { who, what } = splitTitle(w.title);
+  const titleHtml = `<h2>${esc(what)}</h2>`;
+  const subHtml = `<div class="who">${who ? `<b>${esc(who)}</b>` : ""}<span>${esc(ymd(w.date))}</span></div>`;
   const dlg = $("dlg");
   // 세로 영상 하나뿐이면: 왼쪽 영상, 오른쪽에 분야·날짜 → 제목 → 설명
   const side = media.length === 1 && !imgs.length && (isShort(media[0]) || !ytId(media[0]));
@@ -158,8 +170,9 @@ function open(id) {
     dlg.innerHTML = `<div class="dlg-in side">
       <div class="side-media">${player(media[0])}</div>
       <div class="side-info">
-        <div class="side-top">${metaHtml}<button class="x" id="x" aria-label="닫기" autofocus>✕</button></div>
-        <h2>${esc(w.title.trim())}</h2>
+        <div class="side-top">${catHtml}<button class="x" id="x" aria-label="닫기" autofocus>✕</button></div>
+        ${titleHtml}
+        ${subHtml}
         ${descHtml}
       </div>
     </div>`;
@@ -168,9 +181,8 @@ function open(id) {
     return;
   }
   dlg.innerHTML = `<div class="dlg-in">
-    <div class="dlg-head"><h2>${esc(w.title.trim())}</h2><button class="x" id="x" aria-label="닫기" autofocus>✕</button></div>
+    <div class="dlg-head"><div class="head-txt">${catHtml}${titleHtml}${subHtml}</div><button class="x" id="x" aria-label="닫기" autofocus>✕</button></div>
     ${descHtml}
-    ${metaHtml}
     ${media.length ? `<div class="media">${media.map(player).join("")}</div>` : one ? `<div class="media"><img src="${esc(one)}" alt="" ${IMGERR}></div>` : ""}
     ${imgs.length > 1 || (imgs.length && media.length) ? `<div class="gallery">${imgs.map((u, k) => `<a class="${galleryCls(imgs.length, k)}" href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="" loading="lazy" ${IMGERR}></a>`).join("")}</div>` : ""}
     ${w.link_url && !yt ? `<a class="btn-out" href="${esc(safe(w.link_url))}" target="_blank" rel="noopener">원본 보기 ↗</a>` : ""}
