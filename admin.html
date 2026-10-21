@@ -393,7 +393,7 @@ function workForm(id) {
   openDlg(`<div class="dlg">
     <h2>${id ? "작업물 수정" : "작업물 추가"}</h2>
     <div><label class="lbl" for="wf-title">제목</label><input id="wf-title" class="field" value="${esc(sp.what)}"></div>
-    <div><label class="lbl" for="wf-who">버튜버 이름 <span class="hint" style="display:inline">(님은 자동으로 붙어요)</span></label><input id="wf-who" class="field" value="${esc(sp.who.replace(/\s*님$/, ""))}"></div>
+    <div><label class="lbl" for="wf-who">이름 <span class="hint" style="display:inline">(님은 자동으로 붙어요)</span></label><input id="wf-who" class="field" value="${esc(sp.who.replace(/\s*님$/, ""))}"></div>
     <div><span class="lbl">카테고리 <span class="hint" style="display:inline">(복수 선택 가능)</span></span><div class="chips" id="wf-cats"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-newcat" class="field" placeholder="새 카테고리" aria-label="새 카테고리"><button class="btn sm" id="wf-addcat">추가</button></div></div>
     <div class="two"><div><label class="lbl" for="wf-date">날짜</label><input id="wf-date" type="date" class="field" value="${esc(w?.date || today())}"></div>
