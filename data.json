@@ -218,13 +218,14 @@
    "category": "CINEMACHINE",
    "date": "2026-08-01",
    "description": "",
-   "thumbnail": "assets/img/a4bf27447929.webp",
+   "thumbnail": "https://i.ytimg.com/vi/WTdY-XbZxqI/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/WTdY-XbZxqI"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "cbfc6a48ce",
