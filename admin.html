@@ -159,7 +159,7 @@ let C = store.get() || guess();
 let D = null, tab = "works", F = {}, UP = {}, PREV = {}, LOCAL = false, DIRTY = false;
 const SEL = new Set();
 const LKEY = "leepu-local-data";
-const W = { q: "" }, I = { q: "", cat: "", av: "" };
+const W = { q: "", cat: "" }, I = { q: "", cat: "", av: "" };
 
 // ───── GitHub API ─────
 const R = () => `/repos/${C.owner}/${C.repo}`;
@@ -349,10 +349,17 @@ const savedMsg = () => (LOCAL ? "반영했어요. 다 고친 뒤 위의 data.jso
 
 // ───── 작업물 ─────
 function worksView() {
-  const q = W.q.toLowerCase(), rows = D.works.filter((w) => !q || (w.title || "").toLowerCase().includes(q));
+  const q = W.q.toLowerCase(), catsOf = (w) => list(w.category).map((c) => c.toUpperCase());
+  // 사이트와 같은 순서: 날짜 최신이 맨 위
+  const all = [...D.works].sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+  const ORDER = ["CINEMACHINE", "3D", "DESIGN", "BOOTH", "EDIT", "ETC"];
+  const cats = [...new Set(all.flatMap(catsOf))].sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99) || a.localeCompare(b));
+  if (W.cat && !cats.includes(W.cat)) W.cat = "";
+  const rows = all.filter((w) => (!q || (w.title || "").toLowerCase().includes(q)) && (!W.cat || catsOf(w).includes(W.cat)));
   $("page").innerHTML = `
     <div class="head"><div class="min0"><h1>작업물 <span class="sub" style="font-size:14px">${D.works.length}개</span></h1></div>
       <div class="right"><input id="w-q" class="field search" type="search" placeholder="제목 검색" aria-label="제목 검색" value="${esc(W.q)}"><button class="btn primary" id="w-add">+ 작업물 추가</button></div></div>
+    <div class="chips" id="w-cats" style="margin:4px 0 14px">${["", ...cats].map((c) => `<button class="chip" data-wcat="${esc(c)}" aria-pressed="${W.cat === c}">${c ? esc(c) : "전체"} <span style="opacity:.6">${c ? all.filter((w) => catsOf(w).includes(c)).length : all.length}</span></button>`).join("")}</div>
     <div class="list">${rows.length ? rows.map((w) => `
       <div class="row"><div class="th">${imgTag(w.thumbnail)}</div>
         <div class="min0"><div class="t">${esc(w.title)}</div>
@@ -362,6 +369,7 @@ function worksView() {
   $("w-q").oninput = (e) => { W.q = e.target.value; const pos = e.target.selectionStart; worksView(); $("w-q").focus(); $("w-q").setSelectionRange(pos, pos); };
   $("w-add").onclick = () => workForm();
   $("page").onclick = guard(async (e) => {
+    const wc = e.target.closest("[data-wcat]"); if (wc) { W.cat = wc.dataset.wcat; return worksView(); }
     const ed = e.target.closest("[data-edit]"), dl = e.target.closest("[data-del]");
     if (ed) workForm(ed.dataset.edit);
     if (dl) {
