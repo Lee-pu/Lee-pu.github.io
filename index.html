@@ -208,6 +208,7 @@ $("i-count").textContent = D.items.length;
 $("i-note").textContent = s.items_intro ?? "보유하고 있는 BOOTH 아이템 목록이에요.\n커미션은 양측 구매가 원칙이며, 이용약관은 의뢰인 분이 꼭 확인해 주세요.";
 $("itemsA").innerHTML = twice(its.slice(0, 12).map(icard).join(""));
 $("itemsB").innerHTML = twice(its.slice(12, 24).map(icard).join(""));
+LP.marquee();
 
 if (location.hash === "#about") $("about").scrollIntoView();
 })();

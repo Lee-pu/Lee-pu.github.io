@@ -134,6 +134,42 @@ function footer() {
   };
 }
 
+// 흐르는 카드 띠: 매 프레임 직접 옮겨요. 사파리에서도 바로 움직이고, 사진이 늦게 떠도 깜빡이지 않아요.
+// 한 바퀴(복제한 절반 길이)를 secs초에 지나가요. rev는 반대 방향. 마우스를 올리면(PC) 멈춰요.
+function marquee() {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const rows = [...document.querySelectorAll(".mq-track")].map((t) => {
+    t.style.animation = "none";
+    t.querySelectorAll("img").forEach((i) => { i.loading = "eager"; i.decoding = "async"; });
+    const rev = t.classList.contains("rev");
+    const r = { t, rev, secs: (rev ? 54 : 48) * (reduce ? 2 : 1), half: 0, x: 0, on: true, hover: false };
+    const measure = () => { const h = t.scrollWidth / 2; if (h && Math.abs(h - r.half) > 1) { r.x = r.half ? (r.x / r.half) * h : (rev ? -h : 0); r.half = h; } };
+    measure();
+    if (window.ResizeObserver) new ResizeObserver(measure).observe(t);
+    if (window.IntersectionObserver) new IntersectionObserver(([e]) => { r.on = e.isIntersecting; }, { rootMargin: "200px" }).observe(t.parentElement);
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      t.parentElement.addEventListener("mouseenter", () => { r.hover = true; });
+      t.parentElement.addEventListener("mouseleave", () => { r.hover = false; });
+    }
+    return r;
+  });
+  if (!rows.length) return;
+  let last = performance.now();
+  const step = (now) => {
+    const dt = Math.min(64, now - last) / 1000; last = now;
+    for (const r of rows) {
+      if (!r.half || !r.on || r.hover || document.hidden) continue;
+      const v = r.half / r.secs;
+      r.x += r.rev ? v * dt : -v * dt;
+      if (r.x <= -r.half) r.x += r.half;
+      if (r.x > 0) r.x -= r.half;
+      r.t.style.transform = `translate3d(${r.x.toFixed(2)}px, 0, 0)`;
+    }
+    requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
 async function boot(page) {
   let D;
   try {
@@ -153,5 +189,5 @@ async function boot(page) {
   return D;
 }
 
-window.LP = { esc, list, safe, ko, ytId, isShort, IMGERR, ymd, catLabel, catClass, career, boot, ytOf, thumbImg, splitTitle, D: null };
+window.LP = { esc, list, safe, ko, ytId, isShort, IMGERR, ymd, catLabel, catClass, career, boot, ytOf, thumbImg, splitTitle, marquee, D: null };
 })();
