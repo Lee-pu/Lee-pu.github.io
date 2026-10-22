@@ -35,12 +35,15 @@ function ytOf(w) {
 }
 function thumbList(w) {
   const y = ytOf(w), out = [];
+  // 직접 올린 썸네일이 있으면 그걸 먼저 (YouTube 썸네일은 그다음)
+  const own = w.thumbnail && !/i\.ytimg\.com\//.test(w.thumbnail) ? w.thumbnail : "";
+  if (own) out.push(own);
   if (y) {
     const b = `https://i.ytimg.com/vi/${y.id}/`;
     if (y.short) out.push(b + "oardefault.jpg");
     out.push(b + "maxresdefault.jpg", b + "hqdefault.jpg");
   }
-  if (w.thumbnail) out.push(w.thumbnail);
+  if (w.thumbnail && !own) out.push(w.thumbnail);
   return out;
 }
 // 다음 후보로 넘기기 (YouTube는 없는 크기를 120px짜리 회색 그림으로 돌려줘서 그것도 실패로 봐요)

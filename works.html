@@ -142,7 +142,10 @@ function splitTitle(t) { return LP.splitTitle(t); }
 function open(id) {
   const w = D.works.find((x) => x.id === id);
   if (!w) return;
-  const vids = w.video_urls || [], imgs = w.images || [], yt = ytId(w.link_url);
+  const vids = w.video_urls || [], yt = ytId(w.link_url);
+  // 영상이 있는 작업에서 썸네일로 올린 사진은 팝업에 다시 보여주지 않아요
+  const hasVid = vids.length || !!yt;
+  const imgs = (w.images || []).filter((u) => !(hasVid && u === w.thumbnail));
   // YouTube는 사이트 주소를 확인해서 재생을 허락해요. 파일을 바로 열면(file://) 주소가 없어 오류가 나므로 YouTube로 가는 카드를 대신 보여 줘요.
   const local = /^(file|blob|about):/.test(location.protocol);
   const ytLink = (u) => isShort(u) ? `https://www.youtube.com/shorts/${ytId(u)}` : `https://www.youtube.com/watch?v=${ytId(u)}`;

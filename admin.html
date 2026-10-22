@@ -395,7 +395,7 @@ function workForm(id) {
   const sp = splitTitle(w?.title);
   UP = {};
   const imgs = [...(w?.images || [])], th = isAutoThumb(w?.thumbnail) ? "" : (w?.thumbnail || "");
-  F = { id, cats: list(w?.category), images: imgs, thumbOnly: th && !imgs.includes(th) ? th : "", thumbnail: th || imgs[0] || "",
+  F = { id, cats: list(w?.category), images: imgs, thumbnail: th,
     video_urls: [...(w?.video_urls || [])], link_url: w?.link_url || "", tags: [...(w?.tags || [])] };
   openDlg(`<div class="dlg">
     <h2>${id ? "작업물 수정" : "작업물 추가"}</h2>
@@ -408,8 +408,10 @@ function workForm(id) {
     <div><label class="lbl" for="wf-desc">설명</label><textarea id="wf-desc" class="field" rows="3">${esc(w?.description || "")}</textarea></div>
     <div><span class="lbl">링크 <span class="hint" style="display:inline">(YouTube 또는 외부 링크)</span></span><div class="stack" style="gap:6px" id="wf-links"></div>
       <div class="inline" style="margin-top:8px"><input id="wf-url" class="field" placeholder="https://" aria-label="링크 주소"><button class="btn sm" id="wf-addurl">추가</button><label class="btn sm" for="wf-vfile" title="영상 파일 직접 올리기 (50MB까지)">영상 파일</label><input id="wf-vfile" type="file" accept="video/mp4,video/webm,video/quicktime" hidden></div></div>
-    <div><span class="lbl">썸네일 · 사진</span><div class="thumbs" id="wf-imgs"></div><input id="wf-ifile" type="file" accept="image/*" multiple style="margin-top:8px">
-      <div class="hint">★ 표시한 사진이 썸네일이에요. 사진이나 ★을 누르면 썸네일로 바뀌어요.</div></div>
+    <div><span class="lbl">썸네일</span><div class="thumbs" id="wf-thumb"></div><input id="wf-tfile" type="file" accept="image/*" style="margin-top:8px">
+      <div class="hint">사이트 카드에 보이는 이미지예요. 비우면 YouTube 썸네일이나 첫 번째 사진을 써요.</div></div>
+    <div><span class="lbl">사진</span><div class="thumbs" id="wf-imgs"></div><input id="wf-ifile" type="file" accept="image/*" multiple style="margin-top:8px">
+      <div class="hint">팝업에 보이는 사진이에요.</div></div>
     <div class="foot"><button class="btn" id="wf-cancel">취소</button><button class="btn primary" id="wf-save">${id ? "수정" : "등록"}</button></div></div>`);
   const parts = () => {
     const all = [...new Set([...D.works.flatMap((x) => list(x.category)), ...F.cats])].sort(ko);
@@ -418,13 +420,8 @@ function workForm(id) {
       ...F.video_urls.map((u, i) => `<div class="vid"><span class="min0" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${ytId(u) ? "▶ YouTube · " : "🎞 영상 파일 · "}${esc(u)}</span><button class="btn sm" data-rv="${i}">빼기</button></div>`),
       ...(F.link_url ? [`<div class="vid"><span class="min0" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🔗 외부 링크 · ${esc(F.link_url)}</span><button class="btn sm" data-rl>빼기</button></div>`] : []),
     ].join("");
-    if (F.thumbnail && F.thumbnail !== F.thumbOnly && !F.images.includes(F.thumbnail)) F.thumbnail = F.thumbOnly || F.images[0] || "";
-    if (!F.thumbnail) F.thumbnail = F.thumbOnly || F.images[0] || "";
-    const tile = (u, attrs, note) => `<div class="one${u === F.thumbnail ? " star" : ""}" data-star="${esc(u)}" title="썸네일로 쓰기">${imgTag(u)}<button type="button" class="st" data-star="${esc(u)}" aria-label="썸네일로 쓰기" title="썸네일로 쓰기">★</button><button ${attrs} aria-label="빼기">×</button>${note ? `<span class="note">${note}</span>` : ""}</div>`;
-    $("wf-imgs").innerHTML = [
-      ...(F.thumbOnly ? [tile(F.thumbOnly, "data-rto", "썸네일만")] : []),
-      ...F.images.map((u, i) => tile(u, `data-ri="${i}"`)),
-    ].join("");
+    $("wf-thumb").innerHTML = F.thumbnail ? `<div class="one">${imgTag(F.thumbnail)}<button data-rt aria-label="썸네일 빼기">×</button></div>` : "";
+    $("wf-imgs").innerHTML = F.images.map((u, i) => `<div class="one">${imgTag(u)}<button data-ri="${i}" aria-label="사진 빼기">×</button></div>`).join("");
   };
   parts();
   $("dlg").addEventListener("click", function h(e) {
@@ -433,8 +430,7 @@ function workForm(id) {
     const rv = e.target.closest("[data-rv]"); if (rv) { F.video_urls.splice(+rv.dataset.rv, 1); parts(); }
     if (e.target.closest("[data-rl]")) { F.link_url = ""; parts(); }
     const ri = e.target.closest("[data-ri]"); if (ri) { F.images.splice(+ri.dataset.ri, 1); parts(); }
-    if (e.target.closest("[data-rto]")) { if (F.thumbnail === F.thumbOnly) F.thumbnail = ""; F.thumbOnly = ""; parts(); }
-    const st = !e.target.closest("[data-ri],[data-rto]") && e.target.closest("[data-star]"); if (st) { F.thumbnail = st.dataset.star; parts(); }
+    if (e.target.closest("[data-rt]")) { F.thumbnail = ""; parts(); }
   });
   $("wf-addcat").onclick = () => { const v = $("wf-newcat").value.trim(); if (v && !F.cats.includes(v)) F.cats.push(v); $("wf-newcat").value = ""; parts(); };
   $("wf-addurl").onclick = () => {
@@ -449,13 +445,14 @@ function workForm(id) {
   const pick = (input, kind, put) => guard(async () => { const fs = [...input.files]; input.value = ""; busy("파일 준비하는 중…"); try { for (const f of fs) put(await prepFile(f, kind)); } finally { busy(false); } parts(); });
   $("wf-vfile").onchange = pick($("wf-vfile"), "video", (p) => F.video_urls.push(p));
   $("wf-ifile").onchange = pick($("wf-ifile"), "img", (p) => F.images.push(p));
+  $("wf-tfile").onchange = pick($("wf-tfile"), "img", (p) => { F.thumbnail = p; });
   $("wf-cancel").onclick = () => $("dlg").close();
   $("wf-save").onclick = guard(async () => {
     const what = $("wf-title").value.trim(), who = $("wf-who").value.trim();
     if (!what) return toast("제목을 입력해 주세요", true);
     // 제목·이름을 안 바꿨으면 원래 제목 그대로 (따옴표 모양 등 유지)
     const title = w && what === sp.what && who === sp.who.replace(/\s*님$/, "") ? w.title : joinTitle(what, who);
-    const row = { title, category: F.cats.join(", "), date: $("wf-date").value, description: $("wf-desc").value.trim(), thumbnail: F.thumbnail, images: F.images, video_urls: F.video_urls, link_url: F.link_url, tags: F.tags, public: $("wf-pub").checked };
+    const row = { title, category: F.cats.join(", "), date: $("wf-date").value, description: $("wf-desc").value.trim(), thumbnail: F.thumbnail || F.images[0] || "", images: F.images, video_urls: F.video_urls, link_url: F.link_url, tags: F.tags, public: $("wf-pub").checked };
     if (!row.thumbnail) { const y = ytId(row.video_urls.find(ytId)) || ytId(row.link_url); row.thumbnail = y ? `https://i.ytimg.com/vi/${y}/hqdefault.jpg` : ""; }
     const fid = F.id || uid();
     await commit(`작업물 ${F.id ? "수정" : "추가"}: ${row.title}`, (d) => {
