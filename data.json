@@ -486,13 +486,14 @@
    "category": "EDIT",
    "date": "2025-10-06",
    "description": "치지직 아와네코 미루 님 테스트 방송 쇼츠 영상 편집",
-   "thumbnail": "assets/img/061e01157fbf.png",
+   "thumbnail": "https://i.ytimg.com/vi/TXTmsHyijTY/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/TXTmsHyijTY"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "17c5e83354",
