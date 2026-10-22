@@ -274,13 +274,14 @@
    "category": "CINEMACHINE",
    "date": "2026-07-18",
    "description": "닐로툰 @Mitsu___dayo_",
-   "thumbnail": "assets/img/d4ee78b9f8ac.jpg",
+   "thumbnail": "https://i.ytimg.com/vi/1j6v2tLVOCo/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/1j6v2tLVOCo"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "cfad7b8029",
