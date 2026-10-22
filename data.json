@@ -441,13 +441,14 @@
    "category": "CINEMACHINE",
    "date": "2026-04-22",
    "description": "",
-   "thumbnail": "assets/img/0e3e4cfa9f4b.webp",
+   "thumbnail": "https://i.ytimg.com/vi/XV-3XYqufIs/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/XV-3XYqufIs"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "5f205c2b3c",
