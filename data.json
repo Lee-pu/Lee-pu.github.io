@@ -24,6 +24,21 @@
  },
  "works": [
   {
+   "id": "7fa18a9649",
+   "title": "푸두리 님 고양이가 세상을 구한다! 🐈💕",
+   "category": "CINEMACHINE",
+   "date": "2026-10-10",
+   "description": "",
+   "thumbnail": "https://i.ytimg.com/vi/Fb4ymmP9qFg/hqdefault.jpg",
+   "images": [],
+   "video_urls": [
+    "https://www.youtube.com/shorts/Fb4ymmP9qFg"
+   ],
+   "link_url": "",
+   "tags": [],
+   "public": true
+  },
+  {
    "id": "0c0903824f",
    "title": "디아나 님 君のココロをハッキング",
    "category": "CINEMACHINE",
