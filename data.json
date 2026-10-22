@@ -571,13 +571,14 @@
    "category": "EDIT",
    "date": "2024-11-27",
    "description": "치지직 희노아 님 오버워치 쇼츠 영상 편집",
-   "thumbnail": "assets/img/93e475ed9004.png",
+   "thumbnail": "https://i.ytimg.com/vi/4g_7Sh28RA0/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/4g_7Sh28RA0"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   }
  ],
  "items": [
