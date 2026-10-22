@@ -287,13 +287,14 @@
    "category": "CINEMACHINE",
    "date": "2026-07-12",
    "description": "",
-   "thumbnail": "assets/img/f57593e9b2aa.webp",
+   "thumbnail": "",
    "images": [],
    "video_urls": [
     "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/3f39169e0_IRISOUT_.mp4"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "385d767d80",
