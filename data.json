@@ -383,13 +383,14 @@
    "category": "CINEMACHINE",
    "date": "2026-05-15",
    "description": "",
-   "thumbnail": "assets/img/d9d2b0505282.webp",
+   "thumbnail": "https://i.ytimg.com/vi/s-eZXOnb2Lg/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/s-eZXOnb2Lg"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "f9bf163fcf",
