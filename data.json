@@ -148,13 +148,14 @@
    "category": "CINEMACHINE",
    "date": "2026-08-09",
    "description": "",
-   "thumbnail": "assets/img/44481ba6494b.webp",
+   "thumbnail": "",
    "images": [],
    "video_urls": [
     "https://base44.app/api/apps/6a3701f476e115556c4f33ed/files/mp/public/6a3701f476e115556c4f33ed/73da9d7fa_-PerfectTarget.mp4"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "ee8e23350f",
