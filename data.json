@@ -528,13 +528,14 @@
    "category": "EDIT",
    "date": "2025-08-16",
    "description": "치지직 아와네코 미루 님 페이셜 테스트 영상 편집",
-   "thumbnail": "assets/img/5fa8a8388f2a.png",
+   "thumbnail": "https://i.ytimg.com/vi/Zj103i2KcTE/hqdefault.jpg",
    "images": [],
    "video_urls": [
     "https://youtube.com/shorts/Zj103i2KcTE"
    ],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "1a4e8a07cd",
