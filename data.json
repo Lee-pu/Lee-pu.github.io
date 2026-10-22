@@ -29,8 +29,10 @@
    "category": "CINEMACHINE",
    "date": "2026-10-10",
    "description": "",
-   "thumbnail": "https://i.ytimg.com/vi/Fb4ymmP9qFg/hqdefault.jpg",
-   "images": [],
+   "thumbnail": "assets/img/mvk2ytf51fb3.webp",
+   "images": [
+    "assets/img/mvk2ytf51fb3.webp"
+   ],
    "video_urls": [
     "https://www.youtube.com/shorts/Fb4ymmP9qFg"
    ],
