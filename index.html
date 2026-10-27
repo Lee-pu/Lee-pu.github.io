@@ -13,95 +13,438 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css?v=dev">
 <style>
-/* ── 첫 화면 ── */
-.hero { padding: 6vh var(--gutter) 0; text-align: center; }
-.badge { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--blush); color: #d61f6c; font-size: 13px; font-weight: 700; }
-.hero h1 { margin: 26px 0 0; font-weight: 800; font-size: clamp(46px, 8.6vw, 140px); line-height: .98; letter-spacing: -.05em; word-spacing: .1em; }
-.hero h1 > span { display: block; overflow: hidden; padding-bottom: .2em; margin-bottom: -.1em; }
-.clip { overflow: hidden; }
-
-/* 띠가 기울어져도 위아래가 잘리지 않게 여유 공간(6vw)을 두고, 그만큼 바깥 여백을 빼서 자리는 그대로 */
-.strips { margin: calc(8vh - 6vw) 0 -6vw; padding: 6vw 0 calc(4vh + 6vw); overflow: hidden; }
-.strips .tilt { width: 110vw; margin-left: -5vw; }
-.strips .mq + .mq { margin-top: 16px; }
-.strips .mq-track { padding: 8px 0; }
-.strips a { flex: 0 0 auto; display: block; border-radius: 14px; overflow: hidden; background: var(--blush-2); }
-.strips img { width: 100%; height: 100%; object-fit: cover; }
-.sA a { width: 200px; aspect-ratio: 9 / 16; }
-.sB a { width: 300px; aspect-ratio: 4 / 3; }
-
-/* 프로필 */
-.about { padding: 16vh var(--gutter) 12vh; display: flex; flex-direction: column; align-items: center; text-align: center; scroll-margin-top: 40px; }
-.orb { position: relative; width: 300px; height: 300px; }
-.orb::before { content: ""; position: absolute; inset: -26px; border-radius: 50%; background: var(--blush); }
-.orb::after { content: ""; position: absolute; inset: -46px; border-radius: 50%; border: 1.5px dashed #f6b8d2; }
-.orb img { position: relative; z-index: 1; width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 30px 60px -30px rgba(20,18,20,.45); background: var(--blush-2); }
-.orb .pill { position: absolute; z-index: 2; box-shadow: 0 12px 24px -14px rgba(20,18,20,.4); animation: bob 4s ease-in-out infinite; }
-.orb .p1 { left: -44px; top: 36px; }
-.orb .p2 { right: -82px; top: 90px; animation-delay: -1.2s; }
-.orb .p3 { left: -70px; bottom: 30px; animation-delay: -2.1s; }
-.orb .p4 { right: -64px; bottom: -4px; animation-delay: -.6s; }
-@keyframes bob { 50% { translate: 0 -8px; } }
-.about h2 { margin: 64px 0 0; font-weight: 800; font-size: clamp(52px, 5.6vw, 92px); line-height: .9; letter-spacing: -.055em; }
-.info { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 32px; }
-.tools { margin: 0; font-size: 13px; font-weight: 600; color: var(--muted); }
-.tools i { font-style: normal; color: var(--pink); padding: 0 3px; }
-.tools span { white-space: nowrap; }
-.rule { width: 24px; height: 1px; margin: 12px 0 6px; background: #f1c4d7; }
-.lbl { font-size: 11px; font-weight: 800; letter-spacing: .18em; color: var(--pink); }
-.tl { display: flex; align-items: flex-start; justify-content: center; margin-top: 6px; }
-.st { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px; }
-.st::after { content: ""; position: absolute; left: 50%; top: 5px; width: 100%; height: 2px; background: var(--pink); }
-.st.past::after { background: #ddd5d8; }
-.st:last-child::after { width: 60%; background: repeating-linear-gradient(90deg, #f1a6c6 0 6px, transparent 6px 11px); }
-.st:last-child::before { content: "→"; position: absolute; left: calc(110% + 4px); top: -1px; font-size: 12px; font-weight: 800; line-height: 12px; color: var(--pink); }
-.st b { position: relative; z-index: 1; width: 12px; height: 12px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 4px var(--blush); }
-.st.past b { background: #cfc6ca; box-shadow: 0 0 0 4px #f4eff1; }
-.st small { font-size: 12px; font-weight: 700; color: #7d7579; }
-.st strong { font-family: var(--kr); font-size: 15px; font-weight: 900; }
-.st.past small, .st.past strong { color: #a9a0a4; }
-
-/* 작업 타일 */
-.works { padding: 6vh var(--gutter) 14vh; }
-.works .sub { font-family: var(--kr); font-size: 14px; color: #7d7579; }
-.bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 22vw; gap: 16px; margin-top: 48px; }
-.tile { position: relative; overflow: hidden; border-radius: 28px; display: block; text-decoration: none; background: var(--blush); color: var(--ink); }
-.tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
-.tile:hover img { transform: scale(1.06); }
-.tile .cap { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.95); transform: translateY(12px); opacity: 0; transition: transform .45s var(--ease), opacity .35s; }
-.tile:hover .cap, .tile:focus-visible .cap { transform: none; opacity: 1; }
-.tile .cap b { display: block; font-family: var(--kr); font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tile .cap small { display: block; margin-top: 2px; font-family: var(--kr); font-size: 12px; color: #7d7579; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.c2 { grid-column: span 2; } .r2 { grid-row: span 2; }
-.works .foot-more { display: flex; justify-content: center; margin-top: 40px; }
-
-/* 아이템 */
-.items { padding: 11vh 0 18vh; background: var(--blush); }
-.items .sec-head { padding: 0 var(--gutter); }
-.items h2 { margin: 0; font-weight: 800; font-size: clamp(48px, 7vw, 120px); line-height: .9; letter-spacing: -.05em; }
-.items .note { margin: 0; text-align: right; font-family: var(--kr); font-size: 15px; line-height: 1.75; color: #6b4a58; white-space: pre-line; }
-.items .mq { margin-top: 72px; }
-.items .mq + .mq { margin-top: 16px; }
-.icard { flex: 0 0 auto; width: 210px; background: #fff; border-radius: 18px; padding: 10px; text-decoration: none; color: var(--ink); }
-.icard img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; background: var(--blush-2); }
-.icard span { display: block; margin-top: 8px; font-size: 13px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.items .foot-more { display: flex; justify-content: center; margin-top: 44px; }
-
-@media (max-width: 900px) {
-  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 44vw; gap: 12px; grid-auto-flow: dense; } /* 2칸일 때 빈 자리 없이 채우기 */
-  .tile { border-radius: 22px; }
-  .tile .cap { transform: none; opacity: 1; padding: 10px 12px; border-radius: 14px; }
-  .items .note { text-align: left; white-space: normal; }
+.hero {
+  padding: 6vh var(--gutter) 0;
+  text-align: center
 }
-@media (max-width: 560px) {
-  .sA a { width: 130px; } .sB a { width: 200px; }
-  .about { padding-top: 12vh; }
-  .orb { scale: .7; margin: -45px 0; }
-  .about h2 { margin-top: 64px; }
-  .tools { max-width: 300px; line-height: 2; }
-  .st { width: 92px; } .st strong { font-size: 14px; }
-  .icard { width: 150px; }
-  .items .mq { margin-top: 40px; }
+.badge {
+  display: inline-block;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--blush);
+  color: #d61f6c;
+  font-size: 13px;
+  font-weight: 700
+}
+.hero h1 {
+  margin: 26px 0 0;
+  font-weight: 800;
+  font-size: clamp(46px, 8.6vw, 140px);
+  line-height: .98;
+  letter-spacing: -.05em;
+  word-spacing: .1em
+}
+.hero h1 > span {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .2em;
+  margin-bottom: -.1em
+}
+.clip {
+  overflow: hidden
+}
+.strips {
+  margin: calc(8vh - 6vw) 0 -6vw;
+  padding: 6vw 0 calc(4vh + 6vw);
+  overflow: hidden
+}
+.strips .tilt {
+  width: 110vw;
+  margin-left: -5vw
+}
+.strips .mq + .mq {
+  margin-top: 16px
+}
+.strips .mq-track {
+  padding: 8px 0
+}
+.strips a {
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--blush-2)
+}
+.strips img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.sA a {
+  width: 200px;
+  aspect-ratio: 9/16
+}
+.sB a {
+  width: 300px;
+  aspect-ratio: 4/3
+}
+.about {
+  padding: 16vh var(--gutter) 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  scroll-margin-top: 40px
+}
+.orb {
+  position: relative;
+  width: 300px;
+  height: 300px
+}
+.orb::before {
+  content: "";
+  position: absolute;
+  inset: -26px;
+  border-radius: 50%;
+  background: var(--blush)
+}
+.orb::after {
+  content: "";
+  position: absolute;
+  inset: -46px;
+  border-radius: 50%;
+  border: 1.5px dashed #f6b8d2
+}
+.orb img {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0 30px 60px -30px rgba(20,18,20,.45);
+  background: var(--blush-2)
+}
+.orb .pill {
+  position: absolute;
+  z-index: 2;
+  box-shadow: 0 12px 24px -14px rgba(20,18,20,.4);
+  animation: bob 4s ease-in-out infinite
+}
+.orb .p1 {
+  left: -44px;
+  top: 36px
+}
+.orb .p2 {
+  right: -82px;
+  top: 90px;
+  animation-delay: -1.2s
+}
+.orb .p3 {
+  left: -70px;
+  bottom: 30px;
+  animation-delay: -2.1s
+}
+.orb .p4 {
+  right: -64px;
+  bottom: -4px;
+  animation-delay: -.6s
+}
+@keyframes bob {
+  50% {
+    translate: 0 -8px
+  }
+}
+.about h2 {
+  margin: 64px 0 0;
+  font-weight: 800;
+  font-size: clamp(52px, 5.6vw, 92px);
+  line-height: .9;
+  letter-spacing: -.055em
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px
+}
+.tools {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted)
+}
+.tools i {
+  font-style: normal;
+  color: var(--pink);
+  padding: 0 3px
+}
+.tools span {
+  white-space: nowrap
+}
+.rule {
+  width: 24px;
+  height: 1px;
+  margin: 12px 0 6px;
+  background: #f1c4d7
+}
+.lbl {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  color: var(--pink)
+}
+.tl {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 6px
+}
+.st {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 110px
+}
+.st::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 100%;
+  height: 2px;
+  background: var(--pink)
+}
+.st.past::after {
+  background: #ddd5d8
+}
+.st:last-child::after {
+  width: 60%;
+  background: repeating-linear-gradient(90deg,#f1a6c6 0 6px,transparent 6px 11px)
+}
+.st:last-child::before {
+  content: "→";
+  position: absolute;
+  left: calc(110% + 4px);
+  top: -1px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 12px;
+  color: var(--pink)
+}
+.st b {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 0 4px var(--blush)
+}
+.st.past b {
+  background: #cfc6ca;
+  box-shadow: 0 0 0 4px #f4eff1
+}
+.st small {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7d7579
+}
+.st strong {
+  font-family: var(--kr);
+  font-size: 15px;
+  font-weight: 900
+}
+.st.past small,
+.st.past strong {
+  color: #a9a0a4
+}
+.works {
+  padding: 6vh var(--gutter) 14vh
+}
+.works .sub {
+  font-family: var(--kr);
+  font-size: 14px;
+  color: #7d7579
+}
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  grid-auto-rows: 22vw;
+  gap: 16px;
+  margin-top: 48px
+}
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  display: block;
+  text-decoration: none;
+  background: var(--blush);
+  color: var(--ink)
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease)
+}
+.tile:hover img {
+  transform: scale(1.06)
+}
+.tile .cap {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.95);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform .45s var(--ease),opacity .35s
+}
+.tile:focus-visible .cap,
+.tile:hover .cap {
+  transform: none;
+  opacity: 1
+}
+.tile .cap b {
+  display: block;
+  font-family: var(--kr);
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.tile .cap small {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--kr);
+  font-size: 12px;
+  color: #7d7579;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.c2 {
+  grid-column: span 2
+}
+.r2 {
+  grid-row: span 2
+}
+.works .foot-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px
+}
+.items {
+  padding: 11vh 0 18vh;
+  background: var(--blush)
+}
+.items .sec-head {
+  padding: 0 var(--gutter)
+}
+.items h2 {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(48px, 7vw, 120px);
+  line-height: .9;
+  letter-spacing: -.05em
+}
+.items .note {
+  margin: 0;
+  text-align: right;
+  font-family: var(--kr);
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6b4a58;
+  white-space: pre-line
+}
+.items .mq {
+  margin-top: 72px
+}
+.items .mq + .mq {
+  margin-top: 16px
+}
+.icard {
+  flex: 0 0 auto;
+  width: 210px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--ink)
+}
+.icard img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--blush-2)
+}
+.icard span {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+.items .foot-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px
+}
+@media (max-width:900px) {
+  .bento {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-auto-rows: 44vw;
+    gap: 12px;
+    grid-auto-flow: dense
+  }
+  .tile {
+    border-radius: 22px
+  }
+  .tile .cap {
+    transform: none;
+    opacity: 1;
+    padding: 10px 12px;
+    border-radius: 14px
+  }
+  .items .note {
+    text-align: left;
+    white-space: normal
+  }
+}
+@media (max-width:560px) {
+  .sA a {
+    width: 130px
+  }
+  .sB a {
+    width: 200px
+  }
+  .about {
+    padding-top: 12vh
+  }
+  .orb {
+    scale: .7;
+    margin: -45px 0
+  }
+  .about h2 {
+    margin-top: 64px
+  }
+  .tools {
+    max-width: 300px;
+    line-height: 2
+  }
+  .st {
+    width: 92px
+  }
+  .st strong {
+    font-size: 14px
+  }
+  .icard {
+    width: 150px
+  }
+  .items .mq {
+    margin-top: 40px
+  }
 }
 </style>
 </head>
@@ -151,66 +494,39 @@
 <script src="assets/site.js?v=dev"></script>
 <script>
 (async () => {
-"use strict";
-const { esc, list, IMGERR, catLabel, catClass, career, ymd } = LP;
-const D = await LP.boot("home");
-const s = D.site;
-const $ = (id) => document.getElementById(id);
-const twice = (html) => html + html;
-const has = (w, c) => list(w.category).includes(c);
-const link = (w) => `works.html#${encodeURIComponent(w.id || "")}`;
-
-// 흐르는 띠: 위는 쇼츠, 아래는 3D · 디자인
-const shorts = D.works.filter((w) => has(w, "CINEMACHINE") && (w.thumbnail || LP.ytOf(w)));
-const others = D.works.filter((w) => !has(w, "CINEMACHINE") && !has(w, "EDIT") && w.thumbnail);
-const strip = (arr) => arr.map((w) => `<a href="${link(w)}" title="${esc(w.title)}">${LP.thumbImg(w)}</a>`).join("");
-$("stripA").innerHTML = twice(strip(shorts.slice(0, 10)));
-$("stripB").innerHTML = twice(strip(others.slice(0, 10)));
-
-// 프로필
-const FIELDS = s.fields || ["3D", "시네머신", "디자인", "영상 편집"];
-const PCLS = ["ink", "pk", "wh", "bl"];
-const steps = career(s.intro);
-$("about").innerHTML = `
-  <div class="orb rv">
-    ${s.profile_image ? `<img src="${esc(s.profile_image)}" alt="${esc(s.name)} 프로필" ${IMGERR}>` : `<img alt="">`}
-    ${FIELDS.slice(0, 4).map((f, k) => `<span class="pill ${PCLS[k]} p${k + 1}">${esc(f)}</span>`).join("")}
-  </div>
-  <h2 class="rv">${esc(s.name || "Leepu")}<span class="dot">.</span></h2>
-  <div class="info rv">
-    ${(s.tools || []).length ? `<p class="tools">${(s.tools || []).map((t) => `<span>${esc(t)}</span>`).join(" <i>·</i> ")}</p>` : ""}
-    ${steps.length ? `<div class="rule" aria-hidden="true"></div>
-    <div class="lbl">EXPERIENCE</div>
-    <ol class="tl" aria-label="Experience" style="list-style:none;padding:0;margin-bottom:0">${steps.map((c) => `
-      <li class="st${c.past ? " past" : ""}"><b aria-hidden="true"></b><small>${esc(c.period)}</small><strong>${esc(c.name)}</strong></li>`).join("")}
-    </ol>` : ""}
-  </div>`;
-
-// 작업 타일: 최신 쇼츠 · 3D · 디자인을 골라 배치
-const td = D.works.filter((w) => has(w, "3D") && w.thumbnail);
-const ds = D.works.filter((w) => (has(w, "DESIGN") || has(w, "BOOTH")) && w.thumbnail);
-// 세로 쇼츠는 세로로 긴 칸, 가로 사진이 많은 3D는 가로로 긴 칸에 넣어요
-const pick = [[shorts[0], "r2"], [td[0], "c2"], [shorts[1], "r2"], [ds[0], ""], [ds[1], ""], [td[1], "c2"], [td[2], "c2"]].filter(([w]) => w);
-$("w-count").textContent = `전체 ${D.works.length}`;
-$("bento").innerHTML = pick.map(([w, cls]) => {
-  const c = list(w.category)[0] || "";
-  return `<a class="tile pop ${cls}" href="${link(w)}">
-    ${LP.thumbImg(w)}
-    <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>
-    <span class="cap"><b>${esc(LP.splitTitle(w.title).what)}</b>${LP.splitTitle(w.title).who ? `<small>${esc(LP.splitTitle(w.title).who)}</small>` : ""}</span>
-  </a>`;
-}).join("");
-
-// 아이템 띠
-const its = D.items.filter((i) => i.thumbnail);
-const icard = (i) => `<a class="icard" href="${esc(LP.safe(i.product_link))}" target="_blank" rel="noopener" title="${esc(i.name)}"><img src="${esc(i.thumbnail)}" alt="" loading="lazy" ${IMGERR}><span>${esc(i.name)}</span></a>`;
-$("i-count").textContent = D.items.length;
-$("i-note").textContent = s.items_intro ?? "보유하고 있는 BOOTH 아이템 목록이에요.\n커미션은 양측 구매가 원칙이며, 이용약관은 의뢰인 분이 꼭 확인해 주세요.";
-$("itemsA").innerHTML = twice(its.slice(0, 12).map(icard).join(""));
-$("itemsB").innerHTML = twice(its.slice(12, 24).map(icard).join(""));
-LP.marquee();
-
-if (location.hash === "#about") $("about").scrollIntoView();
+  "use strict";
+  const {esc: esc, list: list, IMGERR: IMGERR, catLabel: catLabel, catClass: catClass, career: career, ymd: ymd} = LP;
+  const D = await LP.boot("home");
+  const s = D.site;
+  const $ = id => document.getElementById(id);
+  const twice = html => html + html;
+  const has = (w, c) => list(w.category).includes(c);
+  const link = w => `works.html#${encodeURIComponent(w.id || "")}`;
+  const shorts = D.works.filter((w => has(w, "CINEMACHINE") && (w.thumbnail || LP.ytOf(w))));
+  const others = D.works.filter((w => !has(w, "CINEMACHINE") && !has(w, "EDIT") && w.thumbnail));
+  const strip = arr => arr.map((w => `<a href="${link(w)}" title="${esc(w.title)}">${LP.thumbImg(w)}</a>`)).join("");
+  $("stripA").innerHTML = twice(strip(shorts.slice(0, 10)));
+  $("stripB").innerHTML = twice(strip(others.slice(0, 10)));
+  const FIELDS = s.fields || [ "3D", "시네머신", "디자인", "영상 편집" ];
+  const PCLS = [ "ink", "pk", "wh", "bl" ];
+  const steps = career(s.intro);
+  $("about").innerHTML = `\n  <div class="orb rv">\n    ${s.profile_image ? `<img src="${esc(s.profile_image)}" alt="${esc(s.name)} 프로필" ${IMGERR}>` : `<img alt="">`}\n    ${FIELDS.slice(0, 4).map(((f, k) => `<span class="pill ${PCLS[k]} p${k + 1}">${esc(f)}</span>`)).join("")}\n  </div>\n  <h2 class="rv">${esc(s.name || "Leepu")}<span class="dot">.</span></h2>\n  <div class="info rv">\n    ${(s.tools || []).length ? `<p class="tools">${(s.tools || []).map((t => `<span>${esc(t)}</span>`)).join(" <i>·</i> ")}</p>` : ""}\n    ${steps.length ? `<div class="rule" aria-hidden="true"></div>\n    <div class="lbl">EXPERIENCE</div>\n    <ol class="tl" aria-label="Experience" style="list-style:none;padding:0;margin-bottom:0">${steps.map((c => `\n      <li class="st${c.past ? " past" : ""}"><b aria-hidden="true"></b><small>${esc(c.period)}</small><strong>${esc(c.name)}</strong></li>`)).join("")}\n    </ol>` : ""}\n  </div>`;
+  const td = D.works.filter((w => has(w, "3D") && w.thumbnail));
+  const ds = D.works.filter((w => (has(w, "DESIGN") || has(w, "BOOTH")) && w.thumbnail));
+  const pick = [ [ shorts[0], "r2" ], [ td[0], "c2" ], [ shorts[1], "r2" ], [ ds[0], "" ], [ ds[1], "" ], [ td[1], "c2" ], [ td[2], "c2" ] ].filter((([w]) => w));
+  $("w-count").textContent = `전체 ${D.works.length}`;
+  $("bento").innerHTML = pick.map((([w, cls]) => {
+    const c = list(w.category)[0] || "";
+    return `<a class="tile pop ${cls}" href="${link(w)}">\n    ${LP.thumbImg(w)}\n    <span class="tag ${catClass(c)}">${esc(catLabel(c))}</span>\n    <span class="cap"><b>${esc(LP.splitTitle(w.title).what)}</b>${LP.splitTitle(w.title).who ? `<small>${esc(LP.splitTitle(w.title).who)}</small>` : ""}</span>\n  </a>`;
+  })).join("");
+  const its = D.items.filter((i => i.thumbnail));
+  const icard = i => `<a class="icard" href="${esc(LP.safe(i.product_link))}" target="_blank" rel="noopener" title="${esc(i.name)}"><img src="${esc(i.thumbnail)}" alt="" loading="lazy" ${IMGERR}><span>${esc(i.name)}</span></a>`;
+  $("i-count").textContent = D.items.length;
+  $("i-note").textContent = s.items_intro ?? "보유하고 있는 BOOTH 아이템 목록이에요.\n커미션은 양측 구매가 원칙이며, 이용약관은 의뢰인 분이 꼭 확인해 주세요.";
+  $("itemsA").innerHTML = twice(its.slice(0, 12).map(icard).join(""));
+  $("itemsB").innerHTML = twice(its.slice(12, 24).map(icard).join(""));
+  LP.marquee();
+  if (location.hash === "#about") $("about").scrollIntoView();
 })();
 </script>
 </body>
