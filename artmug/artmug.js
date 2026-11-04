@@ -27,7 +27,47 @@
     const y = el.getBoundingClientRect().top + (window.scrollY || 0);
     try { window.parent.postMessage({ type: "leepu-scroll-pos", section: id, y }, "*"); } catch (e) {}
   };
-  window.addEventListener("message", (e) => { if (e.data && e.data.type === "leepu-scroll" && e.data.section) goTo(e.data.section); });
+  const EMBED = window.parent !== window;
+  let view = null, lb = null;
+  const placeBox = () => {
+    if (!lb) return;
+    const box = $(".vbox-in", lb), tall = lb.dataset.tall === "1";
+    const vh = view ? view.height : EMBED ? Math.min(window.innerHeight, (screen.availHeight || 800) * 0.8) : window.innerHeight;
+    const vw = Math.min(document.documentElement.clientWidth, window.innerWidth);
+    let w, h;
+    if (tall) { h = Math.min(vh * 0.86, 760); w = h * 9 / 16; if (w > vw * 0.92) { w = vw * 0.92; h = w * 16 / 9; } }
+    else { w = Math.min(vw * 0.92, 960); h = w * 9 / 16; if (h > vh * 0.8) { h = vh * 0.8; w = h * 16 / 9; } }
+    box.style.width = Math.round(w) + "px"; box.style.height = Math.round(h) + "px";
+    if (!EMBED) return;
+    const top = view ? view.top + view.height / 2 : Number(lb.dataset.y || 0);
+    const docH = document.documentElement.scrollHeight;
+    box.style.top = Math.round(Math.max(h / 2 + 12, Math.min(top, docH - h / 2 - 12))) + "px";
+  };
+  const openVideo = (id, tall, y) => {
+    closeVideo();
+    lb = document.createElement("div");
+    lb.className = "vbox" + (EMBED ? " embed" : "");
+    lb.dataset.tall = tall ? "1" : "0"; lb.dataset.y = String(y);
+    lb.innerHTML = `<div class="vbox-in"><iframe src="https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&playsinline=1&rel=0" title="영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><button type="button" class="vbox-x" aria-label="닫기">×</button>`;
+    if (EMBED) lb.style.height = document.documentElement.scrollHeight + "px";
+    document.body.appendChild(lb);
+    placeBox();
+    const x = $(".vbox-x", lb);
+    if (EMBED) x.style.top = Math.max(12, parseFloat($(".vbox-in", lb).style.top) - parseFloat($(".vbox-in", lb).style.height) / 2 - 52) + "px";
+    try { window.parent.postMessage({ type: "leepu-view-req" }, "*"); } catch (e) {}
+    x.focus({ preventScroll: true });
+  };
+  const closeVideo = () => { if (lb) { lb.remove(); lb = null; } };
+  window.addEventListener("message", (e) => {
+    const d = e.data;
+    if (!d) return;
+    if (d.type === "leepu-scroll" && d.section) goTo(d.section);
+    if (d.type === "leepu-view") {
+      view = { top: Number(d.top) || 0, height: Number(d.height) || window.innerHeight };
+      if (lb) { placeBox(); const x = $(".vbox-x", lb), b = $(".vbox-in", lb); x.style.top = Math.max(12, parseFloat(b.style.top) - parseFloat(b.style.height) / 2 - 52) + "px"; }
+    }
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeVideo(); });
 
   let C, COMMON, works = [], tab = "", shownAll = false;
   const S = { sel: {}, qty: {}, base: "" };
@@ -241,11 +281,11 @@
     document.addEventListener("click", async (e) => {
       const go = e.target.closest("[data-go]");
       if (go) return goTo(go.dataset.go);
+      if (lb && (e.target === lb || e.target.closest(".vbox-x"))) return closeVideo();
       const pl = e.target.closest(".play");
       if (pl) {
-        const m = pl.closest(".media");
-        m.innerHTML = `<iframe src="https://www.youtube.com/embed/${pl.dataset.yt}?autoplay=1&playsinline=1&rel=0" title="영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
-        return;
+        const r = pl.getBoundingClientRect();
+        return openVideo(pl.dataset.yt, !!pl.closest(".cine"), r.top + (window.scrollY || 0) + r.height / 2);
       }
       const t = e.target.closest("#lpTabs .tab");
       if (t) {

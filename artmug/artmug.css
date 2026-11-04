@@ -69,7 +69,7 @@ img{display:block;max-width:100%}
 .opt:hover{border-color:#ffb3cf}
 .opt.on{border-color:var(--pink);background:var(--blush2)}
 .opt input{width:18px;height:18px;margin:0;accent-color:var(--pink);flex:none}
-.opt .lb{flex:1;min-width:0}
+.opt .vbox{flex:1;min-width:0}
 .opt .pr{font:700 13px var(--en);white-space:nowrap}
 .soon{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:12px;border:1.5px dashed var(--line);font:500 13.5px var(--kr);color:var(--muted)}
 .soon b{color:var(--pink-ink)}
@@ -129,6 +129,14 @@ textarea.in{resize:vertical;min-height:72px}
 .foot{padding:8px 10px 0;font-size:12.5px;font-weight:700;color:var(--muted)}
 .err{padding:40px 20px;text-align:center;font-family:var(--kr);color:var(--muted)}
 
+.vbox{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(20,18,20,.82);animation:vboxIn .2s}
+.vbox.embed{position:absolute;top:0;left:0;right:auto;bottom:auto;width:100%;display:block}
+.vbox-in{position:relative;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.vbox.embed .vbox-in{position:absolute;left:50%;transform:translate(-50%,-50%)}
+.vbox-in iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vbox-x{position:fixed;top:16px;right:16px;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:var(--ink);font:400 28px/1 var(--en);cursor:pointer}
+.vbox.embed .vbox-x{position:absolute;right:auto;left:50%;transform:translateX(-50%)}
+@keyframes vboxIn{from{opacity:0}to{opacity:1}}
 @media (max-width:600px){
   .wrap{padding:12px 10px 20px;gap:10px}
   .panel{padding:22px 18px;border-radius:22px}
