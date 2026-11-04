@@ -23,7 +23,7 @@
   const goTo = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
-    try { el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
+    if (!EMBED) { try { el.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {} }
     const y = el.getBoundingClientRect().top + (window.scrollY || 0);
     try { window.parent.postMessage({ type: "leepu-scroll-pos", section: id, y }, "*"); } catch (e) {}
   };
@@ -72,6 +72,11 @@
     }
   });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeVideo(); });
+  if (EMBED) {
+    const pin = () => { if (window.scrollY || document.documentElement.scrollTop) window.scrollTo(0, 0); };
+    window.addEventListener("scroll", pin, { passive: true });
+    window.addEventListener("load", pin);
+  }
 
   let C, COMMON, works = [], tab = "", shownAll = false;
   const S = { sel: {}, qty: {}, base: "" };
@@ -296,7 +301,7 @@
         tab = t.dataset.tab;
         $$("#lpTabs .tab").forEach((b) => b.setAttribute("aria-pressed", String(b === t)));
         $("#lpGrid").innerHTML = works.filter((w) => w.tags.includes(tab)).map(card3d).join("");
-        try { t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" }); } catch (_) {}
+        const bar = $("#lpTabs"); try { bar.scrollTo({ left: t.offsetLeft - (bar.clientWidth - t.offsetWidth) / 2, behavior: "smooth" }); } catch (_) { bar.scrollLeft = t.offsetLeft; }
         pill(false);
         return report();
       }
