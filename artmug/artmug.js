@@ -62,6 +62,10 @@
     const d = e.data;
     if (!d) return;
     if (d.type === "leepu-scroll" && d.section) goTo(d.section);
+    if (d.type === "leepu-sections") {
+      const list = $$("[id^=\"lpSec-\"]").filter((el) => el.tagName === "SECTION" || el.tagName === "HEADER").map((el) => ({ id: el.id, y: Math.round(el.getBoundingClientRect().top + (window.scrollY || 0)) }));
+      try { window.parent.postMessage({ type: "leepu-sections", list }, "*"); } catch (err) {}
+    }
     if (d.type === "leepu-view") {
       view = { top: Number(d.top) || 0, height: Number(d.height) || window.innerHeight };
       if (lb) { placeBox(); const x = $(".vbox-x", lb), b = $(".vbox-in", lb); x.style.top = Math.max(12, parseFloat(b.style.top) - parseFloat(b.style.height) / 2 - 52) + "px"; }

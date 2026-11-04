@@ -69,7 +69,7 @@ img{display:block;max-width:100%}
 .opt:hover{border-color:#ffb3cf}
 .opt.on{border-color:var(--pink);background:var(--blush2)}
 .opt input{width:18px;height:18px;margin:0;accent-color:var(--pink);flex:none}
-.opt .vbox{flex:1;min-width:0}
+.opt .lb{flex:1;min-width:0}
 .opt .pr{font:700 13px var(--en);white-space:nowrap}
 .soon{display:flex;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:12px;border:1.5px dashed var(--line);font:500 13.5px var(--kr);color:var(--muted)}
 .soon b{color:var(--pink-ink)}
