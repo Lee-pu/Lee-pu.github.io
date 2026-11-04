@@ -558,6 +558,113 @@ ol.steps {
 ol.steps b {
   color: var(--fg)
 }
+.am-bar {
+  position: sticky;
+  top: 58px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 4px 0 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface)
+}
+.am-sec summary {
+  cursor: pointer;
+  list-style: none
+}
+.am-sec summary::-webkit-details-marker {
+  display: none
+}
+.am-sec summary h2 {
+  display: inline;
+  margin: 0;
+  font-size: 16px
+}
+.am-sec summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent);
+  font-weight: 700
+}
+.am-sec[open] summary::after {
+  content: "−"
+}
+.am-card {
+  display: grid;
+  grid-template-columns: 140px minmax(0,1fr);
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg)
+}
+.am-card.one-col {
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px
+}
+.am-card.sub {
+  background: var(--surface)
+}
+.am-media {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+.am-th {
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--chip)
+}
+.am-th.round {
+  border-radius: 50%
+}
+.am-th img,
+.am-th video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.am-item {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 96px 110px auto auto;
+  gap: 6px;
+  align-items: center
+}
+.am-foot {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px
+}
+.am-ord {
+  display: inline-flex;
+  gap: 4px
+}
+@media (max-width:640px) {
+  .am-card {
+    grid-template-columns: minmax(0,1fr)
+  }
+  .am-media {
+    flex-direction: row;
+    align-items: center
+  }
+  .am-th {
+    width: 96px
+  }
+  .am-item {
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--line)
+  }
+  .am-item > :first-child {
+    grid-column: 1/-1
+  }
+}
 </style>
 </head>
 <body>
@@ -566,6 +673,7 @@ ol.steps b {
   <nav class="tabs" role="tablist" id="tabs" hidden>
     <button class="tab" role="tab" data-tab="works">작업물</button>
     <button class="tab" role="tab" data-tab="items">아이템</button>
+    <button class="tab" role="tab" data-tab="artmug">아트머그</button>
     <button class="tab" role="tab" data-tab="settings">설정</button>
   </nav>
   <div class="right"><span class="pill warn" id="h-dirty" hidden>저장 안 한 변경 있음</span><button class="btn sm primary" id="h-export" hidden>data.json 저장</button><button class="btn sm" id="h-view">사이트 보기</button></div>
@@ -920,7 +1028,7 @@ ol.steps b {
   $("h-export").onclick = exportData;
   $("h-view").onclick = viewSite;
   window.addEventListener("beforeunload", (e => {
-    if (LOCAL && DIRTY) {
+    if (LOCAL && DIRTY || typeof AMDIRTY !== "undefined" && AMDIRTY) {
       e.preventDefault();
       e.returnValue = "";
     }
@@ -958,13 +1066,15 @@ ol.steps b {
     show(location.hash.slice(1) || tab);
   }
   function show(t) {
-    tab = [ "works", "items", "settings" ].includes(t) ? t : "works";
+    tab = [ "works", "items", "artmug", "settings" ].includes(t) ? t : "works";
     document.querySelectorAll(".tab").forEach((b => b.setAttribute("aria-selected", b.dataset.tab === tab)));
     $("brand").innerHTML = `${esc(D.site.name || "사이트")}<small>관리</small>`;
     if (/^#[0-9a-f]{6}$/i.test(D.site.accent_color || "")) document.documentElement.style.setProperty("--accent", D.site.accent_color);
+    $("page").oninput = $("page").onchange = $("page").onclick = null;
     ({
       works: worksView,
       items: itemsView,
+      artmug: artmugView,
       settings: settingsView
     })[tab]();
   }
@@ -1233,6 +1343,401 @@ ol.steps b {
       }
     }));
   }
+  let AM = null, AMP = "3d", AMLAST = "", AMDIRTY = false, CINE = {};
+  const AMPAGES = [ [ "3d", "3D" ], [ "cinemachine", "시네머신" ], [ "common", "공통" ] ];
+  const PLATFORMS = [ "", "SOOP", "CHZZK" ];
+  const FIELD_TYPES = [ [ "text", "한 줄 입력" ], [ "area", "여러 줄 입력" ], [ "picked", "견적 계산기 결과 (3D)" ], [ "choose", "신청 항목 고르기 (시네머신)" ], [ "base", "베이스 아바타 (3D)" ] ];
+  const pget = (o, p) => p.split(".").reduce(((a, k) => a == null ? a : a[k]), o);
+  const pset = (o, p, v) => {
+    const ks = p.split("."), last = ks.pop();
+    const t = ks.reduce(((a, k) => a[k]), o);
+    t[last] = v;
+  };
+  const readFile = async (path, ref) => api(`${R()}/contents/${path}?ref=${ref}`, {
+    accept: "application/vnd.github.raw",
+    raw: true
+  });
+  async function commitArt(message, op, files = []) {
+    busy("파일 올리는 중…");
+    try {
+      const blobs = [];
+      for (const f of files) {
+        const b = await api(`${R()}/git/blobs`, {
+          method: "POST",
+          body: {
+            content: f.b64,
+            encoding: "base64"
+          }
+        });
+        blobs.push({
+          path: f.path,
+          mode: "100644",
+          type: "blob",
+          sha: b.sha
+        });
+      }
+      busy("저장하는 중…");
+      for (let a = 0; a < 4; a++) {
+        const head = await headSha();
+        const c = await api(`${R()}/git/commits/${head}`);
+        const data = JSON.parse(await readFile("artmug.json", head));
+        op(data);
+        const tree = await api(`${R()}/git/trees`, {
+          method: "POST",
+          body: {
+            base_tree: c.tree.sha,
+            tree: [ ...blobs, {
+              path: "artmug.json",
+              mode: "100644",
+              type: "blob",
+              content: JSON.stringify(data, null, 2) + "\n"
+            } ]
+          }
+        });
+        const nc = await api(`${R()}/git/commits`, {
+          method: "POST",
+          body: {
+            message: message,
+            tree: tree.sha,
+            parents: [ head ]
+          }
+        });
+        try {
+          await api(`${R()}/git/refs/heads/${C.branch}`, {
+            method: "PATCH",
+            body: {
+              sha: nc.sha,
+              force: false
+            }
+          });
+          return data;
+        } catch (e) {
+          if (e.status !== 422) throw e;
+        }
+      }
+      throw new Error("다른 저장과 겹쳤어요. 잠시 후 다시 눌러 주세요.");
+    } finally {
+      busy(false);
+    }
+  }
+  const amLoad = guard((async force => {
+    if (LOCAL) return;
+    if (AM && !force) return artmugView();
+    busy("아트머그 내용 불러오는 중…");
+    try {
+      AM = JSON.parse(await readFile("artmug.json", await headSha()));
+    } finally {
+      busy(false);
+    }
+    AMDIRTY = false;
+    CINE = {};
+    UP = {};
+    artmugView();
+  }));
+  const amDirty = () => {
+    AMDIRTY = true;
+    const b = $("am-save");
+    if (b) b.disabled = false;
+    const p = $("am-state");
+    if (p) p.hidden = false;
+  };
+  const uidShort = () => "i" + uid().slice(0, 6);
+  function amInput(path, label, o = {}) {
+    const v = pget(AM, path);
+    const tag = o.rows ? `<textarea class="field" rows="${o.rows}" data-p="${path}"${o.t ? ` data-t="${o.t}"` : ""}${o.ph ? ` placeholder="${esc(o.ph)}"` : ""}>${esc(o.t === "lines" ? (v || []).map((x => String(x).replace(/\n/g, "\\n"))).join("\n") : v ?? "")}</textarea>` : `<input class="field" ${o.t === "num" ? 'type="number" min="0" step="1000"' : ""} data-p="${path}"${o.t ? ` data-t="${o.t}"` : ""} value="${esc(o.t === "csv" ? (v || []).join(", ") : v ?? "")}"${o.ph ? ` placeholder="${esc(o.ph)}"` : ""}${o.dis ? " disabled" : ""}>`;
+    return label ? `<div><label class="lbl">${label}</label>${tag}${o.hint ? `<div class="hint">${o.hint}</div>` : ""}</div>` : tag;
+  }
+  const amMove = (path, i, n) => `<span class="am-ord"><button class="btn sm" data-act="up" data-p="${path}" data-i="${i}" ${i === 0 ? "disabled" : ""} aria-label="위로">↑</button><button class="btn sm" data-act="down" data-p="${path}" data-i="${i}" ${i === n - 1 ? "disabled" : ""} aria-label="아래로">↓</button><button class="btn sm danger" data-act="del" data-p="${path}" data-i="${i}">삭제</button></span>`;
+  function amMedia(path, w) {
+    const id = ytId(w.youtube || "");
+    const img = w.img || (id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "");
+    const isVid = /\.(mp4|webm|mov)$/i.test(w.img || "");
+    return `<div class="am-th">${isVid ? `<video src="${esc(src(w.img))}" muted loop autoplay playsinline></video>` : imgTag(img)}</div>
+      <div class="stack" style="gap:6px">
+        <label class="btn sm" style="justify-content:center">사진·움짤·영상 파일<input type="file" accept="image/*,video/mp4,video/webm" data-up="${path}.img" hidden></label>
+        ${w.img ? `<button class="btn sm" data-act="clearimg" data-p="${path}.img">파일 빼기</button>` : ""}
+      </div>`;
+  }
+  function amWorks(path, tabs, withTags) {
+    const arr = pget(AM, path) || [];
+    return `<div class="stack">${arr.map(((w, i) => `<div class="am-card">
+      <div class="am-media">${amMedia(`${path}.${i}`, w)}</div>
+      <div class="stack" style="gap:10px;min-width:0">
+        <div class="two">${amInput(`${path}.${i}.name`, "이름", {
+      ph: "예: 연빛yeonvvit 님 / 지인 작업 / ?핑"
+    })}<div><label class="lbl">플랫폼</label><select class="field" data-p="${path}.${i}.platform">${PLATFORMS.map((p => `<option value="${p}" ${(w.platform || "") === p ? "selected" : ""}>${p || "없음"}</option>`)).join("")}</select></div></div>
+        ${amInput(`${path}.${i}.youtube`, "유튜브 링크 (선택)", {
+      ph: "https://youtube.com/…",
+      hint: "넣으면 카드에 ▶ 버튼이 생기고 누르면 팝업으로 재생돼요. 사진을 안 넣으면 유튜브 썸네일을 써요."
+    })}
+        ${withTags ? `<div><span class="lbl">보여 줄 탭</span><div class="chips">${tabs.map((t => `<button class="chip" data-act="tag" data-p="${path}.${i}.tags" data-v="${esc(t)}" aria-pressed="${(w.tags || []).includes(t)}">${esc(t)}</button>`)).join("")}</div></div>` : ""}
+        <div class="am-foot">${amMove(path, i, arr.length)}</div>
+      </div></div>`)).join("") || `<p class="empty" style="padding:16px 0">아직 없어요</p>`}
+      <div><button class="btn" data-act="add" data-p="${path}" data-k="work">+ 추가</button></div></div>`;
+  }
+  function amGroups(path) {
+    const gs = pget(AM, path) || [];
+    return `<div class="stack">${gs.map(((g, gi) => {
+      const gp = `${path}.${gi}`;
+      return `<div class="am-card one-col">
+        <div class="two">${amInput(`${gp}.name`, "묶음 이름")}${amInput(`${gp}.note`, "묶음 아래 안내 (선택)")}</div>
+        <label class="switch"><input type="checkbox" data-p="${gp}.radio" data-t="bool" ${g.radio ? "checked" : ""}>이 묶음은 하나만 고를 수 있게</label>
+        <div class="stack" style="gap:8px">${(g.items || []).map(((it, ii) => {
+        const ip = `${gp}.items.${ii}`, kind = it.soon ? "soon" : it.ask ? "ask" : "price";
+        return `<div class="am-item">
+          ${amInput(`${ip}.label`, "", {
+          ph: "항목 이름"
+        })}
+          <select class="field" data-kind="${ip}" aria-label="가격 방식"><option value="price" ${kind === "price" ? "selected" : ""}>가격</option><option value="ask" ${kind === "ask" ? "selected" : ""}>문의</option><option value="soon" ${kind === "soon" ? "selected" : ""}>곧 오픈</option></select>
+          ${amInput(`${ip}.price`, "", {
+          t: "num",
+          ph: "원",
+          dis: kind !== "price"
+        })}
+          <label class="switch" title="개수를 고를 수 있게"><input type="checkbox" data-p="${ip}.qty" data-t="bool" ${it.qty ? "checked" : ""} ${kind !== "price" ? "disabled" : ""}>개수</label>
+          ${amMove(`${gp}.items`, ii, g.items.length)}
+        </div>`;
+      })).join("")}
+          <div><button class="btn sm" data-act="add" data-p="${gp}.items" data-k="item">+ 항목 추가</button></div></div>
+        <div class="am-foot"><span class="hint" style="margin:0">묶음 순서·삭제</span>${amMove(path, gi, gs.length)}</div>
+      </div>`;
+    })).join("")}
+      <div><button class="btn" data-act="add" data-p="${path}" data-k="group">+ 묶음 추가</button></div></div>`;
+  }
+  function amForm(path) {
+    const fs = pget(AM, path) || [];
+    const row = (p, f, i, n, sub) => `<div class="am-card one-col${sub ? " sub" : ""}">
+      <div class="two">${amInput(`${p}.label`, sub ? "+ 하위 칸 이름" : `${i + 1}번 칸 이름`)}<div><label class="lbl">종류</label><select class="field" data-p="${p}.type">${FIELD_TYPES.map((([v, l]) => `<option value="${v}" ${f.type === v ? "selected" : ""}>${l}</option>`)).join("")}</select></div></div>
+      ${[ "text", "area" ].includes(f.type) ? amInput(`${p}.placeholder`, "칸 안 흐린 안내 (선택)") : ""}
+      ${sub ? "" : amInput(`${p}.note`, "칸 아래 분홍 안내 (선택)")}
+      ${sub ? "" : `<div class="stack" style="gap:8px">${(f.subs || []).map(((s, si) => row(`${p}.subs.${si}`, s, si, f.subs.length, true))).join("")}<div><button class="btn sm" data-act="add" data-p="${p}.subs" data-k="field">+ 하위 칸 추가</button></div></div>`}
+      <div class="am-foot">${amMove(sub ? p.replace(/\.\d+$/, "") : path, i, n)}</div></div>`;
+    return `<div class="stack">${fs.map(((f, i) => row(`${path}.${i}`, f, i, fs.length, false))).join("")}<div><button class="btn" data-act="add" data-p="${path}" data-k="field">+ 칸 추가</button></div></div>`;
+  }
+  function amNotices(path) {
+    const ns = pget(AM, path) || [];
+    return `<div class="stack">${ns.map(((n, i) => `<div class="am-card one-col">
+      ${amInput(`${path}.${i}.title`, "항목 이름")}
+      ${amInput(`${path}.${i}.items`, "내용 (한 줄에 한 문장)", {
+      rows: Math.max(3, (n.items || []).length + 1),
+      t: "lines",
+      hint: "굵게 할 부분은 **이렇게** 별표 두 개로 감싸 주세요. 한 문장 안에서 줄을 바꾸려면 \\n 을 적어요."
+    })}
+      <div class="am-foot">${amMove(path, i, ns.length)}</div></div>`)).join("")}
+      <div><button class="btn" data-act="add" data-p="${path}" data-k="notice">+ 항목 추가</button></div></div>`;
+  }
+  function amCine() {
+    const ws = D.works.filter((w => list(w.category).some((c => c.toUpperCase() === "CINEMACHINE")))).sort(((a, b) => String(b.date || "").localeCompare(String(a.date || ""))));
+    const on = w => w.id in CINE ? CINE[w.id] : w.artmug !== false;
+    return `<p class="sub" style="margin:0 0 10px">작업물 탭의 CINEMACHINE 작업이 자동으로 나와요. 체크를 끄면 아트머그 페이지에서만 빠져요. 작업물 탭에서 비공개인 작업은 원래 안 보여요.</p>
+      ${amInput("cinemachine.works_shown", "처음에 보여 줄 개수", {
+      t: "num",
+      hint: "나머지는 더보기를 누르면 나와요."
+    }).replace('step="1000"', 'step="1"')}
+      <div class="list" style="margin-top:12px">${ws.map((w => `<label class="row sel" style="cursor:pointer"><input type="checkbox" data-cine="${w.id}" ${on(w) ? "checked" : ""} style="width:18px;height:18px;accent-color:var(--accent)"><div class="th">${imgTag(w.thumbnail)}</div><div class="min0"><div class="t">${esc(w.title)}</div><div class="m"><span>${esc(w.date || "")}</span>${w.public === false ? `<span class="pill">비공개</span>` : ""}</div></div></label>`)).join("")}</div>`;
+  }
+  function artmugView() {
+    if (LOCAL) {
+      $("page").innerHTML = `<div class="panel"><h1>아트머그</h1><p class="sub">아트머그 페이지는 GitHub에 연결했을 때만 고칠 수 있어요.</p></div>`;
+      return;
+    }
+    if (!AM) return amLoad();
+    const P = AMP, sec = (t, body, d) => `<details class="panel am-sec"${d ? " open" : ""}><summary><h2>${t}</h2></summary><div class="stack" style="margin-top:14px">${body}</div></details>`;
+    let body = "";
+    if (P === "common") {
+      body = sec("프로필 사진", `<div class="am-card"><div class="am-media"><div class="am-th round">${imgTag(AM.common.profile_image)}</div><label class="btn sm" style="justify-content:center">사진 바꾸기<input type="file" accept="image/*" data-up="common.profile_image" hidden></label></div><p class="sub" style="margin:0">3D·시네머신 첫 화면에 같이 쓰여요.</p></div>`, true) + sec("필독사항 공통 문구", amInput("common.must_title", "검정 안내 제목") + amInput("common.must_text", "검정 안내 설명") + amInput("common.notice_end", "필독사항 맨 아래 문구", {
+        hint: "**굵게** 감싼 부분은 핑크색으로 보여요."
+      }), true) + sec("신청 양식 동의 문구", amInput("common.agree", "체크박스 문구"), true);
+    } else {
+      body = sec("첫 화면", amInput(`${P}.badge`, "맨 위 알약 문구") + amInput(`${P}.greeting`, "작가 소개", {
+        rows: 5,
+        hint: "줄바꿈한 그대로 보여요 (모바일에서는 자연스럽게 이어져요)."
+      }), true) + sec("필독사항", amNotices(`${P}.notices`)) + (P === "3d" ? sec("포트폴리오", amInput("3d.tabs", "탭 (쉼표로 구분, 순서대로)", {
+        t: "csv",
+        hint: "작품이 하나도 없는 탭은 페이지에서 자동으로 숨겨져요."
+      }) + amWorks("3d.works", AM["3d"].tabs || [], true)) + sec("개인작", amWorks("3d.sales.items", [], false) + amInput("3d.sales.empty", "개인작이 없을 때 문구", {
+        rows: 2
+      })) + sec("견적 계산기", amInput("3d.avatars", "베이스 아바타 목록 (쉼표로 구분)", {
+        t: "csv"
+      }) + amInput("3d.avatar_none", "목록 맨 끝 선택지") + amGroups("3d.groups")) : sec("포트폴리오", amCine()) + sec("신청 항목 (가격)", amGroups("cinemachine.groups"))) + sec("신청 양식", amForm(`${P}.form`)) + sec("진행 과정", amInput(`${P}.steps`, "단계 (한 줄에 하나)", {
+        rows: 6,
+        t: "lines"
+      }));
+    }
+    const open = AMLAST === P ? [ ...document.querySelectorAll(".am-sec") ].map((d => d.open)) : [];
+    AMLAST = P;
+    $("page").innerHTML = `<div class="head"><div class="min0"><h1>아트머그</h1><p class="sub" style="margin:0">아트머그 상세 페이지에 들어가는 커미션 페이지 내용이에요.</p></div>
+      <div class="right"><a class="btn sm" href="${P === "cinemachine" ? "artmug/cinemachine/" : "artmug/3d/"}" target="_blank" rel="noopener">페이지 보기</a></div></div>
+      <div class="am-bar"><div class="chips" style="margin:0">${AMPAGES.map((([k, l]) => `<button class="chip" data-amp="${k}" aria-pressed="${AMP === k}">${l}</button>`)).join("")}</div>
+        <span class="pill warn" id="am-state" ${AMDIRTY ? "" : "hidden"}>저장 안 한 변경 있음</span>
+        <span style="margin-left:auto;display:flex;gap:6px"><button class="btn sm" id="am-reload">다시 불러오기</button><button class="btn sm primary" id="am-save" ${AMDIRTY ? "" : "disabled"}>저장</button></span></div>
+      <div class="stack">${body}</div>`;
+    if (open.length) document.querySelectorAll(".am-sec").forEach(((d, i) => {
+      if (open[i] !== undefined) d.open = open[i];
+    }));
+    $("am-save").onclick = amSave;
+    $("am-reload").onclick = guard((async () => {
+      if (AMDIRTY && !await ask("저장 안 한 변경이 사라져요. 다시 불러올까요?", "다시 불러오기")) return;
+      amLoad(true);
+    }));
+    $("page").oninput = e => {
+      const el = e.target;
+      if (el.dataset.p && el.type !== "checkbox" && el.tagName !== "SELECT") {
+        const t = el.dataset.t;
+        let v = el.value;
+        if (t === "num") v = v === "" ? 0 : Math.max(0, Math.round(+v));
+        if (t === "lines") v = v.split("\n").map((x => x.trim().replace(/\\n/g, "\n"))).filter(Boolean);
+        if (t === "csv") v = list(v);
+        pset(AM, el.dataset.p, v);
+        amDirty();
+      }
+    };
+    $("page").onchange = guard((async e => {
+      const el = e.target;
+      if (el.dataset.cine) {
+        CINE[el.dataset.cine] = el.checked;
+        return amDirty();
+      }
+      if (el.dataset.kind) {
+        const it = pget(AM, el.dataset.kind);
+        delete it.ask;
+        delete it.soon;
+        if (el.value === "ask") {
+          it.ask = true;
+          delete it.qty;
+        }
+        if (el.value === "soon") {
+          it.soon = true;
+          delete it.qty;
+        }
+        if (el.value === "price" && typeof it.price !== "number") it.price = 0;
+        amDirty();
+        return artmugView();
+      }
+      if (el.dataset.up) {
+        const f = el.files[0];
+        el.value = "";
+        if (!f) return;
+        busy("파일 준비하는 중…");
+        let p;
+        try {
+          p = await prepFile(f, f.type.startsWith("video/") ? "video" : "img");
+        } finally {
+          busy(false);
+        }
+        pset(AM, el.dataset.up, p);
+        amDirty();
+        return artmugView();
+      }
+      if (el.dataset.p && (el.type === "checkbox" || el.tagName === "SELECT")) {
+        pset(AM, el.dataset.p, el.type === "checkbox" ? el.checked : el.value);
+        if (el.dataset.t === "bool" && !el.checked) {
+          const ks = el.dataset.p.split("."), last = ks.pop();
+          delete pget(AM, ks.join("."))[last];
+        }
+        amDirty();
+        if (el.dataset.p.endsWith(".type")) artmugView();
+      }
+      if (el.dataset.t === "csv" && el.dataset.p === "3d.tabs") artmugView();
+    }));
+    $("page").onclick = guard((async e => {
+      const pg = e.target.closest("[data-amp]");
+      if (pg) {
+        AMP = pg.dataset.amp;
+        return artmugView();
+      }
+      const b = e.target.closest("[data-act]");
+      if (!b) return;
+      const act = b.dataset.act, p = b.dataset.p;
+      if (act === "tag") {
+        const arr = pget(AM, p) || [], v = b.dataset.v;
+        pset(AM, p, arr.includes(v) ? arr.filter((x => x !== v)) : [ ...arr, v ]);
+        amDirty();
+        return artmugView();
+      }
+      if (act === "clearimg") {
+        pset(AM, p, "");
+        amDirty();
+        return artmugView();
+      }
+      let arr = pget(AM, p);
+      if (!arr) {
+        arr = [];
+        pset(AM, p, arr);
+      }
+      const i = +b.dataset.i;
+      if (act === "up" && i > 0) [ arr[i - 1], arr[i] ] = [ arr[i], arr[i - 1] ];
+      if (act === "down" && i < arr.length - 1) [ arr[i + 1], arr[i] ] = [ arr[i], arr[i + 1] ];
+      if (act === "del") {
+        if (!await ask("이 항목을 지울까요? (저장을 눌러야 사이트에 반영돼요)", "지우기")) return;
+        arr.splice(i, 1);
+      }
+      if (act === "add") {
+        const k = b.dataset.k;
+        arr.push(k === "work" ? {
+          tags: [],
+          name: "",
+          platform: "",
+          img: "",
+          youtube: ""
+        } : k === "item" ? {
+          id: uidShort(),
+          label: "",
+          price: 0
+        } : k === "group" ? {
+          name: "새 묶음",
+          items: [ {
+            id: uidShort(),
+            label: "",
+            price: 0
+          } ]
+        } : k === "notice" ? {
+          title: "새 항목",
+          items: []
+        } : {
+          key: uidShort(),
+          label: "새 칸",
+          type: "text"
+        });
+      }
+      amDirty();
+      artmugView();
+    }));
+  }
+  const amSave = guard((async () => {
+    const paths = [];
+    (function walk(o) {
+      if (typeof o === "string") {
+        if (UP[o]) paths.push(o);
+      } else if (o && typeof o === "object") Object.values(o).forEach(walk);
+    })(AM);
+    const snap = JSON.parse(JSON.stringify(AM));
+    const fixIds = o => (o.groups || []).forEach((g => (g.items || []).forEach((it => {
+      if (!it.id) it.id = uidShort();
+    }))));
+    fixIds(snap["3d"] || {});
+    fixIds(snap.cinemachine || {});
+    AM = await commitArt("아트머그 페이지 수정", (d => {
+      d.common = snap.common;
+      d["3d"] = snap["3d"];
+      d.cinemachine = snap.cinemachine;
+    }), filesFor(paths));
+    const ch = Object.entries(CINE);
+    if (ch.length) {
+      await commit("아트머그 시네머신 포트폴리오 표시 변경", (d => {
+        ch.forEach((([id, on]) => {
+          const w = d.works.find((x => x.id === id));
+          if (!w) return;
+          if (on) delete w.artmug; else w.artmug = false;
+        }));
+      }));
+      CINE = {};
+    }
+    UP = {};
+    AMDIRTY = false;
+    toast("저장했어요. 1~2분 뒤 아트머그 페이지에 반영돼요.");
+    artmugView();
+  }));
   const ITEM_CATS = [ "Avatar", "Hair", "Clothes", "Eye", "Make Up", "Accessories", "Motion", "World" ];
   function itemForm(id) {
     const it = id ? D.items.find((x => x.id === id)) : null;
