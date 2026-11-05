@@ -109,7 +109,7 @@
   const portfolio3d = () => {
     const tabs = (C.tabs || []).filter((t) => works.some((w) => w.tags.includes(t)));
     if (!tab || !tabs.includes(tab)) tab = tabs[0] || "";
-    return `<div class="tabs" id="lpTabs" role="tablist"><span class="pill" aria-hidden="true"></span>${tabs.map((t) => `<button type="button" class="tab" data-tab="${esc(t)}" aria-pressed="${t === tab}">${esc(t)}</button>`).join("")}</div><p class="tab-note" id="lpTabNote"${tabNote() ? "" : " hidden"}>${md(tabNote())}</p><div class="grid" id="lpGrid">${works.filter((w) => w.tags.includes(tab)).map(card3d).join("")}</div>`;
+    return `<div class="tabs" id="lpTabs" role="tablist"><span class="pill" aria-hidden="true"></span>${tabs.map((t) => `<button type="button" class="tab" data-tab="${esc(t)}" aria-pressed="${t === tab}">${esc(t)}</button>`).join("")}</div><div class="grid" id="lpGrid">${works.filter((w) => w.tags.includes(tab)).map(card3d).join("")}</div><p class="tab-note" id="lpTabNote"${tabNote() ? "" : " hidden"}>${md(tabNote())}</p>`;
   };
   const portfolioCine = () => {
     const more = works.length > C.works_shown && !shownAll ? `<div class="more"><button type="button" class="btn-line" id="lpMore">더보기</button></div>` : "";
