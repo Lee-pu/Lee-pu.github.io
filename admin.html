@@ -635,6 +635,12 @@ ol.steps b {
   gap: 6px;
   align-items: center
 }
+.am-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap
+}
 .am-foot {
   display: flex;
   justify-content: flex-end;
@@ -1343,7 +1349,7 @@ ol.steps b {
       }
     }));
   }
-  let AM = null, AMP = "3d", AMLAST = "", AMDIRTY = false, CINE = {};
+  let AM = null, AMP = "3d", AMLAST = "", AMDIRTY = false, CINE = {}, AMTAB = "";
   const AMPAGES = [ [ "3d", "3D" ], [ "cinemachine", "시네머신" ], [ "common", "공통" ] ];
   const PLATFORMS = [ "", "SOOP", "CHZZK" ];
   const FIELD_TYPES = [ [ "text", "한 줄 입력" ], [ "area", "여러 줄 입력" ], [ "picked", "견적 계산기 결과 (3D)" ], [ "choose", "신청 항목 고르기 (시네머신)" ], [ "base", "베이스 아바타 (3D)" ] ];
@@ -1447,7 +1453,7 @@ ol.steps b {
     const tag = o.rows ? `<textarea class="field" rows="${o.rows}" data-p="${path}"${o.t ? ` data-t="${o.t}"` : ""}${o.ph ? ` placeholder="${esc(o.ph)}"` : ""}>${esc(o.t === "lines" ? (v || []).map((x => String(x).replace(/\n/g, "\\n"))).join("\n") : v ?? "")}</textarea>` : `<input class="field" ${o.t === "num" ? 'type="number" min="0" step="1000"' : ""} data-p="${path}"${o.t ? ` data-t="${o.t}"` : ""} value="${esc(o.t === "csv" ? (v || []).join(", ") : v ?? "")}"${o.ph ? ` placeholder="${esc(o.ph)}"` : ""}${o.dis ? " disabled" : ""}>`;
     return label ? `<div><label class="lbl">${label}</label>${tag}${o.hint ? `<div class="hint">${o.hint}</div>` : ""}</div>` : tag;
   }
-  const amMove = (path, i, n) => `<span class="am-ord"><button class="btn sm" data-act="up" data-p="${path}" data-i="${i}" ${i === 0 ? "disabled" : ""} aria-label="위로">↑</button><button class="btn sm" data-act="down" data-p="${path}" data-i="${i}" ${i === n - 1 ? "disabled" : ""} aria-label="아래로">↓</button><button class="btn sm danger" data-act="del" data-p="${path}" data-i="${i}">삭제</button></span>`;
+  const amMove = (path, i, n, prev, next) => `<span class="am-ord"><button class="btn sm" data-act="up" data-p="${path}" data-i="${i}"${prev !== undefined ? ` data-to="${prev}"` : ""} ${(prev !== undefined ? prev < 0 : i === 0) ? "disabled" : ""} aria-label="위로">↑</button><button class="btn sm" data-act="down" data-p="${path}" data-i="${i}"${next !== undefined ? ` data-to="${next}"` : ""} ${(next !== undefined ? next < 0 : i === n - 1) ? "disabled" : ""} aria-label="아래로">↓</button><button class="btn sm danger" data-act="del" data-p="${path}" data-i="${i}">삭제</button></span>`;
   function amMedia(path, w) {
     const id = ytId(w.youtube || "");
     const img = w.img || (id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "");
@@ -1460,20 +1466,27 @@ ol.steps b {
   }
   function amWorks(path, tabs, withTags) {
     const arr = pget(AM, path) || [];
-    return `<div class="stack">${arr.map(((w, i) => `<div class="am-card">
+    if (withTags && AMTAB && !tabs.includes(AMTAB)) AMTAB = "";
+    const show = arr.map(((w, i) => i)).filter((i => !withTags || !AMTAB || (arr[i].tags || []).includes(AMTAB)));
+    const bar = withTags ? `<div class="am-filter"><div class="chips" style="margin:0">${[ "", ...tabs ].map((t => `<button class="chip" data-amtab="${esc(t)}" aria-pressed="${AMTAB === t}">${t ? esc(t) : "전체"} <span style="opacity:.6">${t ? arr.filter((w => (w.tags || []).includes(t))).length : arr.length}</span></button>`)).join("")}</div>
+      <span class="inline" style="margin-left:auto"><input id="am-newtab" class="field" placeholder="새 탭 이름" aria-label="새 탭 이름" style="width:130px"><button class="btn sm" data-act="addtab" data-p="${path}">탭 추가</button></span></div>` : "";
+    const addBtn = `<button class="btn primary" data-act="add" data-p="${path}" data-k="work">+ ${withTags && AMTAB ? `${esc(AMTAB)}에 ` : ""}작품 추가</button>`;
+    return `<div class="stack">${bar}<div>${addBtn}</div>${show.map(((i, j) => {
+      const w = arr[i];
+      return `<div class="am-card">
       <div class="am-media">${amMedia(`${path}.${i}`, w)}</div>
       <div class="stack" style="gap:10px;min-width:0">
         <div class="two">${amInput(`${path}.${i}.name`, "이름", {
-      ph: "예: 연빛yeonvvit 님 / 지인 작업 / ?핑"
-    })}<div><label class="lbl">플랫폼</label><select class="field" data-p="${path}.${i}.platform">${PLATFORMS.map((p => `<option value="${p}" ${(w.platform || "") === p ? "selected" : ""}>${p || "없음"}</option>`)).join("")}</select></div></div>
+        ph: "예: 연빛yeonvvit 님 / 지인 작업 / ?핑"
+      })}<div><label class="lbl">플랫폼</label><select class="field" data-p="${path}.${i}.platform">${PLATFORMS.map((p => `<option value="${p}" ${(w.platform || "") === p ? "selected" : ""}>${p || "없음"}</option>`)).join("")}</select></div></div>
         ${amInput(`${path}.${i}.youtube`, "유튜브 링크 (선택)", {
-      ph: "https://youtube.com/…",
-      hint: "넣으면 카드에 ▶ 버튼이 생기고 누르면 팝업으로 재생돼요. 사진을 안 넣으면 유튜브 썸네일을 써요."
-    })}
+        ph: "https://youtube.com/…",
+        hint: "넣으면 카드에 ▶ 버튼이 생기고 누르면 팝업으로 재생돼요. 사진을 안 넣으면 유튜브 썸네일을 써요."
+      })}
         ${withTags ? `<div><span class="lbl">보여 줄 탭</span><div class="chips">${tabs.map((t => `<button class="chip" data-act="tag" data-p="${path}.${i}.tags" data-v="${esc(t)}" aria-pressed="${(w.tags || []).includes(t)}">${esc(t)}</button>`)).join("")}</div></div>` : ""}
-        <div class="am-foot">${amMove(path, i, arr.length)}</div>
-      </div></div>`)).join("") || `<p class="empty" style="padding:16px 0">아직 없어요</p>`}
-      <div><button class="btn" data-act="add" data-p="${path}" data-k="work">+ 추가</button></div></div>`;
+        <div class="am-foot">${amMove(path, i, arr.length, j > 0 ? show[j - 1] : -1, j < show.length - 1 ? show[j + 1] : -1)}</div>
+      </div></div>`;
+    })).join("") || `<p class="empty" style="padding:16px 0">${withTags && AMTAB ? "이 탭에 아직 작품이 없어요" : "아직 없어요"}</p>`}</div>`;
   }
   function amGroups(path) {
     const gs = pget(AM, path) || [];
@@ -1641,6 +1654,11 @@ ol.steps b {
       if (el.dataset.t === "csv" && el.dataset.p === "3d.tabs") artmugView();
     }));
     $("page").onclick = guard((async e => {
+      const ft = e.target.closest("[data-amtab]");
+      if (ft) {
+        AMTAB = ft.dataset.amtab;
+        return artmugView();
+      }
       const pg = e.target.closest("[data-amp]");
       if (pg) {
         AMP = pg.dataset.amp;
@@ -1655,6 +1673,15 @@ ol.steps b {
         amDirty();
         return artmugView();
       }
+      if (act === "addtab") {
+        const v = ($("am-newtab").value || "").trim();
+        if (!v) return toast("새 탭 이름을 적어 주세요", true);
+        const tabs = AM["3d"].tabs || (AM["3d"].tabs = []);
+        if (!tabs.includes(v)) tabs.push(v);
+        AMTAB = v;
+        amDirty();
+        return artmugView();
+      }
       if (act === "clearimg") {
         pset(AM, p, "");
         amDirty();
@@ -1666,14 +1693,33 @@ ol.steps b {
         pset(AM, p, arr);
       }
       const i = +b.dataset.i;
-      if (act === "up" && i > 0) [ arr[i - 1], arr[i] ] = [ arr[i], arr[i - 1] ];
-      if (act === "down" && i < arr.length - 1) [ arr[i + 1], arr[i] ] = [ arr[i], arr[i + 1] ];
+      if ((act === "up" || act === "down") && b.dataset.to !== undefined) {
+        const to = +b.dataset.to;
+        if (to >= 0) [ arr[to], arr[i] ] = [ arr[i], arr[to] ];
+      } else {
+        if (act === "up" && i > 0) [ arr[i - 1], arr[i] ] = [ arr[i], arr[i - 1] ];
+        if (act === "down" && i < arr.length - 1) [ arr[i + 1], arr[i] ] = [ arr[i], arr[i + 1] ];
+      }
       if (act === "del") {
         if (!await ask("이 항목을 지울까요? (저장을 눌러야 사이트에 반영돼요)", "지우기")) return;
         arr.splice(i, 1);
       }
       if (act === "add") {
         const k = b.dataset.k;
+        if (k === "work") {
+          arr.unshift({
+            tags: p === "3d.works" && AMTAB ? [ AMTAB ] : [],
+            name: "",
+            platform: "",
+            img: "",
+            youtube: ""
+          });
+          amDirty();
+          artmugView();
+          const first = document.querySelector(`[data-p="${p}.0.name"]`);
+          if (first) first.focus();
+          return;
+        }
         arr.push(k === "work" ? {
           tags: [],
           name: "",
