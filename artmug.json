@@ -95,6 +95,24 @@
       },
       {
         "tags": [
+          "API"
+        ],
+        "name": "물건 맞기",
+        "platform": "",
+        "img": "assets/img/mw45ctjl1b47.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
+          "API"
+        ],
+        "name": "쓰담쓰담",
+        "platform": "",
+        "img": "assets/img/mw462s7p6ed8.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
           "오마카세 성형"
         ],
         "name": "연빛yeonvvit 님",
@@ -169,27 +187,9 @@
         "tags": [
           "API"
         ],
-        "name": "물건 맞기",
+        "name": "아봉",
         "platform": "",
-        "img": "assets/img/mw45ctjl1b47.gif",
-        "youtube": ""
-      },
-      {
-        "tags": [
-          "API"
-        ],
-        "name": "쓰담쓰담",
-        "platform": "",
-        "img": "assets/img/mw462s7p6ed8.gif",
-        "youtube": ""
-      },
-      {
-        "tags": [
-          "API"
-        ],
-        "name": "뿅망치",
-        "platform": "",
-        "img": "assets/img/mw45qcpr121e.gif",
+        "img": "assets/img/mw46rsbn52d4.gif",
         "youtube": ""
       },
       {
@@ -205,9 +205,27 @@
         "tags": [
           "API"
         ],
-        "name": "아봉",
+        "name": "뿅망치",
         "platform": "",
-        "img": "assets/img/mw46rsbn52d4.gif",
+        "img": "assets/img/mw45qcpr121e.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
+          "API"
+        ],
+        "name": "천사",
+        "platform": "",
+        "img": "assets/img/mw46y4g44ca3.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
+          "API"
+        ],
+        "name": "돈벼락",
+        "platform": "",
+        "img": "assets/img/mw46wzgja229.gif",
         "youtube": ""
       },
       {
