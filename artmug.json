@@ -68,6 +68,15 @@
     "works": [
       {
         "tags": [
+          "API"
+        ],
+        "name": "페이셜 연동 끊기면 잠들기",
+        "platform": "",
+        "img": "assets/img/mw2phelz063d.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
           "오마카세 성형"
         ],
         "name": "연빛yeonvvit 님",
@@ -142,15 +151,6 @@
         "tags": [
           "API"
         ],
-        "name": "페이셜 연동 끊기면 잠들기",
-        "platform": "",
-        "img": "assets/img/mw2phelz063d.gif",
-        "youtube": ""
-      },
-      {
-        "tags": [
-          "API"
-        ],
         "name": "?핑",
         "platform": "",
         "img": "assets/img/mw2phhqj20f7.gif",
@@ -181,6 +181,15 @@
         "name": "쓰담쓰담",
         "platform": "",
         "img": "assets/img/mw2phpcw0be5.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
+          "API"
+        ],
+        "name": "대두",
+        "platform": "",
+        "img": "assets/img/mw453k9f05ca.gif",
         "youtube": ""
       },
       {
@@ -423,10 +432,7 @@
       "페이셜",
       "뚜따",
       "완성본 전달"
-    ],
-    "tab_notes": {
-      "API": "Warudo 일반 / 프로 버전에 따라 작동되지 않는 API도 있어요."
-    }
+    ]
   },
   "cinemachine": {
     "badge": "CINEMACHINE COMMISSION",
