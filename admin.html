@@ -1349,7 +1349,7 @@ ol.steps b {
       }
     }));
   }
-  let AM = null, AMP = "3d", AMLAST = "", AMDIRTY = false, CINE = {}, AMTAB = "";
+  let AMBASE = "", AM = null, AMP = "3d", AMLAST = "", AMDIRTY = false, CINE = {}, AMTAB = "";
   const AMPAGES = [ [ "3d", "3D" ], [ "cinemachine", "시네머신" ], [ "common", "공통" ] ];
   const PLATFORMS = [ "", "SOOP", "CHZZK" ];
   const FIELD_TYPES = [ [ "text", "한 줄 입력" ], [ "area", "여러 줄 입력" ], [ "picked", "견적 계산기 결과 (3D)" ], [ "choose", "신청 항목 고르기 (시네머신)" ], [ "base", "베이스 아바타 (3D)" ] ];
@@ -1431,7 +1431,9 @@ ol.steps b {
     if (AM && !force) return artmugView();
     busy("아트머그 내용 불러오는 중…");
     try {
-      AM = JSON.parse(await readFile("artmug.json", await headSha()));
+      const raw = await readFile("artmug.json", await headSha());
+      AM = JSON.parse(raw);
+      AMBASE = JSON.stringify(JSON.parse(raw));
     } finally {
       busy(false);
     }
@@ -1767,10 +1769,29 @@ ol.steps b {
     }))));
     fixIds(snap["3d"] || {});
     fixIds(snap.cinemachine || {});
+    if (AMBASE) {
+      busy("최신 내용 확인하는 중…");
+      let now = "";
+      try {
+        now = JSON.stringify(JSON.parse(await readFile("artmug.json", await headSha())));
+      } finally {
+        busy(false);
+      }
+      if (now !== AMBASE && !await ask("이 화면을 연 뒤에 다른 곳에서 아트머그 내용이 바뀌었어요. 지금 화면 내용으로 저장할까요? (이 화면에 없는 새 항목은 그대로 남아요)", "이대로 저장")) return;
+    }
     AM = await commitArt("아트머그 페이지 수정", (d => {
-      d.common = snap.common;
-      d["3d"] = snap["3d"];
-      d.cinemachine = snap.cinemachine;
+      d.common = {
+        ...d.common || {},
+        ...snap.common
+      };
+      d["3d"] = {
+        ...d["3d"] || {},
+        ...snap["3d"]
+      };
+      d.cinemachine = {
+        ...d.cinemachine || {},
+        ...snap.cinemachine
+      };
     }), filesFor(paths));
     const ch = Object.entries(CINE);
     if (ch.length) {
@@ -1785,6 +1806,7 @@ ol.steps b {
     }
     UP = {};
     AMDIRTY = false;
+    AMBASE = JSON.stringify(AM);
     toast("저장했어요. 1~2분 뒤 아트머그 페이지에 반영돼요.");
     artmugView();
   }));

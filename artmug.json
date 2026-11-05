@@ -423,7 +423,10 @@
       "페이셜",
       "뚜따",
       "완성본 전달"
-    ]
+    ],
+    "tab_notes": {
+      "API": "**Warudo 일반 / 프로** 버전에 따라 작동되지 않는 API도 있어요."
+    }
   },
   "cinemachine": {
     "badge": "CINEMACHINE COMMISSION",
