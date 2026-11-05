@@ -113,6 +113,15 @@
       },
       {
         "tags": [
+          "API"
+        ],
+        "name": "아봉",
+        "platform": "",
+        "img": "assets/img/mw46rsbn52d4.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
           "오마카세 성형"
         ],
         "name": "연빛yeonvvit 님",
@@ -187,15 +196,6 @@
         "tags": [
           "API"
         ],
-        "name": "아봉",
-        "platform": "",
-        "img": "assets/img/mw46rsbn52d4.gif",
-        "youtube": ""
-      },
-      {
-        "tags": [
-          "API"
-        ],
         "name": "대두",
         "platform": "",
         "img": "assets/img/mw45xkvtabb2.gif",
@@ -214,9 +214,9 @@
         "tags": [
           "API"
         ],
-        "name": "천사",
+        "name": "팬캐릭터 랜덤 위치 뽀뽀",
         "platform": "",
-        "img": "assets/img/mw46y4g44ca3.gif",
+        "img": "assets/img/mw47dt5teded.gif",
         "youtube": ""
       },
       {
@@ -226,6 +226,15 @@
         "name": "돈벼락",
         "platform": "",
         "img": "assets/img/mw4770uwc6c6.gif",
+        "youtube": ""
+      },
+      {
+        "tags": [
+          "API"
+        ],
+        "name": "천사",
+        "platform": "",
+        "img": "assets/img/mw46y4g44ca3.gif",
         "youtube": ""
       },
       {
