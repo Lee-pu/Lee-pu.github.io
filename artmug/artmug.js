@@ -160,9 +160,13 @@
       <button type="button" class="btn-text" id="lpClear">다시 고르기</button>`;
   };
 
+  const sortAv = (arr) => {
+    const latin = (x) => /^[A-Za-z0-9]/.test(x);
+    return [...arr].sort((a, b) => (latin(a) === latin(b) ? (latin(a) ? a.localeCompare(b, "en", { sensitivity: "base" }) : a.localeCompare(b, "ko")) : latin(a) ? -1 : 1));
+  };
   const estimate = () => `<div class="est">
     <div class="est-l" id="lpCalc">
-      <div id="lpSec-avatar"><div class="g-h">베이스 아바타</div><select class="in sel" id="lpBase"><option value="">아바타를 선택해 주세요</option>${(C.avatars || []).concat(C.avatar_none ? [C.avatar_none] : []).map((a) => `<option value="${esc(a)}">${esc(a)}</option>`).join("")}</select></div>
+      <div id="lpSec-avatar"><div class="g-h">베이스 아바타</div><select class="in sel" id="lpBase"><option value="">아바타를 선택해 주세요</option>${sortAv(C.avatars || []).concat(C.avatar_none ? [C.avatar_none] : []).map((a) => `<option value="${esc(a)}">${esc(a)}</option>`).join("")}</select></div>
       <div id="lpGroups" style="display:flex;flex-direction:column;gap:20px">${groupsHtml(false)}</div>
     </div>
     <aside class="receipt" id="lpReceipt">${receiptHtml()}</aside>
