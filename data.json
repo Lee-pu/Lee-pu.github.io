@@ -341,8 +341,13 @@
    "category": "3D",
    "date": "2026-06-27",
    "description": "성형 및 페이셜, VSF 옷장 및 뽀잉눈 세팅",
-   "thumbnail": "",
-   "images": [],
+   "thumbnail": "assets/img/mw3vzgol9c3b.webp",
+   "images": [
+    "assets/img/mw3vyu1e59e2.webp",
+    "assets/img/mw3vz032c003.webp",
+    "assets/img/mw3vz9p5aa0e.webp",
+    "assets/img/mw3vzbkabcb7.webp"
+   ],
    "video_urls": [],
    "link_url": "",
    "tags": [],
