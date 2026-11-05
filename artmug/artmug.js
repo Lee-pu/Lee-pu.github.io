@@ -105,7 +105,8 @@
   const card3d = (w) => `<div class="card"><div class="media">${media(w)}</div><div class="cap">${w.platform ? `<span class="pf">${esc(w.platform)}</span><span class="dot">·</span>` : ""}${esc(w.name)}</div></div>`;
   const cardCine = (w, i) => `<div class="card"${i >= C.works_shown && !shownAll ? " hidden" : ""}><div class="media">${media(w)}</div><div class="cap">${esc(w.name)}</div><div class="cap2">${esc(w.song)}</div></div>`;
 
-  const tabNote = () => ((C.tab_notes || {})[tab] || "").trim();
+  let NOTES = {};
+  const tabNote = () => (NOTES[tab] || (C.tab_notes || {})[tab] || "").trim();
   const portfolio3d = () => {
     const tabs = (C.tabs || []).filter((t) => works.some((w) => w.tags.includes(t)));
     if (!tab || !tabs.includes(tab)) tab = tabs[0] || "";
@@ -260,6 +261,7 @@
       PAGE === "cinemachine" ? fetch(ROOT + "data.json", { cache: "no-cache" }).then((r) => r.json()).catch(() => ({ works: [] })) : null,
     ]);
     COMMON = content.common || {};
+    NOTES = (content.tab_notes || {})[PAGE] || {};
     C = content[PAGE];
     if (PAGE === "3d") {
       works = (C.works || []).map((w) => ({ ...w, tags: list(w.tags) }));
