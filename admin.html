@@ -1471,7 +1471,11 @@ ol.steps b {
     const bar = withTags ? `<div class="am-filter"><div class="chips" style="margin:0">${[ "", ...tabs ].map((t => `<button class="chip" data-amtab="${esc(t)}" aria-pressed="${AMTAB === t}">${t ? esc(t) : "전체"} <span style="opacity:.6">${t ? arr.filter((w => (w.tags || []).includes(t))).length : arr.length}</span></button>`)).join("")}</div>
       <span class="inline" style="margin-left:auto"><input id="am-newtab" class="field" placeholder="새 탭 이름" aria-label="새 탭 이름" style="width:130px"><button class="btn sm" data-act="addtab" data-p="${path}">탭 추가</button></span></div>` : "";
     const addBtn = `<button class="btn primary" data-act="add" data-p="${path}" data-k="work">+ ${withTags && AMTAB ? `${esc(AMTAB)}에 ` : ""}작품 추가</button>`;
-    return `<div class="stack">${bar}<div>${addBtn}</div>${show.map(((i, j) => {
+    const note = withTags && AMTAB ? amInput(`3d.tab_notes.${AMTAB}`, `${esc(AMTAB)} 탭 안내 문구 (선택)`, {
+      hint: "이 탭을 눌렀을 때 작품 위에 분홍 칸으로 보여요. 비우면 안 보여요."
+    }) : "";
+    if (withTags && AMTAB) AM["3d"].tab_notes = AM["3d"].tab_notes || {};
+    return `<div class="stack">${bar}${note}<div>${addBtn}</div>${show.map(((i, j) => {
       const w = arr[i];
       return `<div class="am-card">
       <div class="am-media">${amMedia(`${path}.${i}`, w)}</div>

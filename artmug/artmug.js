@@ -105,10 +105,11 @@
   const card3d = (w) => `<div class="card"><div class="media">${media(w)}</div><div class="cap">${w.platform ? `<span class="pf">${esc(w.platform)}</span><span class="dot">·</span>` : ""}${esc(w.name)}</div></div>`;
   const cardCine = (w, i) => `<div class="card"${i >= C.works_shown && !shownAll ? " hidden" : ""}><div class="media">${media(w)}</div><div class="cap">${esc(w.name)}</div><div class="cap2">${esc(w.song)}</div></div>`;
 
+  const tabNote = () => ((C.tab_notes || {})[tab] || "").trim();
   const portfolio3d = () => {
     const tabs = (C.tabs || []).filter((t) => works.some((w) => w.tags.includes(t)));
     if (!tab || !tabs.includes(tab)) tab = tabs[0] || "";
-    return `<div class="tabs" id="lpTabs" role="tablist"><span class="pill" aria-hidden="true"></span>${tabs.map((t) => `<button type="button" class="tab" data-tab="${esc(t)}" aria-pressed="${t === tab}">${esc(t)}</button>`).join("")}</div><div class="grid" id="lpGrid">${works.filter((w) => w.tags.includes(tab)).map(card3d).join("")}</div>`;
+    return `<div class="tabs" id="lpTabs" role="tablist"><span class="pill" aria-hidden="true"></span>${tabs.map((t) => `<button type="button" class="tab" data-tab="${esc(t)}" aria-pressed="${t === tab}">${esc(t)}</button>`).join("")}</div><p class="tab-note" id="lpTabNote"${tabNote() ? "" : " hidden"}>${md(tabNote())}</p><div class="grid" id="lpGrid">${works.filter((w) => w.tags.includes(tab)).map(card3d).join("")}</div>`;
   };
   const portfolioCine = () => {
     const more = works.length > C.works_shown && !shownAll ? `<div class="more"><button type="button" class="btn-line" id="lpMore">더보기</button></div>` : "";
@@ -305,6 +306,7 @@
         tab = t.dataset.tab;
         $$("#lpTabs .tab").forEach((b) => b.setAttribute("aria-pressed", String(b === t)));
         $("#lpGrid").innerHTML = works.filter((w) => w.tags.includes(tab)).map(card3d).join("");
+        const tn = $("#lpTabNote"); tn.innerHTML = md(tabNote()); tn.hidden = !tabNote();
         const bar = $("#lpTabs"); try { bar.scrollTo({ left: t.offsetLeft - (bar.clientWidth - t.offsetWidth) / 2, behavior: "smooth" }); } catch (_) { bar.scrollLeft = t.offsetLeft; }
         pill(false);
         return report();
