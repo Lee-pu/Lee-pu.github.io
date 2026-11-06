@@ -1474,7 +1474,7 @@ ol.steps b {
       <span class="inline" style="margin-left:auto"><input id="am-newtab" class="field" placeholder="새 탭 이름" aria-label="새 탭 이름" style="width:130px"><button class="btn sm" data-act="addtab" data-p="${path}">탭 추가</button></span></div>` : "";
     const addBtn = `<button class="btn primary" data-act="add" data-p="${path}" data-k="work">+ ${withTags && AMTAB ? `${esc(AMTAB)}에 ` : ""}작품 추가</button>`;
     const note = withTags && AMTAB ? amInput(`tab_notes.3d.${AMTAB}`, `${esc(AMTAB)} 탭 안내 문구 (선택)`, {
-      hint: "이 탭을 눌렀을 때 작품 위에 분홍 칸으로 보여요. 비우면 안 보여요."
+      hint: "이 탭을 눌렀을 때 작품 목록 아래에 작은 글씨로 보여요. 앞의 ※는 자동으로 붙으니 내용만 적어 주세요. 비우면 안 보여요."
     }) : "";
     if (withTags && AMTAB) {
       AM.tab_notes = AM.tab_notes || {};
