@@ -510,7 +510,7 @@
   },
   {
    "id": "7760678b31",
-   "title": "익명 님 성형 + 페이셜 + VRC 세팅",
+   "title": "지인 작업 님 성형 + 페이셜 + VRC 세팅",
    "category": "3D",
    "date": "2026-03-10",
    "description": "지인 분이 주신 자료를 참고하여, 성형 + 페이셜 + VRC 세팅 및 유니티 패키지 전달",
@@ -518,7 +518,8 @@
    "images": [],
    "video_urls": [],
    "link_url": "",
-   "tags": []
+   "tags": [],
+   "public": true
   },
   {
    "id": "6719761af7",
