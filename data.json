@@ -35,9 +35,11 @@
    "category": "CINEMACHINE",
    "date": "2026-11-13",
    "description": "",
-   "thumbnail": "",
+   "thumbnail": "assets/img/mwfjciht354d.webp",
    "images": [],
-   "video_urls": [],
+   "video_urls": [
+    "https://www.youtube.com/shorts/b2avL5iHMOo"
+   ],
    "link_url": "",
    "tags": [],
    "public": true
